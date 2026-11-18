@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Born to migrate? | Great reed warbler translocation experiment</title>
+<meta name="description" content="An ERC project testing how the inherited migratory program guides a young bird on its first journey, by moving great reed warbler eggs between Kazakhstan, Spain and Bulgaria.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF2F0; --ink:#13262B; --muted:#4F6368; --line:#C9D4D1; --panel:#E2EAE7;
+  --bg-bul:#1D5F8A; --bg-kaz:#B87A12; --bg-spa:#A83A4C; --accent:#0F6B5C;
+  --serif:"Newsreader",Georgia,serif; --sans:"Instrument Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--paper:#0F1B1F; --ink:#E6EEEB; --muted:#9DB0B3; --line:#27393E; --panel:#162529;
+  --bg-bul:#6FB4E0; --bg-kaz:#E2A93F; --bg-spa:#E57A8C; --accent:#5FC7B0;}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--sans)}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;flex-wrap:wrap}
+header.top strong{font-family:var(--serif);font-size:1.15rem;font-weight:600}
+nav a{margin-left:20px;color:var(--ink);text-decoration:none;font-size:.95rem}
+nav a:hover{text-decoration:underline}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;margin:0}
+h1{font-size:clamp(2.6rem,6.5vw,4.8rem);max-width:15ch;letter-spacing:-.02em}
+h2{font-size:clamp(1.8rem,3.6vw,2.6rem);margin-bottom:18px}
+h3{font-size:1.35rem;font-weight:600;margin-bottom:6px}
+p{margin:0 0 1em;max-width:68ch}
+.lede{font-family:var(--serif);font-size:1.3rem;line-height:1.5;color:var(--muted);max-width:52ch;margin-top:22px}
+section{padding:72px 0;border-top:1px solid var(--line)}
+.hero{padding:40px 0 64px}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:32px}
+
+/* interactive route map */
+.mapbox{background:var(--panel);border-radius:14px;padding:20px}
+.mapbox svg{width:100%;height:auto;display:block}
+.controls{display:flex;flex-wrap:wrap;gap:20px;margin-bottom:14px}
+.group{display:flex;flex-direction:column;gap:6px}
+.group span{font-size:.85rem;color:var(--muted)}
+.seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden}
+.seg button{font:500 .95rem var(--sans);padding:8px 16px;background:transparent;color:var(--ink);border:0;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.readout{min-height:3.4em;margin:14px 0 0;font-size:.98rem}
+.route{fill:none;stroke-width:2.4;stroke-linecap:round}
+.obs{opacity:.55}
+.pred{stroke:var(--ink);stroke-width:3.4;stroke-dasharray:2 8;transition:d .6s}
+.lbl{font:600 13px var(--sans);fill:var(--ink)}
+.lbl2{font:italic 13px var(--serif);fill:var(--muted)}
+
+/* models */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;margin-top:28px}
+.two > div{border-top:3px solid var(--ink);padding-top:14px}
+
+/* method */
+.steps{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:0}
+.steps li{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+.steps time{font-family:var(--serif);font-size:1.25rem;color:var(--accent);font-weight:600}
+.steps p{margin:0}
+@media(max-width:560px){.steps li{grid-template-columns:1fr;gap:4px}}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;margin-top:28px}
+.facts b{display:block;font-family:var(--serif);font-size:2.4rem;font-weight:400;line-height:1}
+.facts span{color:var(--muted);font-size:.95rem}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:28px}
+figure{margin:0}
+figure img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;background:var(--panel);display:block}
+figcaption{font-size:.88rem;color:var(--muted);margin-top:8px}
+
+footer{padding:48px 0 64px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem}
+.contact{font-size:1.1rem}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <strong>Born to Migrate</strong><!-- TODO: final project acronym -->
+    <nav aria-label="Main">
+      <a href="#question">The question</a>
+      <a href="#models">Two models</a>
+      <a href="#method">The experiment</a>
+      <a href="#field">Fieldwork</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <main>
+  <div class="hero">
+    <div class="hero-grid">
+      <div>
+        <h1>How does a young bird know where to go?</h1>
+        <p class="lede">Great reed warblers hatched from eggs we move between Kazakhstan, Spain and Bulgaria will be tracked by satellite on their very first migration. Their route will tell us what is written in their genes.</p>
+      </div>
+
+      <div class="mapbox" id="mapbox">
+        <div class="controls">
+          <div class="group">
+            <span id="lbl-origin">Eggs laid in</span>
+            <div class="seg" role="group" aria-labelledby="lbl-origin">
+              <button type="button" data-origin="K" aria-pressed="true">Kazakhstan</button>
+              <button type="button" data-origin="S" aria-pressed="false">Spain</button>
+            </div>
+          </div>
+          <div class="group">
+            <span id="lbl-model">If the bird follows</span>
+            <div class="seg" role="group" aria-labelledby="lbl-model">
+              <button type="button" data-model="CC" aria-pressed="true">Clock and compass</button>
+              <button type="button" data-model="GA" aria-pressed="false">Goal-area navigation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Schematic, not to scale: x = (lon+20)*8, y = (55-lat)*8 -->
+        <svg viewBox="0 0 800 500" role="img" aria-labelledby="maptitle mapdesc">
+          <title id="maptitle">Schematic map of observed and predicted migration routes</title>
+          <desc id="mapdesc">Observed routes of great reed warblers from Bulgaria, Kazakhstan and Spain are shown as solid lines. The dotted line shows the predicted route of a bird hatched in Bulgaria from an egg translocated from the selected population.</desc>
+          <!-- observed routes -->
+          <path class="route obs" stroke="var(--bg-bul)" d="M328 96 C 350 200, 360 320, 360 440"/>
+          <path class="route obs" stroke="var(--bg-kaz)" d="M720 80 C 600 60, 520 100, 470 150 C 420 220, 380 330, 360 440"/>
+          <path class="route obs" stroke="var(--bg-spa)" d="M120 120 C 100 200, 60 300, 80 400"/>
+          <!-- predicted route -->
+          <path id="pred" class="route pred" d="M328 96 C 350 200, 360 320, 360 440"/>
+          <!-- places -->
+          <g>
+            <circle cx="328" cy="96" r="8" fill="var(--bg-bul)"/><text class="lbl" x="340" y="82">Bulgaria (Kalimok)</text>
+            <circle cx="720" cy="80" r="8" fill="var(--bg-kaz)"/><text class="lbl" x="640" y="62">Kazakhstan</text>
+            <circle cx="120" cy="120" r="8" fill="var(--bg-spa)"/><text class="lbl" x="104" y="102">Spain</text>
+            <rect x="340" y="436" width="40" height="12" rx="6" fill="var(--muted)"/><text class="lbl2" x="388" y="447">East African wintering area</text>
+            <rect x="60" y="396" width="40" height="12" rx="6" fill="var(--muted)"/><text class="lbl2" x="108" y="407">West African wintering area</text>
+          </g>
+        </svg>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <p style="font-size:.82rem;color:var(--muted);margin:0">Schematic map, not to scale. Solid lines: routes mapped with geolocators. Dotted line: prediction for the translocated bird.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUESTION -->
+  <section id="question">
+    <h2>An instruction the bird is born with</h2>
+    <p>Many young songbirds migrate alone, at night, to a wintering area they have never seen. Nobody shows them the way, so the directions must be inherited.</p>
+    <p>What exactly is inherited is still unresolved. Is it a simple instruction such as “fly this way, for this long”? Or is it a destination, which would require the bird to carry some sort of inherited map? Earlier translocation experiments have moved juvenile birds and gave ambiguous answers. This project does something that has not been done before: it moves the eggs.</p>
+  </section>
+
+  <!-- MODELS -->
+  <section id="models">
+    <h2>Two ways to be born with a route</h2>
+    <div class="two">
+      <div>
+        <h3>Clock and compass</h3>
+        <p>The genes set a direction and a flight time. A bird moved to a new place keeps the same heading as its parents and ends up somewhere else.</p>
+      </div>
+      <div>
+        <h3>Goal-area navigation</h3>
+        <p>The genes point to a destination. A bird moved to a new place corrects its course and still reaches the family wintering area.</p>
+      </div>
+    </div>
+    <p style="margin-top:32px">The answer matters for evolution too. If birds follow a compass heading, each breeding population needs its own direction genes. If they navigate to a goal, one set of genes can serve populations spread across a wide breeding range that share a wintering area.</p>
+  </section>
+
+  <!-- METHOD -->
+  <section id="method">
+    <h2>The experiment</h2>
+    <p>The first work package, WP1, is a translocation experiment. Populations that breed in different places but winter in the same part of Africa make the test possible.</p>
+    <ol class="steps">
+      <li><time>2027</time><p><strong>Kazakhstan eggs.</strong> Eggs are collected from the Kazakh population and transported to the Kalimok field station in eastern Bulgaria.</p></li>
+      <li><time>2028</time><p><strong>Spanish eggs.</strong> The same procedure with eggs from Spain, a population with a simple southward route to western Africa.</p></li>
+      <li><time>Hatching</time><p><strong>Hand-raising.</strong> Chicks hatch at the station and are raised alongside Bulgarian great reed warblers, using a protocol developed for aquatic warbler translocations in Lithuania.</p></li>
+      <li><time>Aviaries</time><p><strong>Outdoor aviaries.</strong> Once they can fly, the young birds live in aviaries furnished to mimic their reedbed habitat.</p></li>
+      <li><time>Release</time><p><strong>Satellite tags.</strong> A few days before the aviaries are opened, each bird gets a 2.0 g satellite transmitter. We then follow the first journey in real time.</p></li>
+    </ol>
+  </section>
+
+  <!-- SPECIES -->
+  <section id="species">
+    <h2>Why the great reed warbler</h2>
+    <p>The study needs a solitary long-distance migrant that is heavy enough to carry a tag and has populations with very different routes. This species fits.</p>
+    <div class="facts">
+      <div><b>30 g</b><span>Big enough to carry the smallest satellite tags, which weigh 2.0 g.</span></div>
+      <div><b>3 routes</b><span>Bulgarian, Kazakh and Spanish populations migrate in clearly different ways.</span></div>
+      <div><b>1 area</b><span>Kazakh and Bulgarian birds winter in the same part of eastern Africa, despite starting out in different directions.</span></div>
+    </div>
+  </section>
+
+  <!-- FIELD -->
+  <section id="field">
+    <h2>Fieldwork so far</h2>
+    <p>Kalimok field station in eastern Bulgaria is surrounded by a dense breeding population of great reed warblers. It is run in long-term collaboration with Dr. Pavel Zehtindjiev of the Bulgarian Academy of Sciences. In May and June 2024, a pilot study showed that chicks can be raised to independence, at about 32 days old.</p>
+    <p>An exploratory expedition to Kazakhstan has also been carried out to prepare the egg collection.</p>
+    <div class="gallery">
+      <!-- Replace src and caption with your photos in the /images folder -->
+      <figure><img src="images/kazakhstan-1.jpg" alt="Describe the photo: Kazakhstan expedition" onerror="this.removeAttribute('src')"><figcaption>Kazakhstan, exploratory expedition</figcaption></figure>
+      <figure><img src="images/kalimok-1.jpg" alt="Describe the photo: Kalimok field station" onerror="this.removeAttribute('src')"><figcaption>Kalimok field station, Bulgaria</figcaption></figure>
+      <figure><img src="images/pilot-1.jpg" alt="Describe the photo: hand-raised chicks in the 2024 pilot" onerror="this.removeAttribute('src')"><figcaption>Pilot study 2024: hand-raised chicks</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Get in touch</h2>
+    <p class="contact">Principal investigator: [Name], [Department], [University]<br>
+    <a href="mailto:name@university.edu">name@university.edu</a></p>
+    <p>Join the team? Open positions will be listed here.</p>
+  </section>
+  </main>
+
+  <footer>
+    <p>Funded by the European Research Council (ERC). [Grant agreement number]. Views expressed are those of the authors only.</p><!-- TODO: add official ERC / EU logo and acknowledgement text -->
+  </footer>
+</div>
+
+<script>
+(function(){
+  // Two schematic paths from Bulgaria: one to eastern Africa, one via the west to western Africa
+  var EAST = "M328 96 C 350 200, 360 320, 360 440";
+  var WEST = "M328 96 C 250 110, 130 150, 100 250 C 85 320, 80 380, 80 402";
+  var origin = "K", model = "CC";
+  var pred = document.getElementById("pred");
+  var readout = document.getElementById("readout");
+  var names = {K:"Kazakhstan", S:"Spain"};
+
+  function update(){
+    // Kazakh: compass → west, goal → east.  Spanish: compass → east, goal → west.
+    var west = (origin === "K") === (model === "CC");
+    pred.setAttribute("d", west ? WEST : EAST);
+    var where = west ? "western Africa" : "eastern Africa";
+    var why = model === "CC"
+      ? "keeps its inherited heading from " + names[origin]
+      : "steers toward its population’s wintering area";
+    readout.innerHTML = "A bird hatched in Bulgaria from a " + names[origin] + " egg " + why + " and ends up in <strong>" + where + "</strong>.";
+  }
+
+  document.querySelectorAll("[data-origin]").forEach(function(b){
+    b.addEventListener("click", function(){ origin = b.dataset.origin; toggle("data-origin", b); update(); });
+  });
+  document.querySelectorAll("[data-model]").forEach(function(b){
+    b.addEventListener("click", function(){ model = b.dataset.model; toggle("data-model", b); update(); });
+  });
+  function toggle(attr, on){
+    document.querySelectorAll("["+attr+"]").forEach(function(x){ x.setAttribute("aria-pressed", x===on ? "true":"false"); });
+  }
+  update();
+})();
+</script>
+</body>
+</html>
