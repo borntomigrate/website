@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MIGRAGENES | Great reed warbler translocation experiment</title>
+<title>Great reed warbler translocation: an ultimate test of the inheritance of migratory routes</title>
 <meta name="description" content="This project tests what the inherited migratory program tells a young bird on its first journey, by moving great reed warbler eggs between Kazakhstan, Spain and Bulgaria.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,12 +32,12 @@ section{padding:80px 0}
 
 .site{border-top:4px solid var(--ochre);background:var(--white);position:relative;z-index:5}
 .bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px 24px;padding:16px 24px}
-.bar strong{font:600 1.25rem var(--sans);letter-spacing:.08em;color:var(--navy)}
-.bar nav{display:flex;flex-wrap:wrap;gap:6px 26px}
-.bar nav a{color:var(--navy);text-decoration:none;font-size:1rem;font-weight:500;padding:4px 0;border-bottom:3px solid transparent}
+.bar strong{font:600 1.05rem var(--sans);letter-spacing:.03em;color:var(--navy);max-width:215px;line-height:1.2}
+.bar nav{display:flex;flex-wrap:wrap;gap:6px 14px}
+.bar nav a{color:var(--navy);text-decoration:none;font-size:.93rem;font-weight:500;padding:4px 0;border-bottom:3px solid transparent}
 .bar nav a:hover{border-bottom-color:var(--ochre)}
 .lang{display:flex;gap:6px}
-.lang button{font:500 .85rem var(--sans);color:var(--navy);background:transparent;border:1px solid var(--line);border-radius:4px;padding:5px 10px;cursor:pointer}
+.lang button{font:500 .85rem var(--sans);color:var(--navy);background:transparent;border:1px solid var(--line);border-radius:4px;padding:5px 8px;cursor:pointer}
 .lang button[aria-pressed="true"]{background:var(--navy);color:var(--white);border-color:var(--navy)}
 
 /* split hero: text panel + photo */
@@ -111,6 +111,28 @@ figcaption{font-size:.95rem;color:var(--muted);margin-top:8px}
 .lg img{max-height:64px;max-width:200px;display:block}
 .lg.missing img{display:none}
 .lg.missing::after{content:attr(data-file);color:var(--muted);font-size:.85rem}
+
+/* the birds */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:12px}
+.split h3.sub0{font-size:1.7rem;margin:0 0 16px}
+.split figure .ph{aspect-ratio:4/3}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:28px}
+.refs{font-size:.95rem;margin-top:24px}
+.refs a{display:block;margin-top:8px;max-width:78ch}
+.split.portrait{grid-template-columns:1.5fr 1fr;align-items:start}
+.split.portrait figure .ph{aspect-ratio:1/1}
+.split.portrait figure img{object-position:50% 30%}
+@media(max-width:820px){.split{grid-template-columns:1fr;gap:24px}}
+/* team profiles */
+.profiles{display:grid;grid-template-columns:1fr;gap:56px;margin-top:36px}
+.profile{display:grid;grid-template-columns:260px 1fr;grid-template-rows:auto auto 1fr;column-gap:40px;align-items:start}
+.profile figure{grid-column:1;grid-row:1 / span 3}
+.profile h3,.profile .role,.profile > p{grid-column:2;max-width:64ch}
+.profile h3{font-size:1.8rem;font-weight:300;margin:0 0 2px}
+.profile .role{font-weight:600;color:var(--blue);margin-bottom:12px}
+.profile figure .ph{aspect-ratio:4/5}
+.profile figure.missing .ph::after{content:"";background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='38' r='15' fill='%2393A4B1'/%3E%3Cpath d='M20 92c2-21 15-31 30-31s28 10 30 31z' fill='%2393A4B1'/%3E%3C/svg%3E") center 60%/62% no-repeat}
+@media(max-width:700px){.profile{grid-template-columns:1fr}.profile figure{grid-row:auto;max-width:260px;margin-bottom:16px}.profile h3,.profile .role,.profile > p{grid-column:1}}
 footer{background:var(--navy);color:#C9D5E1;padding:56px 0;font-size:.95rem}
 footer a{color:var(--white)}
 footer h2{color:var(--white);font-size:1.6rem}
@@ -121,14 +143,13 @@ footer h2{color:var(--white);font-size:1.6rem}
 
 <header class="site">
   <div class="wrap bar">
-    <strong>MIGRAGENES</strong>
+    <strong data-i18n="brand">Inherited migratory program</strong>
     <nav aria-label="Main">
       <a href="#question" data-i18n="n1">The project</a>
       <a href="#models" data-i18n="n2">Two models</a>
       <a href="#method" data-i18n="n3">The experiment</a>
+      <a href="#birds" data-i18n="n7">The birds</a>
       <a href="#team" data-i18n="n4">The team</a>
-      <a href="#sponsors" data-i18n="n6">Sponsors</a>
-      <a href="#contact" data-i18n="n5">Contact</a>
     </nav>
     <div class="lang" role="group" aria-label="Language">
       <button type="button" data-lang="en" aria-pressed="true">English</button>
@@ -141,7 +162,7 @@ footer h2{color:var(--white);font-size:1.6rem}
 <div class="hero" id="hero">
   <div class="hero-text">
     <h1 data-i18n="h1">How does a young bird know where to go?</h1>
-    <p data-i18n="hp">On its first autumn migration, a young bird flies thousands of kilometres to a place it has never seen. We move eggs between countries to find out what it inherits from its parents.</p>
+    <p data-i18n="hp">During its first autumn migration, a young bird flies thousands of kilometres, often crossing seas and deserts, to a place it has never been to. The instructions to do so are in its DNA. We will move eggs between countries to find out what information the bird inherits from its parents.</p>
     <a class="btn" href="#models" data-i18n="btn">See the two models</a>
   </div>
   <!-- Hero photo: save it as images/hero.jpg (landscape, at least 1600 px wide). Change the credit text below if needed. -->
@@ -152,7 +173,7 @@ footer h2{color:var(--white);font-size:1.6rem}
 </div>
 
 <div class="statement">
-  <div class="wrap"><p data-i18n="stmt">A European Research Council project on how birds inherit their migration.</p></div>
+  <div class="wrap"><p data-i18n="stmt">An ultimate test of the inheritance of migratory routes.</p></div>
   <div class="vline" aria-hidden="true"></div>
 </div>
 
@@ -171,11 +192,11 @@ footer h2{color:var(--white);font-size:1.6rem}
       <div class="two">
         <div>
           <h3 data-i18n="m1h">Clock and compass</h3>
-          <p data-i18n="m1p">The genes set a direction and a flight time. A bird moved to a new place keeps its heading and ends up somewhere else.</p>
+          <p data-i18n="m1p">The genetic instructions set a direction and a flight time. A bird moved to a new place keeps its heading and ends up somewhere else.</p>
         </div>
         <div>
           <h3 data-i18n="m2h">Goal-area navigation</h3>
-          <p data-i18n="m2p">The genes point to a destination. A bird moved to a new place corrects its course and still reaches its population’s wintering area.</p>
+          <p data-i18n="m2p">The genetic instructions point to a destination. A bird moved to a new place corrects its course and still reaches its population’s wintering area.</p>
         </div>
       </div>
       <p data-i18n="mtry">Choose where the eggs come from and which model is true, and see where a bird hatched in Bulgaria is predicted to fly.</p>
@@ -215,7 +236,7 @@ footer h2{color:var(--white);font-size:1.6rem}
         <p class="readout" id="readout" aria-live="polite"></p>
         <p class="note" data-i18n="mnote">Schematic map, not to scale. Solid lines: population routes. Dotted line: prediction for the translocated bird.</p>
       </div>
-      <p data-i18n="evo">Why it matters: if birds follow a compass heading, each breeding population needs its own direction genes. If they navigate to a goal, one set of genes can serve populations across a wide breeding range that share a wintering area.</p>
+      <p data-i18n="evo">Why it matters: if birds follow a compass heading, each breeding population needs its own genetic instructions for direction. If they navigate to a goal, one set of genetic instructions can serve populations across a wide breeding range that share a wintering area.</p>
     </div>
   </section>
 
@@ -224,29 +245,56 @@ footer h2{color:var(--white);font-size:1.6rem}
       <h2 data-i18n="eh">The experiment</h2>
       <p data-i18n="ep">Populations that breed far apart but winter in the same part of Africa make the test possible. Eggs are moved to one place, so every bird grows up under the same conditions.</p>
       <ol class="steps">
-        <li><time>2027</time><p data-i18n="s1"><strong>Kazakhstan eggs.</strong> Eggs from the Kazakh population are brought to the Kalimok field station in eastern Bulgaria.</p></li>
-        <li><time>2028</time><p data-i18n="s2"><strong>Spanish eggs.</strong> The same procedure with eggs from Spain, a population with a simple southward route to western Africa.</p></li>
+        <li><time>2027</time><p data-i18n="s1"><strong>Kazakhstan eggs.</strong> Eggs from the Kazakh population are brought to the Kalimok field station in northeastern Bulgaria.</p></li>
+        <li><time data-i18n="t2">2028, if needed</time><p data-i18n="s2"><strong>Spanish eggs, only if needed.</strong> If the Kazakh birds migrate south, we will repeat the experiment with eggs from Spain, to confirm whether the birds follow an inherited program or the local Bulgarian birds.</p></li>
         <li><time data-i18n="t3">Hatching</time><p data-i18n="s3"><strong>Hand-raising.</strong> Chicks hatch at the station and are raised alongside Bulgarian great reed warblers, following a protocol developed for aquatic warbler translocations in Lithuania.</p></li>
         <li><time data-i18n="t4">Aviaries</time><p data-i18n="s4"><strong>Outdoor aviaries.</strong> Once they can fly, the young birds live in aviaries furnished to mimic their reedbed habitat.</p></li>
-        <li><time data-i18n="t5">Release</time><p data-i18n="s5"><strong>Satellite tags.</strong> A few days before the aviaries open, each bird gets a 2.0 g satellite transmitter, so we can follow its first journey in real time.</p></li>
+        <li><time data-i18n="t5">Release</time><p data-i18n="s5"><strong>Satellite tags.</strong> A few days before the aviaries open, each bird gets a 1.7 g satellite transmitter, so we can follow its first journey in real time.</p></li>
       </ol>
 
       <h3 class="sub" data-i18n="wh">Why the great reed warbler</h3>
       <p data-i18n="wp">The study needs a solitary long-distance migrant that can carry a tag and has populations with very different routes. This species fits all three requirements.</p>
       <div class="facts">
-        <div><b data-i18n="f1b">30 g</b><span data-i18n="f1">Big enough to carry the smallest satellite tags, at 2.0 g.</span></div>
+        <div><b data-i18n="f1b">30 g</b><span data-i18n="f1">Big enough to carry satellite transmitters weighing only 1.7 g.</span></div>
         <div><b data-i18n="f2b">3 routes</b><span data-i18n="f2">Bulgarian, Kazakh and Spanish populations migrate in clearly different ways.</span></div>
         <div><b data-i18n="f3b">1 area</b><span data-i18n="f3">Kazakh and Bulgarian birds winter in the same part of eastern Africa, despite starting out in different directions.</span></div>
       </div>
 
       <h3 class="sub" data-i18n="fh">Fieldwork so far</h3>
-      <p data-i18n="fp">Kalimok field station in eastern Bulgaria is surrounded by a dense breeding population of great reed warblers, and is run in long-term collaboration with Dr. Pavel Zehtindjiev of the Bulgarian Academy of Sciences. In May and June 2024, a pilot study showed that chicks can be raised until independence, at about 32 days. An exploratory expedition to Kazakhstan has prepared the egg collection.</p>
-      <div class="gallery">
-        <figure class="wide"><div class="ph" data-file="images/kalimok-1.jpg"><img src="images/kalimok-1.jpg" alt="Kalimok field station, Bulgaria" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c1">Kalimok field station, Bulgaria</figcaption></figure>
-        <figure><div class="ph" data-file="images/kazakhstan-1.jpg"><img src="images/kazakhstan-1.jpg" alt="Exploratory expedition to Kazakhstan" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c2">Exploratory expedition to Kazakhstan</figcaption></figure>
-        <figure><div class="ph" data-file="images/pilot-1.jpg"><img src="images/pilot-1.jpg" alt="Chicks and adults in the 2024 pilot study" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c3">Pilot study 2024: chicks and adults</figcaption></figure>
-        <figure><div class="ph" data-file="images/bird-in-hand-1.jpg"><img src="images/bird-in-hand-1.jpg" alt="A great reed warbler in the hand" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c4">A great reed warbler in the hand</figcaption></figure>
+      <div class="split portrait">
+        <p data-i18n="fp">Kalimok field station in northeastern Bulgaria is surrounded by a dense breeding population of great reed warblers, and is run in long-term collaboration with Dr. Pavel Zehtindjiev of the Bulgarian Academy of Sciences. In 2024 and 2025, a pilot study showed that chicks can be raised until independence, at about 32 days, and that the birds can successfully carry 1.7 g satellite transmitters during autumn migration. An exploratory expedition to Kazakhstan in 2025 located sites suitable for egg collection.</p>
+        <figure><div class="ph" data-file="images/satellite.jpeg"><img src="images/satellite.jpeg" alt="A great reed warbler held in the hand, fitted with a satellite transmitter on its back" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c6">A great reed warbler fitted with a satellite transmitter. Photo: Violeta Caballero-Lopez</figcaption></figure>
       </div>
+      
+    </div>
+  </section>
+
+  <section id="birds">
+    <div class="wrap">
+      <h2 data-i18n="bh">The birds</h2>
+
+      <div class="split">
+        <div>
+          <h3 class="sub0" data-i18n="b1h">Meet the species</h3>
+          <p data-i18n="b1p">The great reed warbler (<i>Acrocephalus arundinaceus</i>) is a medium-sized (30 g) migratory songbird that breeds across Europe and Central Asia and winters throughout Sub-Saharan and Southern Africa. It depends strongly on reedbed habitats for successful reproduction.</p>
+        </div>
+        <figure><div class="ph" data-file="images/hero.jpg"><img src="images/hero.jpg" alt="An adult great reed warbler" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c0">An adult great reed warbler. Photo: Harald Ris</figcaption></figure>
+      </div>
+
+      <h3 class="sub" data-i18n="b2h">Life in the reeds</h3>
+      <p data-i18n="b2p">Males are polygynous, meaning that a single male can mate with and hold a territory with several females. They feed on small invertebrates such as dragonflies, damselflies and spiders. A clutch holds 5 to 7 eggs, and both parents care for the young. Chicks leave the nest about 15 days after hatching and are fully independent around day 32.</p>
+      <div class="strip">
+        <figure><div class="ph" data-file="images/nest%20Large.jpeg"><img src="images/nest%20Large.jpeg" alt="Great reed warbler eggs in the nest" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c2">Eggs in the nest. Photo: Javier Abalos Alvarez</figcaption></figure>
+        <figure><div class="ph" data-file="images/chicks%20Large.jpeg"><img src="images/chicks%20Large.jpeg" alt="Great reed warbler chicks in the nest" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c3">Chicks in the nest. Photo: Javier Abalos Alvarez</figcaption></figure>
+        <figure><div class="ph" data-file="images/chicks-in-hand%20Large.jpeg"><img src="images/chicks-in-hand%20Large.jpeg" alt="Great reed warbler chicks held in the hand" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c4">Chicks in the hand. Photo: Javier Abalos Alvarez</figcaption></figure>
+      </div>
+
+      <h3 class="sub" data-i18n="b3h">Routes</h3>
+      <p data-i18n="b3p1">Tracking with geolocators has shown that great reed warblers from different parts of the range take different routes. In a study of five western Palearctic populations (Spain, Sweden, the Czech Republic, Bulgaria and Turkey), autumn routes were similar in direction and largely parallel, and most Spanish, Swedish and Czech birds wintered along the Gulf of Guinea. Turkish birds instead wintered in East Africa, and together with Bulgarian birds they returned in spring over the Arabian Peninsula, making a counter-clockwise loop (Koleček et al. 2016).</p>
+      <p data-i18n="b3p2">Birds from Kazakhstan, at the eastern edge of the range, also winter in East Africa alongside the Turkish birds, even though genetic data suggest the species colonised Kazakhstan from the west. Their migration direction must therefore have changed substantially as the range expanded. In spring they leave Africa as early as February and spend up to two months at a staging site in southern Iraq before completing the journey, a two-step strategy not described before (Bensch et al. 2025).</p>
+      <p class="refs"><span data-i18n="b3r">Read the studies:</span>
+        <a href="https://doi.org/10.1111/jav.00929" target="_blank" rel="noopener">Koleček, J. et al. Cross-continental migratory connectivity and spatiotemporal migratory patterns in the great reed warbler. Journal of Avian Biology 47, 756–767 (2016).</a>
+        <a href="https://doi.org/10.1002/jav.03441" target="_blank" rel="noopener">Bensch, S. et al. Evolution of population-specific migration routes in the great reed warbler Acrocephalus arundinaceus – evidence of a novel spring migration strategy. Journal of Avian Biology 2025, e03441 (2025).</a></p>
     </div>
   </section>
 
@@ -254,11 +302,20 @@ footer h2{color:var(--white);font-size:1.6rem}
     <div class="wrap">
       <h2 data-i18n="th">The team</h2>
       <p data-i18n="tp">The people behind this project.</p>
-      <!-- TODO: replace [Name] with real names and add photos as images/team-1.jpg, team-2.jpg, team-3.jpg -->
-      <div class="team">
-        <figure><div class="ph" data-file="images/team-1.jpg"><img src="images/team-1.jpg" alt="" onerror="this.closest('figure').classList.add('missing')"></div><figcaption><b>Staffan Bensch</b><span data-i18n="r1">Principal investigator, Professor</span></figcaption></figure>
-        <figure><div class="ph" data-file="images/team-2.jpg"><img src="images/team-2.jpg" alt="" onerror="this.closest('figure').classList.add('missing')"></div><figcaption><b>[Name]</b><span data-i18n="r2">Postdoctoral researcher</span></figcaption></figure>
-        <figure><div class="ph" data-file="images/team-3.jpg"><img src="images/team-3.jpg" alt="" onerror="this.closest('figure').classList.add('missing')"></div><figcaption><b>[Name]</b><span data-i18n="r3">PhD student</span></figcaption></figure>
+      <!-- TODO: add images/staffan.jpg when a photo is available -->
+      <div class="profiles">
+        <article class="profile">
+          <figure><div class="ph" data-file="images/staffan.jpg"><img src="images/staffan.jpg" alt="Staffan Bensch" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+          <h3>Staffan Bensch</h3>
+          <p class="role" data-i18n="r1">Principal investigator, Professor</p>
+          <p data-i18n="bio1">Staffan has studied great reed warblers since his PhD (Lund University, 1993), which drew on the long-term study at Lake Kvismaren that has been running since 1983. Today he leads an ERC-funded programme to uncover the genetic basis of songbird migration. Traits such as the urge to leave, the direction birds take and the length of their journeys are governed by unknown genetic mechanisms. In this project he coordinates the work and is also out in the field, especially at Kalimok station in Bulgaria.</p>
+        </article>
+        <article class="profile">
+          <figure><div class="ph" data-file="images/violeta%20Large.jpeg"><img src="images/violeta%20Large.jpeg" alt="Violeta Caballero-Lopez" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c5">Photo: Javier Abalos Alvarez</figcaption></figure>
+          <h3>Violeta Caballero-Lopez</h3>
+          <p class="role" data-i18n="r2">Postdoctoral researcher</p>
+          <p data-i18n="bio2">Violeta completed her PhD on the genetics of bird migration at Lund University in 2025. She focused on <i>Phylloscopus</i> warblers, combining genomic, molecular and phenotypic data to understand how small birds migrate. Before that, she spent several seasons on the Kvismaren great reed warbler project, where she came to know the species’ behaviour first-hand. In this project she is in charge of collecting eggs in Kazakhstan, and of the tracking from Bulgaria, by fitting satellite transmitters and Sigfox tags.</p>
+        </article>
       </div>
       <p style="margin-top:32px" data-i18n="collab">Collaboration at Kalimok: Dr. Pavel Zehtindjiev, Bulgarian Academy of Sciences</p>
     </div>
@@ -293,41 +350,53 @@ footer h2{color:var(--white);font-size:1.6rem}
   // ---------- Translations (English text lives in the HTML above) ----------
   var T = {
   kk:{
-    n1:"Жоба",n2:"Екі модель",n3:"Эксперимент",n4:"Команда",n5:"Байланыс",cred:"Acrocephalus arundinaceus. Фото: Harald Ris",stmt:"Құстардың миграцияны қалай тұқым қуалайтынын зерттейтін Еуропалық зерттеу кеңесінің жобасы.",n6:"Демеушілер",sph:"Демеушілер",spp:"Бұл жобаны Еуропалық зерттеу кеңесі (ERC) және Швеция ғылыми кеңесі (Vetenskapsrådet, VR) қаржыландырады. ERC грантының иесі — профессор Staffan Bensch.",
+    n7:"Құстар",bh:"Құстар",b1h:"Түрмен танысыңыз",
+    b1p:"<i>Acrocephalus arundinaceus</i> – орташа көлемді (30 г) қоныс аударатын әнші құс. Ол Еуропада және Орталық Азияда ұя салады, ал Сахарадан оңтүстіктегі Африкада және Оңтүстік Африкада қыстайды. Табысты көбею үшін қамысты мекендерге қатты тәуелді.",
+    c0:"Ересек құс. Фото: Harald Ris",
+    b2h:"Қамыстағы өмір",
+    b2p:"Еркектері полигинді: бір еркек бірнеше аналықпен жұптасып, аумақты бірге ұстай алады. Олар инеліктер мен өрмекшілер сияқты ұсақ омыртқасыздармен қоректенеді. Бір ұяда 5–7 жұмыртқа болады, балапандарға екі ата-ана да қамқорлық жасайды. Балапандар шыққаннан кейін шамамен 15 күннен соң ұяны тастайды, ал 32-ші күні толық дербес болады.",
+    b3h:"Маршруттар",
+    b3p1:"Геолокаторлармен бақылау бұл түрдің әртүрлі популяциялары әртүрлі жолмен көшетінін көрсетті. Батыс Палеарктиканың бес популяциясын (Испания, Швеция, Чехия, Болгария және Түркия) салыстырған зерттеуде күзгі маршруттар бағыты жағынан ұқсас және негізінен параллель болды, ал испандық, швед және чех құстарының көбі Гвинея шығанағы жағалауында қыстады. Түркия құстары керісінше Шығыс Африкада қыстады, ал олар Болгария құстарымен бірге көктемде Арабия түбегі арқылы сағат тіліне қарсы тұйық айналым жасады (Koleček және т.б., 2016).",
+    b3p2:"Қазақстан құстары, яғни түр таралу аймағының шығыс шетіндегі популяция, генетикалық деректер түрдің Қазақстанға батыстан келгенін көрсетсе де, Түркия құстарымен бірге Шығыс Африкада қыстайды. Демек, таралу аймағы кеңейген кезде олардың көші-қон бағыты айтарлықтай өзгерген. Көктемде олар ақпан айында Африкадан шыға бастайды және ұя салатын жерге жеткенше Оңтүстік Ирактағы аралық аялдама орнында екі айға дейін болады; бұл бұрын сипатталмаған екі сатылы стратегия (Bensch және т.б., 2025).",
+    b3r:"Зерттеулерді оқыңыз:",
+    c5:"Фото: Javier Abalos Alvarez",c6:"Спутниктік таратқышы бар құс. Фото: Violeta Caballero-Lopez",
+    bio1:"Staffan Лунд университетіндегі PhD-ден (1993) бері <i>Acrocephalus arundinaceus</i> түрін зерттейді; оның жұмысы Квисмарен көліндегі 1983 жылдан бері жалғасып келе жатқан ұзақ мерзімді зерттеуге негізделген. Қазір ол әнші құстардың көші-қонының генетикалық негізін ашуға арналған ERC қаржыландыратын бағдарламаны басқарады. Кетуге деген құлшыныс, құстар таңдайтын бағыт және ұшу қашықтығы сияқты белгілер әлі белгісіз генетикалық механизмдермен реттеледі. Бұл жобада ол жұмысты үйлестіреді және далада да жұмыс істейді, әсіресе Болгариядағы Калимок станциясында.",
+    bio2:"Violeta 2025 жылы Лунд университетінде құстардың көші-қонының генетикасы бойынша PhD қорғады. Ол геномдық, молекулалық және фенотиптік деректерді біріктіре отырып, <i>Phylloscopus</i> туысындағы әнші құстарға назар аударып, ұсақ құстардың қалай көшетінін зерттеді. Бұған дейін ол Квисмарен көліндегі жоба аясында бірнеше маусым жұмыс істеп, түрдің мінез-құлқымен тікелей танысты. Бұл жобада ол Қазақстанда жұмыртқа жинауға және Болгариядан бақылауға, яғни спутниктік таратқыштар мен Sigfox таңбаларын бекітуге жауапты.",
+    n1:"Жоба",n2:"Екі модель",n3:"Эксперимент",n4:"Команда",n5:"Байланыс",brand:"Тұқым қуалайтын миграциялық бағдарлама",cred:"Acrocephalus arundinaceus. Фото: Harald Ris",stmt:"Миграциялық маршруттардың тұқым қуалауын шешуші сынақ.",n6:"Демеушілер",sph:"Демеушілер",spp:"Бұл жобаны Еуропалық зерттеу кеңесі (ERC) және Швеция ғылыми кеңесі (Vetenskapsrådet, VR) қаржыландырады. ERC грантының иесі — профессор Staffan Bensch.",
     h1:"Жас құс қайда ұшатынын қалай біледі?",
-    hp:"Жас құс алғашқы күзгі миграциясында ешқашан көрмеген жерге мыңдаған шақырым ұшады. Ата-анасынан не мұра ететінін білу үшін біз жұмыртқаларды елдер арасында тасымалдаймыз.",
+    hp:"Алғашқы күзгі миграциясы кезінде жас құс мыңдаған шақырым, жиі теңіздер мен шөлдерден өтіп, өзі ешқашан болмаған жерге ұшады. Бұл жолдың нұсқаулары оның ДНК-сында жазылған. Біз құс ата-анасынан қандай ақпарат мұра ететінін білу үшін жұмыртқаларды елдер арасында тасымалдаймыз.",
     btn:"Екі модельді көру",
     qh:"Құс туа біткен нұсқаулық",
     q1:"Көптеген әнші құстар түнде және жалғыз көшеді, сондықтан жас құсқа жолды ешкім көрсете алмайды. Маршрут ішінара тұқым қуалауы керек, бірақ нақты нені мұра ететіні әлі анық емес.",
     q2:"Бұл «осы бағытта осынша уақыт ұш» сияқты қарапайым нұсқау ма? Әлде тұқым қуалайтын картаны қажет ететін межелі орын ба? Бұрынғы тәжірибелерде жас құстар тасымалданып, нәтижесі екіұшты болды. Біздің жоба жұмыртқаларды тасымалдайды, сондықтан құстар ата-анасы ұя салған жерден алыста өседі.",
     mh:"Тұқым қуалайтын бағдарламаның екі моделі",
     m1h:"Сағат және компас",
-    m1p:"Гендер бағыт пен ұшу уақытын белгілейді. Жаңа жерге апарылған құс бағытын сақтап, басқа жерге барып шығады.",
+    m1p:"Генетикалық нұсқаулар бағыт пен ұшу уақытын белгілейді. Жаңа жерге апарылған құс бағытын сақтап, басқа жерге барып шығады.",
     m2h:"Мақсатты аймаққа навигация",
-    m2p:"Гендер межелі жерді көрсетеді. Жаңа жерге апарылған құс бағытын түзетіп, өз популяциясының қыстау аймағына бәрібір жетеді.",
+    m2p:"Генетикалық нұсқаулар межелі жерді көрсетеді. Жаңа жерге апарылған құс бағытын түзетіп, өз популяциясының қыстау аймағына бәрібір жетеді.",
     mtry:"Жұмыртқалардың қайдан келгенін және қай модель дұрыс екенін таңдаңыз, сонда Болгарияда шыққан құстың болжамды жолын көресіз.",
     lblO:"Жұмыртқалар салынған жер",kz:"Қазақстан",sp:"Испания",lblM:"Егер құс ұстанса",
     lBg:"Болгария (Калимок)",east:"Шығыс Африкадағы қыстау аймағы",west:"Батыс Африкадағы қыстау аймағы",
     mnote:"Сызба карта, масштабсыз. Тұтас сызықтар: популяциялардың маршруттары. Нүктелі сызық: тасымалданған құстың болжамы.",
-    evo:"Неге маңызды: егер құстар компас бағытын ұстанса, әр ұя салу популяциясына өз бағыт гендері керек. Егер мақсатқа навигация жасаса, бір гендер жиыны ұя салу аумағы кең, бірақ қыстау аймағы ортақ популяцияларға жетеді.",
+    evo:"Неге маңызды: егер құстар компас бағытын ұстанса, әр ұя салу популяциясына бағытқа арналған өз генетикалық нұсқаулары керек. Егер мақсатқа навигация жасаса, бір генетикалық нұсқаулар жиыны ұя салу аумағы кең, бірақ қыстау аймағы ортақ популяцияларға жетеді.",
     eh:"Эксперимент",
     ep:"Бір-бірінен алыс ұя салатын, бірақ Африканың бір бөлігінде қыстайтын популяциялар бұл сынақты мүмкін етеді. Жұмыртқалар бір жерге тасымалданады, сондықтан барлық құс бірдей жағдайда өседі.",
-    s1:"<strong>Қазақстан жұмыртқалары.</strong> Қазақстан популяциясының жұмыртқалары Болгарияның шығысындағы Калимок далалық станциясына әкелінеді.",
-    s2:"<strong>Испания жұмыртқалары.</strong> Сол тәртіп Батыс Африкаға қарапайым оңтүстік бағытпен ұшатын Испания популяциясының жұмыртқаларымен қайталанады.",
-    t3:"Балапан шығару",
+    s1:"<strong>Қазақстан жұмыртқалары.</strong> Қазақстан популяциясының жұмыртқалары Болгарияның солтүстік-шығысындағы Калимок далалық станциясына әкелінеді.",
+    s2:"<strong>Испания жұмыртқалары, қажет болса ғана.</strong> Егер қазақстандық құстар оңтүстікке қарай ұшса, құстар тұқым қуалайтын бағдарламаны ма, әлде жергілікті болгар құстарын ба ұстанатынын растау үшін тәжірибені Испания жұмыртқаларымен қайталаймыз.",
+    t2:"2028, қажет болса",t3:"Балапан шығару",
     s3:"<strong>Қолмен өсіру.</strong> Балапандар станцияда шығады және болгар қамыс құстарымен бірге өсіріледі; әдіс Литвада басқа құс түрін қоныстандыру үшін жасалған хаттамаға негізделген.",
     t4:"Вольерлер",
     s4:"<strong>Ашық ауадағы вольерлер.</strong> Ұша бастағанда жас құстар табиғи мекенін еске салатын қамысты вольерлерде тұрады.",
     t5:"Босату",
-    s5:"<strong>Спутниктік таңбалар.</strong> Вольерлер ашылардан бірнеше күн бұрын әр құсқа 2,0 г спутниктік таратқыш бекітіледі, сонда оның алғашқы сапарын нақты уақытта бақылаймыз.",
+    s5:"<strong>Спутниктік таңбалар.</strong> Вольерлер ашылардан бірнеше күн бұрын әр құсқа 1,7 г спутниктік таратқыш бекітіледі, сонда оның алғашқы сапарын нақты уақытта бақылаймыз.",
     wh:"Неге дәл осы құс түрі (Acrocephalus arundinaceus)",
     wp:"Зерттеу үшін жалғыз көшетін, таңба көтере алатын және маршруттары өте әртүрлі популяциялары бар алыс қашықтыққа ұшатын құс керек. Бұл түр осы үш талапқа да сай келеді.",
-    f1b:"30 г",f1:"Ең кішкентай, 2,0 г спутниктік таңбаны көтеруге жеткілікті ірі.",
+    f1b:"30 г",f1:"Салмағы небәрі 1,7 г спутниктік таратқыштарды көтеруге жеткілікті ірі.",
     f2b:"3 маршрут",f2:"Болгария, Қазақстан және Испания популяциялары айқын әртүрлі жолмен көшеді.",
     f3b:"1 аймақ",f3:"Қазақстан мен Болгария құстары әртүрлі бағытта шықса да, Шығыс Африканың бір бөлігінде қыстайды.",
     fh:"Қазіргі кезге дейінгі далалық жұмыстар",
-    fp:"Болгарияның шығысындағы Калимок далалық станциясының төңірегінде қамыс құстарының тығыз популяциясы ұя салады; станция Болгария ғылым академиясының докторы Павел Зехтинджиевпен ұзақ мерзімді ынтымақтастықта жұмыс істейді. 2024 жылдың мамыр-маусымында пилоттық зерттеу балапандарды дербес болғанға дейін, шамамен 32 күн, өсіруге болатынын көрсетті. Қазақстанға барлау экспедициясы жұмыртқа жинауға дайындық жасады.",
-    c1:"Калимок далалық станциясы, Болгария",c2:"Қазақстанға барлау экспедициясы",c3:"2024 жылғы пилоттық зерттеу: балапандар мен ересек құстар",c4:"Қолдағы құс",
+    fp:"Болгарияның солтүстік-шығысындағы Калимок далалық станциясының төңірегінде қамыс құстарының тығыз популяциясы ұя салады; станция Болгария ғылым академиясының докторы Павел Зехтинджиевпен ұзақ мерзімді ынтымақтастықта жұмыс істейді. 2024 және 2025 жылдары жүргізілген пилоттық зерттеу балапандарды дербес болғанға дейін, шамамен 32 күн, өсіруге болатынын, сондай-ақ құстар күзгі миграция кезінде салмағы 1,7 г спутниктік таратқыштарды сәтті алып жүре алатынын көрсетті. 2025 жылы Қазақстанға жасалған барлау экспедициясы жұмыртқа жинауға қолайлы орындарды анықтады.",
+    c1:"Калимок далалық станциясы, Болгария",c2:"Ұядағы жұмыртқалар. Фото: Javier Abalos Alvarez",c3:"Ұядағы балапандар. Фото: Javier Abalos Alvarez",c4:"Қолдағы балапандар. Фото: Javier Abalos Alvarez",
     th:"Команда",tp:"Осы жобаның артындағы адамдар.",
     r1:"Жоба жетекшісі, профессор",r2:"Постдок зерттеуші",r3:"PhD студент",
     collab:"Калимоктағы серіктестік: доктор Павел Зехтинджиев, Болгария ғылым академиясы",
@@ -335,41 +404,53 @@ footer h2{color:var(--white);font-size:1.6rem}
     fund:"Еуропалық зерттеу кеңесі (ERC) қаржыландырады. [Грант келісімінің нөмірі]. Айтылған пікірлер тек авторларға тиесілі."
   },
   bg:{
-    n1:"Проектът",n2:"Два модела",n3:"Експериментът",n4:"Екипът",n5:"Контакти",cred:"Голям тръстиков певец. Снимка: Harald Ris",stmt:"Проект на Европейския съвет по научни изследвания за това как птиците наследяват миграцията си.",n6:"Спонсори",sph:"Спонсори",spp:"Този проект се финансира от Европейския съвет по научни изследвания (ERC) и Шведския съвет за научни изследвания (Vetenskapsrådet, VR). Грантът на ERC се държи от професор Staffan Bensch.",
+    n7:"Птиците",bh:"Птиците",b1h:"Запознайте се с вида",
+    b1p:"Големият тръстиков певец (<i>Acrocephalus arundinaceus</i>) е среден по размер (30 г) прелетен певчи вид. Гнезди в Европа и Централна Азия, а зимува в Африка на юг от Сахара и в Южна Африка. Успешното му размножаване зависи силно от тръстикови местообитания.",
+    c0:"Възрастен голям тръстиков певец. Снимка: Harald Ris",
+    b2h:"Животът в тръстиките",
+    b2p:"Мъжките са полигинни – един мъжки може да се чифтосва с няколко женски и да държи територия с тях. Хранят се с дребни безгръбначни като стрекози, водни кончета и паяци. В едно мътило има 5 до 7 яйца и двамата родители се грижат за малките. Малките напускат гнездото около 15 дни след излюпването, а към 32-ия ден са напълно самостоятелни.",
+    b3h:"Маршрути",
+    b3p1:"Проследяването с геолокатори показа, че различните популации на големия тръстиков певец мигрират по различни маршрути. При проучване на пет западнопалеарктични популации (Испания, Швеция, Чехия, България и Турция) есенните маршрути са сходни по посока и до голяма степен успоредни, а повечето испански, шведски и чешки птици зимуват покрай Гвинейския залив. Турските птици пък зимуват в Източна Африка и заедно с българските през пролетта преминават над Арабския полуостров, описвайки примка обратно на часовниковата стрелка (Koleček и др., 2016).",
+    b3p2:"Птиците от Казахстан, в източния край на ареала, също зимуват в Източна Африка заедно с турските, макар че генетичните данни сочат, че видът е колонизирал Казахстан от запад. Следователно посоката на миграция се е променила съществено при разширяването на ареала. През пролетта напускат Африка още през февруари и прекарват до два месеца в междинно място в Южен Ирак, преди да завършат пътя си – двустъпкова стратегия, неописвана досега (Bensch и др., 2025).",
+    b3r:"Прочетете проучванията:",
+    c5:"Снимка: Javier Abalos Alvarez",c6:"Птица със сателитен предавател. Снимка: Violeta Caballero-Lopez",
+    bio1:"Staffan изучава големия тръстиков певец още от докторската си степен (Лундски университет, 1993), основана на дългосрочното проучване при езерото Квисмарен, което тече от 1983 г. Днес той ръководи финансирана от ERC програма за разкриване на генетичната основа на миграцията при певчите птици. Белези като желанието за отпътуване, посоката и дължината на пътуването се определят от все още неизвестни генетични механизми. В този проект той координира работата и участва и в теренната работа, особено в станция Калимок в България.",
+    bio2:"Violeta защити докторската си степен по генетика на птичата миграция в Лундския университет през 2025 г. Работата ѝ беше съсредоточена върху певци от род <i>Phylloscopus</i>, като съчетава геномни, молекулни и фенотипни данни, за да разбере как мигрират дребните птици. Преди това прекара няколко сезона в проекта за големия тръстиков певец при езерото Квисмарен, където опозна поведението на вида от първа ръка. В този проект отговаря за събирането на яйца в Казахстан и за проследяването от България чрез монтиране на сателитни предаватели и етикети Sigfox.",
+    n1:"Проектът",n2:"Два модела",n3:"Експериментът",n4:"Екипът",n5:"Контакти",brand:"Наследена миграционна програма",cred:"Голям тръстиков певец. Снимка: Harald Ris",stmt:"Решаващ тест за наследяването на миграционните маршрути.",n6:"Спонсори",sph:"Спонсори",spp:"Този проект се финансира от Европейския съвет по научни изследвания (ERC) и Шведския съвет за научни изследвания (Vetenskapsrådet, VR). Грантът на ERC се държи от професор Staffan Bensch.",
     h1:"Откъде знае младата птица накъде да лети?",
-    hp:"При първата си есенна миграция младата птица преодолява хиляди километри до място, което никога не е виждала. Преместваме яйца между държави, за да разберем какво наследява от родителите си.",
+    hp:"По време на първата си есенна миграция младата птица прелита хиляди километри, често над морета и пустини, до място, на което никога не е била. Указанията за това са записани в нейната ДНК. Ще преместваме яйца между държави, за да разберем каква информация птицата наследява от родителите си.",
     btn:"Вижте двата модела",
     qh:"Указание, с което птицата се ражда",
     q1:"Много певчи птици мигрират сами и нощем, така че никой не може да покаже пътя на младата птица. Маршрутът трябва отчасти да е наследен, но какво точно се предава, още не е ясно.",
     q2:"Дали е просто указание като „летете в тази посока толкова дълго“? Или е крайна цел, която би изисквала наследена карта? Предишни експерименти са премествали млади птици и резултатите са двусмислени. Нашият проект премества яйца, така че птиците да растат далеч от мястото, където са гнездили родителите им.",
     mh:"Два модела на наследената програма",
     m1h:"Часовник и компас",
-    m1p:"Гените задават посока и продължителност на полета. Птица, преместена на ново място, запазва посоката си и стига другаде.",
+    m1p:"Генетичните инструкции задават посока и продължителност на полета. Птица, преместена на ново място, запазва посоката си и стига другаде.",
     m2h:"Навигация към целева област",
-    m2p:"Гените сочат крайна цел. Птица, преместена на ново място, коригира курса си и пак достига зимовището на своята популация.",
+    m2p:"Генетичните инструкции сочат крайна цел. Птица, преместена на ново място, коригира курса си и пак достига зимовището на своята популация.",
     mtry:"Изберете откъде са яйцата и кой модел е верен, и вижте накъде се очаква да полети птица, излюпена в България.",
     lblO:"Яйца, снесени в",kz:"Казахстан",sp:"Испания",lblM:"Ако птицата следва",
     lBg:"България (Калимок)",east:"Зимовище в Източна Африка",west:"Зимовище в Западна Африка",
     mnote:"Схематична карта, не е в мащаб. Плътни линии: маршрути на популациите. Пунктирана линия: прогноза за преместената птица.",
-    evo:"Защо е важно: ако птиците следват посока по компас, всяка гнездова популация се нуждае от свои гени за посока. Ако навигират към цел, един набор от гени може да обслужва популации от голям гнездови ареал със споделено зимовище.",
+    evo:"Защо е важно: ако птиците следват посока по компас, всяка гнездова популация се нуждае от свои генетични инструкции за посока. Ако навигират към цел, един набор от генетични инструкции може да обслужва популации от голям гнездови ареал със споделено зимовище.",
     eh:"Експериментът",
     ep:"Тестът е възможен, защото популации, които гнездят далеч една от друга, зимуват в една и съща част на Африка. Яйцата се преместват на едно място, така че всички птици растат при еднакви условия.",
-    s1:"<strong>Яйца от Казахстан.</strong> Яйца от казахстанската популация се пренасят до полева станция Калимок в Източна България.",
-    s2:"<strong>Яйца от Испания.</strong> Същата процедура с яйца от Испания – популация с прост маршрут на юг към Западна Африка.",
-    t3:"Излюпване",
+    s1:"<strong>Яйца от Казахстан.</strong> Яйца от казахстанската популация се пренасят до полева станция Калимок в Североизточна България.",
+    s2:"<strong>Яйца от Испания, само при нужда.</strong> Ако казахстанските птици мигрират на юг, ще повторим експеримента с яйца от Испания, за да потвърдим дали птиците следват наследена програма, или местните български птици.",
+    t2:"2028, при нужда",t3:"Излюпване",
     s3:"<strong>Ръчно отглеждане.</strong> Малките се излюпват в станцията и се отглеждат заедно с български големи тръстикови певци по протокол, разработен за преселването на водно шаварче в Литва.",
     t4:"Волиери",
     s4:"<strong>Волиери на открито.</strong> Щом могат да летят, младите птици живеят във волиери, обзаведени да наподобяват естествената им тръстикова среда.",
     t5:"Пускане",
-    s5:"<strong>Сателитни предаватели.</strong> Няколко дни преди отварянето на волиерите всяка птица получава сателитен предавател от 2,0 г, за да следим първото ѝ пътуване в реално време.",
+    s5:"<strong>Сателитни предаватели.</strong> Няколко дни преди отварянето на волиерите всяка птица получава сателитен предавател от 1,7 г, за да следим първото ѝ пътуване в реално време.",
     wh:"Защо големият тръстиков певец",
     wp:"Изследването изисква самотен далечен мигрант, който може да носи предавател и има популации с много различни маршрути. Този вид отговаря и на трите условия.",
-    f1b:"30 г",f1:"Достатъчно голям за най-малките сателитни предаватели – 2,0 г.",
+    f1b:"30 г",f1:"Достатъчно голям, за да носи сателитни предаватели с тегло само 1,7 г.",
     f2b:"3 маршрута",f2:"Българската, казахстанската и испанската популация мигрират по ясно различни начини.",
     f3b:"1 зона",f3:"Птиците от Казахстан и България зимуват в една и съща част на Източна Африка, макар да тръгват в различни посоки.",
     fh:"Теренна работа досега",
-    fp:"Полева станция Калимок в Източна България е заобиколена от гъста гнездова популация на големия тръстиков певец и работи в дългогодишно сътрудничество с д-р Павел Зехтинджиев от Българската академия на науките. През май и юни 2024 г. пилотно проучване показа, че малките могат да бъдат отгледани до самостоятелност – около 32 дни. Проучвателна експедиция до Казахстан подготви събирането на яйца.",
-    c1:"Полева станция Калимок, България",c2:"Проучвателна експедиция до Казахстан",c3:"Пилотно проучване 2024: малки и възрастни птици",c4:"Голям тръстиков певец в ръка",
+    fp:"Полева станция Калимок в Североизточна България е заобиколена от гъста гнездова популация на големия тръстиков певец и работи в дългогодишно сътрудничество с д-р Павел Зехтинджиев от Българската академия на науките. През 2024 и 2025 г. пилотно проучване показа, че малките могат да бъдат отгледани до самостоятелност – около 32 дни, и че птиците успешно носят сателитни предаватели от 1,7 г по време на есенната миграция. Проучвателна експедиция до Казахстан през 2025 г. откри места, подходящи за събиране на яйца.",
+    c1:"Полева станция Калимок, България",c2:"Яйца в гнездото. Снимка: Javier Abalos Alvarez",c3:"Малки в гнездото. Снимка: Javier Abalos Alvarez",c4:"Малки в ръка. Снимка: Javier Abalos Alvarez",
     th:"Екипът",tp:"Хората зад този проект.",
     r1:"Ръководител на проекта, професор",r2:"Постдокторант",r3:"Докторант",
     collab:"Сътрудничество в Калимок: д-р Павел Зехтинджиев, Българска академия на науките",
@@ -410,7 +491,7 @@ footer h2{color:var(--white);font-size:1.6rem}
     document.querySelectorAll("[data-lang]").forEach(function(b){
       b.setAttribute("aria-pressed", b.dataset.lang === l ? "true" : "false");
     });
-    try { localStorage.setItem("migragenes-lang", l); } catch(e){}
+    try { localStorage.setItem("site-lang", l); } catch(e){}
     updateMap();
   }
   function toggle(attr, on){
@@ -427,7 +508,7 @@ footer h2{color:var(--white);font-size:1.6rem}
   });
 
   var saved = "en";
-  try { saved = localStorage.getItem("migragenes-lang") || "en"; } catch(e){}
+  try { saved = localStorage.getItem("site-lang") || "en"; } catch(e){}
   setLang(T[saved] ? saved : "en");
 
   (function(){
