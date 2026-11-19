@@ -72,7 +72,7 @@ section{padding:80px 0}
 .slide.broken{display:none}
 .slide figcaption{position:absolute;right:16px;bottom:16px;z-index:2;margin:0;padding:5px 12px;color:#fff;font-size:.78rem;background:rgba(11,34,57,.65);border-radius:3px;max-width:60%}
 .hero-inner{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:0 24px;pointer-events:none}
-.hero-box{pointer-events:auto;max-width:540px;padding:38px 42px 42px;color:var(--white);background:rgba(11,34,57,.76);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-left:4px solid var(--ochre)}
+.hero-box{pointer-events:auto;max-width:440px;padding:32px 34px 36px;color:var(--white);background:rgba(11,34,57,.76);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-left:4px solid var(--ochre)}
 .hero h1{color:var(--white);font-size:clamp(1.8rem,3vw,2.6rem)}
 .hero-box p{font-size:.98rem;line-height:1.7;margin:20px 0 26px;color:#E8EEF4;max-width:none}
 .btn{display:inline-block;background:var(--ochre);color:#fff;padding:13px 26px;text-decoration:none;font-weight:600;font-size:.92rem;border-radius:2px}
@@ -98,6 +98,8 @@ section{padding:80px 0}
 
 /* short statement and thin vertical divider */
 .statement{padding:72px 0 0;text-align:center}
+#question .wrap{text-align:center}
+#question p{margin-left:auto;margin-right:auto}
 .statement p{font:300 clamp(1.15rem,2.1vw,1.5rem)/1.6 var(--sans);color:var(--navy);margin:0 auto;max-width:38ch}
 .vline{width:1px;height:80px;background:var(--navy);margin:40px auto 0}
 
@@ -105,7 +107,7 @@ section{padding:80px 0}
 .two > div{border-left:4px solid var(--blue);padding-left:20px}
 .two > div + div{border-color:var(--ochre)}
 
-.mapbox{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:22px;margin:28px 0}
+.mapbox{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:20px;margin:28px auto;max-width:660px}
 .mapbox svg{width:100%;height:auto;display:block;border-radius:6px}
 .controls{display:flex;flex-wrap:wrap;gap:22px;margin-bottom:14px}
 .group{display:flex;flex-direction:column;gap:6px}
@@ -353,7 +355,7 @@ footer h2{color:var(--white);font-size:1.6rem}
       <div class="facts">
         <div><b data-i18n="f1b">30 g</b><span data-i18n="f1">Big enough to carry satellite transmitters weighing only 1.7 g.</span></div>
         <div><b data-i18n="f2b">3 routes</b><span data-i18n="f2">Bulgarian, Kazakh and Spanish populations migrate in clearly different ways.</span></div>
-        <div><b data-i18n="f3b">1 area</b><span data-i18n="f3">Kazakh and Bulgarian birds winter in the same part of eastern Africa, despite starting out in different directions.</span></div>
+        <div><b data-i18n="f3b">A common wintering area</b><span data-i18n="f3">Kazakh and Bulgarian birds winter in the same part of central eastern Africa, despite having breeding grounds very far apart.</span></div>
       </div>
     </div>
   </section>
@@ -407,6 +409,12 @@ footer h2{color:var(--white);font-size:1.6rem}
           <h3>Violeta Caballero-Lopez</h3>
           <p class="role" data-i18n="r2">Postdoctoral researcher</p>
           <p data-i18n="bio2">Violeta completed her PhD on the genetics of bird migration at Lund University in 2025. She focused on <i>Phylloscopus</i> warblers, combining genomic, molecular and phenotypic data to understand how small birds migrate. Before that, she spent several seasons on the great reed warbler project at Lake Kvismaren, where she came to know the species’ behaviour first-hand. In this project her role is to collect the eggs in Kazakhstan and to fit tracking devices on the birds in Bulgaria.</p>
+        </article>
+        <article class="profile">
+          <figure><div class="ph" data-file="images/Dimitar.jpg"><img src="images/Dimitar.jpg" alt="Dimitar Dimitrov" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+          <h3>Dimitar Dimitrov</h3>
+          <p class="role" data-i18n="r4">Field assistant</p>
+          <p data-i18n="bio3">Mitko is an experienced ringer and field ornithologist specializing in the study of passerine and soaring bird migration, ecology, and blood parasites. He has been working on avian malaria and other blood parasites for more than 15 years. Currently, he is an Associate Professor at the Institute of Biodiversity and Ecosystem Research, Bulgarian Academy of Sciences, focusing on the taxonomy, systematics, specificity, co-evolution, and host-parasite interactions of haemosporidian parasites in birds. In this project, he will provide field assistance at the Kalimok field station by searching for great reed warbler nests, collecting eggs, feeding nestlings, and providing technical support and logistics in Bulgaria.</p>
         </article>
       </div>
       <p style="margin-top:32px" data-i18n="collab">Collaboration at Kalimok: Dr. Pavel Zehtindjiev, Bulgarian Academy of Sciences</p>
@@ -491,12 +499,12 @@ footer h2{color:var(--white);font-size:1.6rem}
     wp:"Зерттеу үшін жалғыз көшетін, таңба көтере алатын және маршруттары өте әртүрлі популяциялары бар алыс қашықтыққа ұшатын құс керек. Бұл түр осы үш талапқа да сай келеді.",
     f1b:"30 г",f1:"Салмағы небәрі 1,7 г спутниктік таратқыштарды көтеруге жеткілікті ірі.",
     f2b:"3 маршрут",f2:"Болгария, Қазақстан және Испания популяциялары айқын әртүрлі жолмен көшеді.",
-    f3b:"1 аймақ",f3:"Қазақстан мен Болгария құстары әртүрлі бағытта шықса да, Шығыс Африканың бір бөлігінде қыстайды.",
+    f3b:"Ортақ қыстау аймағы",f3:"Қазақстан мен Болгария құстары Африканың орталық-шығыс бөлігінде бір аймақта қыстайды, көбейетін жерлері бір-бірінен өте алыс болса да.",
     fh:"Қазіргі кезге дейінгі далалық жұмыстар",
     fp:"Болгарияның солтүстік-шығысындағы Калимок далалық станциясының төңірегінде қамыс құстарының тығыз популяциясы ұя салады; станция Болгария ғылым академиясының докторы Павел Зехтинджиевпен ұзақ мерзімді ынтымақтастықта жұмыс істейді. 2024 және 2025 жылдары жүргізілген пилоттық зерттеу балапандарды дербес болғанға дейін, шамамен 32 күн, өсіруге болатынын, сондай-ақ құстар күзгі миграция кезінде салмағы 1,7 г спутниктік таратқыштарды сәтті алып жүре алатынын көрсетті. 2025 жылы Қазақстанға жасалған барлау экспедициясы жұмыртқа жинауға қолайлы орындарды анықтады.",
     c1:"Калимок далалық станциясы, Болгария",c2:"Ұядағы жұмыртқалар. Фото: Javier Abalos Alvarez",c3:"Ұядағы балапандар. Фото: Javier Abalos Alvarez",c4:"Қолдағы балапандар. Фото: Javier Abalos Alvarez",
     th:"Команда",tp:"Осы жобаның артындағы адамдар.",
-    r1:"Жоба жетекшісі, профессор",r2:"Постдок зерттеуші",r3:"PhD студент",
+    r4:"Далалық көмекші",bio3:"Mitko – тәжірибелі сақиналаушы және далалық орнитолог, ол торғайтәрізді және қалықтап ұшатын құстардың көші-қонын, экологиясын және қан паразиттерін зерттейді. Ол 15 жылдан астам уақыт құс безгегі мен басқа да қан паразиттерімен жұмыс істеп келеді. Қазір ол Болгария ғылым академиясының Биоәртүрлілік және экожүйелерді зерттеу институтында доцент, құстардың гемоспоридиялық паразиттерінің таксономиясы, систематикасы, ерекшелігі, бірлескен эволюциясы және хозяин мен паразиттің өзара әрекеттесуімен айналысады. Бұл жобада ол Калимок далалық станциясында далалық көмекші болып, <i>Acrocephalus arundinaceus</i> ұяларын іздейді, жұмыртқаларды жинайды, балапандарды қоректендіреді және Болгарияда техникалық қолдау мен логистиканы қамтамасыз етеді.",r1:"Жоба жетекшісі, профессор",r2:"Постдок зерттеуші",r3:"PhD студент",
     collab:"Калимоктағы серіктестік: доктор Павел Зехтинджиев, Болгария ғылым академиясы",
     ch:"Байланыс",pi:"Жоба жетекшісі: профессор Staffan Bensch, Биология кафедрасы, Лунд университеті",op:"Бос орындар осында жарияланады.",
     fund:"Еуропалық зерттеу кеңесі (ERC) қаржыландырады. [Грант келісімінің нөмірі]. Айтылған пікірлер тек авторларға тиесілі."
@@ -550,12 +558,12 @@ footer h2{color:var(--white);font-size:1.6rem}
     wp:"Изследването изисква самотен далечен мигрант, който може да носи предавател и има популации с много различни маршрути. Този вид отговаря и на трите условия.",
     f1b:"30 г",f1:"Достатъчно голям, за да носи сателитни предаватели с тегло само 1,7 г.",
     f2b:"3 маршрута",f2:"Българската, казахстанската и испанската популация мигрират по ясно различни начини.",
-    f3b:"1 зона",f3:"Птиците от Казахстан и България зимуват в една и съща част на Източна Африка, макар да тръгват в различни посоки.",
+    f3b:"Обща зона на зимуване",f3:"Птиците от Казахстан и България зимуват в една и съща част от централна източна Африка, въпреки че местата им за гнездене са много отдалечени.",
     fh:"Теренна работа досега",
     fp:"Полева станция Калимок в Североизточна България е заобиколена от гъста гнездова популация на големия тръстиков певец и работи в дългогодишно сътрудничество с д-р Павел Зехтинджиев от Българската академия на науките. През 2024 и 2025 г. пилотно проучване показа, че малките могат да бъдат отгледани до самостоятелност – около 32 дни, и че птиците успешно носят сателитни предаватели от 1,7 г по време на есенната миграция. Проучвателна експедиция до Казахстан през 2025 г. откри места, подходящи за събиране на яйца.",
     c1:"Полева станция Калимок, България",c2:"Яйца в гнездото. Снимка: Javier Abalos Alvarez",c3:"Малки в гнездото. Снимка: Javier Abalos Alvarez",c4:"Малки в ръка. Снимка: Javier Abalos Alvarez",
     th:"Екипът",tp:"Хората зад този проект.",
-    r1:"Ръководител на проекта, професор",r2:"Постдокторант",r3:"Докторант",
+    r4:"Помощник на терен",bio3:"Митко е опитен пръстенувач и полеви орнитолог, специализиран в изучаването на миграцията, екологията и кръвните паразити при врабчоподобни и планерни птици. Над 15 години работи по птичи малярии и други кръвни паразити. В момента е доцент в Института по биоразнообразие и екосистемни изследвания на Българската академия на науките, където се занимава с таксономията, систематиката, специфичността, коеволюцията и взаимоотношенията гостоприемник–паразит при хемоспоридиите по птиците. В този проект той ще помага на терен в полева станция Калимок – ще търси гнезда на големия тръстиков певец, ще събира яйца, ще храни малките и ще осигурява техническа подкрепа и логистика в България.",r1:"Ръководител на проекта, професор",r2:"Постдокторант",r3:"Докторант",
     collab:"Сътрудничество в Калимок: д-р Павел Зехтинджиев, Българска академия на науките",
     ch:"Контакти",pi:"Ръководител на проекта: професор Staffan Bensch, Катедра по биология, Университет в Лунд",op:"Свободните позиции ще бъдат публикувани тук.",
     fund:"Финансирано от Европейския съвет по научни изследвания (ERC). [Номер на споразумението за безвъзмездна помощ]. Изразените възгледи са единствено на авторите."
