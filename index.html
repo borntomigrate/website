@@ -198,7 +198,9 @@ figcaption{font-size:.95rem;color:var(--muted);margin-top:8px}
 .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:28px}
 .refs{font-size:.95rem;margin-top:24px}
 .refs a{display:block;margin-top:8px;max-width:78ch}
-.split.routes{grid-template-columns:1.15fr 1fr;align-items:start}
+.split.routes{grid-template-columns:.8fr 1.2fr;gap:36px;align-items:start}
+@media(min-width:1180px){.split.routes{margin-left:-40px;margin-right:-40px}}
+@media(min-width:1360px){.split.routes{margin-left:-110px;margin-right:-110px}}
 .split.routes figure .ph{aspect-ratio:auto;background:none}
 .split.routes figure img{height:auto;display:block}
 .split.routes figure.missing .ph{aspect-ratio:4/3;background:var(--line)}
@@ -250,7 +252,7 @@ footer h2{color:var(--white);font-size:1.6rem}
 <div class="page is-on" id="page-project">
 <div class="hero" id="hero" role="group" aria-roledescription="carousel" aria-label="Photos of great reed warblers">
     <div class="slides" id="slides">
-      <figure class="slide is-active"><img src="images/hero.jpg" alt="An adult great reed warbler" style="object-position:50% 50%" onerror="this.closest('.slide').classList.add('broken')"><figcaption data-i18n="cred">Great reed warbler. Photo: Harald Ris</figcaption></figure>
+      <figure class="slide is-active"><img src="images/hero.jpg" alt="An adult great reed warbler" style="object-position:50% 50%" onerror="this.closest('.slide').classList.add('broken')"><figcaption data-i18n="cred">Photo: Harald Ris</figcaption></figure>
       <figure class="slide"><img src="images/nest.jpg" alt="Great reed warbler nest" style="object-position:50% 50%" loading="lazy" onerror="this.closest('.slide').classList.add('broken')"><figcaption data-i18n="c5">Photo: Javier Abalos Alvarez</figcaption></figure>
       <figure class="slide"><img src="images/horse-mountain.jpg" alt="Horses and mountains in the Kazakh landscape" style="object-position:50% 50%" loading="lazy" onerror="this.closest('.slide').classList.add('broken')"><figcaption data-i18n="crh">Photo: Harald Ris</figcaption></figure>
       <figure class="slide"><img src="images/bird-in-hand.jpg" alt="A great reed warbler held in the hand" style="object-position:50% 50%" loading="lazy" onerror="this.closest('.slide').classList.add('broken')"><figcaption data-i18n="c5">Photo: Javier Abalos Alvarez</figcaption></figure>
@@ -473,7 +475,7 @@ footer h2{color:var(--white);font-size:1.6rem}
         -->
         <article class="news-item">
           <time datetime="2026-11">November 2026</time>
-          <h3>November meeting in Sofia</h3>
+          <h3>Meeting in Sofia</h3>
           <p>The team met in preparation for the oncoming field season starting in May 2027.</p>
           <div class="news-photos">
             <figure><div class="ph" data-file="images/tram.jpeg"><img src="images/tram.jpeg" alt="Team members in Sofia" onerror="this.closest('figure').classList.add('missing')"></div></figure>
@@ -532,7 +534,7 @@ footer h2{color:var(--white);font-size:1.6rem}
     tl2:"Қазақстанға экспедиция: <i>Acrocephalus arundinaceus</i> жұмыртқаларын жинауға қолайлы орындарды табу. Құстарға спутниктік таратқыштар және деректерді тікелей эфирде жіберетін басқа да бақылау құрылғылары бекітілді; бұл біздің мақсатымызға ең жақсы технологияны табуға арналған пилоттық жұмыс болды.",
     tl3:"Алакөл көлінен Калимокқа жұмыртқаларды тасымалдаудың алғашқы тәжірибесі. Балапандар станцияда шығады және болгар қамыс құстарымен бірге қолмен өсіріледі. Ұша бастағанда олар ашық ауадағы вольерлерде тұрады және босатылардан біраз бұрын спутниктік таратқыштар бекітіледі.",
     c7:"Фото: Violeta Caballero-Lopez",
-    n1:"Жоба",n2:"Екі модель",n3:"Эксперимент",n4:"Команда",n5:"Байланыс",brand:"Тұқым қуалайтын миграциялық бағдарлама",cred:"Acrocephalus arundinaceus. Фото: Harald Ris",stmt:"Миграциялық маршруттардың тұқым қуалауын шешуші сынақ.",n6:"Демеушілер",sph:"Демеушілер",spp:"Бұл жобаны Еуропалық зерттеу кеңесі (ERC) және Швеция ғылыми кеңесі (Vetenskapsrådet, VR) қаржыландырады.",
+    n1:"Жоба",n2:"Екі модель",n3:"Эксперимент",n4:"Команда",n5:"Байланыс",brand:"Тұқым қуалайтын миграциялық бағдарлама",cred:"Фото: Harald Ris",stmt:"Миграциялық маршруттардың тұқым қуалауын шешуші сынақ.",n6:"Демеушілер",sph:"Демеушілер",spp:"Бұл жобаны Еуропалық зерттеу кеңесі (ERC) және Швеция ғылыми кеңесі (Vetenskapsrådet, VR) қаржыландырады.",
     h1:"Жас құс қайда ұшатынын қалай біледі?",
     hp:"Алғашқы күзгі миграциясы кезінде жас құс мыңдаған шақырым, жиі теңіздер мен шөлдерден өтіп, өзі ешқашан болмаған жерге ұшады. Бұл жолдың нұсқаулары оның ДНК-сында жазылған. Біз құс ата-анасынан қандай ақпарат мұра ететінін білу үшін жұмыртқаларды елдер арасында тасымалдаймыз.",
     btn:"Екі модельді көру",
@@ -591,7 +593,7 @@ footer h2{color:var(--white);font-size:1.6rem}
     tl2:"Експедиция до Казахстан за намиране на подходящи места за събиране на яйца на голям тръстиков певец. На птиците бяха монтирани сателитни предаватели и други проследяващи устройства, които предават данни на живо, в пилотен опит да се намери най-добрата технология за нашата цел.",
     tl3:"Първо преместване на яйца от езерото Алаколь до Калимок. Малките ще се излюпят в станцията и ще бъдат отгледани ръчно заедно с български големи тръстикови певци. Щом могат да летят, ще живеят във волиери на открито и ще получат сателитни предаватели малко преди пускането.",
     c7:"Снимка: Violeta Caballero-Lopez",
-    n1:"Проектът",n2:"Два модела",n3:"Експериментът",n4:"Екипът",n5:"Контакти",brand:"Наследена миграционна програма",cred:"Голям тръстиков певец. Снимка: Harald Ris",stmt:"Решаващ тест за наследяването на миграционните маршрути.",n6:"Спонсори",sph:"Спонсори",spp:"Този проект се финансира от Европейския съвет по научни изследвания (ERC) и Шведския съвет за научни изследвания (Vetenskapsrådet, VR).",
+    n1:"Проектът",n2:"Два модела",n3:"Експериментът",n4:"Екипът",n5:"Контакти",brand:"Наследена миграционна програма",cred:"Снимка: Harald Ris",stmt:"Решаващ тест за наследяването на миграционните маршрути.",n6:"Спонсори",sph:"Спонсори",spp:"Този проект се финансира от Европейския съвет по научни изследвания (ERC) и Шведския съвет за научни изследвания (Vetenskapsrådet, VR).",
     h1:"Откъде знае младата птица накъде да лети?",
     hp:"По време на първата си есенна миграция младата птица прелита хиляди километри, често над морета и пустини, до място, на което никога не е била. Указанията за това са записани в нейната ДНК. Ще преместваме яйца между държави, за да разберем каква информация птицата наследява от родителите си.",
     btn:"Вижте двата модела",
