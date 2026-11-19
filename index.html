@@ -33,10 +33,12 @@ section{padding:80px 0}
 .soft{background:var(--soft)}
 
 /* fixed header */
-.topbar{position:sticky;top:0;z-index:50;background:var(--white);border-top:4px solid var(--ochre);transition:box-shadow .3s}
-.topbar.compact{box-shadow:0 2px 14px rgba(11,34,57,.15)}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--white);border-top:4px solid var(--ochre);transition:box-shadow .3s,background-color .3s}
+.topbar.over{background:rgba(255,255,255,.7);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:none}
+:root{--tb:84px}
+.js .page:not(#page-project){padding-top:var(--tb)}
+.topbar.compact:not(.over){box-shadow:0 2px 14px rgba(11,34,57,.15)}
 .bar{max-width:1320px;margin:0 auto;display:flex;justify-content:flex-start;align-items:center;gap:12px 28px;padding:14px 24px;transition:padding .25s}
-.topbar.compact .bar{padding-top:6px;padding-bottom:6px}
 .bar nav{display:flex;gap:6px 26px}
 .bar nav a{color:var(--navy);text-decoration:none;font-size:.9rem;font-weight:500;padding:6px 0;border-bottom:3px solid transparent}
 .bar nav a:hover,.bar nav a[aria-current="page"]{border-bottom-color:var(--ochre)}
@@ -61,12 +63,12 @@ section{padding:80px 0}
 @keyframes pgin{from{opacity:0}to{opacity:1}}
 
 /* slideshow hero: full-width photos, text in a semi-transparent box */
-.hero{position:relative;min-height:min(80vh,680px);display:flex;align-items:center;padding:56px 0 88px;background:#0d1c25;overflow:hidden}
+.hero{position:relative;min-height:min(94vh,900px);display:flex;align-items:center;padding:calc(var(--tb) + 24px) 0 96px;background:#0d1c25;overflow:hidden}
 .slides{position:absolute;inset:0;z-index:1}
 .slides::after{content:"";position:absolute;left:0;right:0;bottom:0;height:140px;background:linear-gradient(transparent,rgba(0,0,0,.5));pointer-events:none}
 .slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .9s ease;visibility:hidden}
 .slide.is-active{opacity:1;visibility:visible}
-.slide img{width:100%;height:100%;object-fit:cover;display:block}
+.slide img{position:absolute;top:0;right:0;width:86%;height:100%;object-fit:cover;display:block;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 24%);mask-image:linear-gradient(to right,transparent 0,#000 24%)}
 .slide.broken{display:none}
 .slide figcaption{position:absolute;right:16px;bottom:16px;z-index:2;margin:0;padding:5px 12px;color:#fff;font-size:.78rem;background:rgba(11,34,57,.65);border-radius:3px;max-width:60%}
 .hero-inner{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:0 24px;pointer-events:none}
@@ -84,12 +86,13 @@ section{padding:80px 0}
 .dots button[aria-current="true"]{background:#fff}
 @media(max-width:820px){
   .hero{display:block;padding:0;min-height:0;overflow:visible}
-  .slides{position:relative;height:64vw;min-height:250px}
+  .slides{position:relative;height:calc(var(--tb) + 66vw);min-height:320px}
+  .slide img{width:100%;-webkit-mask-image:none;mask-image:none}
   .slides::after{height:90px}
   .hero-inner{padding:0;max-width:none}
   .hero-box{max-width:none;background:var(--navy);-webkit-backdrop-filter:none;backdrop-filter:none;border-left:0;border-top:4px solid var(--ochre);padding:28px 24px 32px}
   .hero-ctrl{bottom:8px}
-  .slide figcaption{top:10px;bottom:auto;right:10px;max-width:75%}
+  .slide figcaption{top:calc(var(--tb) + 8px);bottom:auto;right:10px;max-width:75%}
 }
 @media(prefers-reduced-motion:reduce){.slide{transition:none}.js .page.is-on{animation:none}}
 
@@ -324,7 +327,7 @@ footer h2{color:var(--white);font-size:1.6rem}
         <li>
           <div class="yr">2026</div>
           <div class="tl-body has-media">
-            <div class="tl-text"><p data-i18n="tl2">Expedition to Kazakhstan to find suitable places to collect great reed warbler eggs. Birds were fitted with satellite transmitters for the first time.</p></div>
+            <div class="tl-text"><p data-i18n="tl2">Expedition to Kazakhstan to find suitable places to collect great reed warbler eggs. Birds were fitted with satellite transmitters and other tracking devices that transmit data live in a pilot to find the best technology for our goal.</p></div>
             <div class="tl-media">
               <figure><div class="ph" data-file="images/clamorous.jpg"><img src="images/clamorous.jpg" alt="A clamorous reed warbler" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c8">We have selected sites where clamorous reed warblers (<i>Acrocephalus stentoreus</i>) are not present, to avoid sampling hybrid populations. Photo: Harald Ris</figcaption></figure>
               <figure class="tall"><div class="ph" data-file="images/satellite.jpeg"><img src="images/satellite.jpeg" alt="A great reed warbler held in the hand, fitted with a satellite transmitter on its back" style="object-position:50% 30%" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c7">Photo: Violeta Caballero-Lopez</figcaption></figure>
@@ -366,11 +369,11 @@ footer h2{color:var(--white);font-size:1.6rem}
           <h3 class="sub0" data-i18n="b1h">Meet the species</h3>
           <p data-i18n="b1p">The great reed warbler (<i>Acrocephalus arundinaceus</i>) is a medium-sized (30 g) migratory songbird that breeds across Europe and Central Asia and winters throughout Sub-Saharan and Southern Africa. It depends strongly on reedbed habitats for successful reproduction.</p>
         </div>
-        <figure><div class="ph" data-file="images/hero.jpg"><img src="images/hero.jpg" alt="An adult great reed warbler" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c0">An adult great reed warbler. Photo: Harald Ris</figcaption></figure>
+        <figure><div class="ph" data-file="images/birdbite.jpg"><img src="images/birdbite.jpg" alt="A great reed warbler" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c5">Photo: Javier Abalos Alvarez</figcaption></figure>
       </div>
 
       <h3 class="sub" data-i18n="b2h">Life in the reeds</h3>
-      <p data-i18n="b2p">Males are polygynous, meaning that a single male can mate with and hold a territory with several females. They feed on small invertebrates such as dragonflies, damselflies and spiders. A clutch holds 5 to 7 eggs, and both parents care for the young. Chicks leave the nest about 15 days after hatching and are fully independent around day 32.</p>
+      <p data-i18n="b2p">Males are polygynous, meaning that a single male can mate and hold a territory with several females. They feed on small invertebrates such as dragonflies, damselflies and spiders. A clutch holds 5 to 7 eggs, and both parents care for the young. Chicks leave the nest about 15 days after hatching and are fully independent around day 32.</p>
       <div class="strip">
         <figure><div class="ph" data-file="images/nest.jpg"><img src="images/nest.jpg" alt="Great reed warbler nest" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c5">Photo: Javier Abalos Alvarez</figcaption></figure>
         <figure><div class="ph" data-file="images/chicks%20Large.jpeg"><img src="images/chicks%20Large.jpeg" alt="Great reed warbler chicks in the nest" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c5">Photo: Javier Abalos Alvarez</figcaption></figure>
@@ -454,7 +457,7 @@ footer h2{color:var(--white);font-size:1.6rem}
     bio2:"Violeta 2025 жылы Лунд университетінде құстардың көші-қонының генетикасы бойынша PhD қорғады. Ол геномдық, молекулалық және фенотиптік деректерді біріктіре отырып, <i>Phylloscopus</i> туысындағы әнші құстарға назар аударып, ұсақ құстардың қалай көшетінін зерттеді. Бұған дейін ол Квисмарен көліндегі жоба аясында бірнеше маусым жұмыс істеп, түрдің мінез-құлқымен тікелей танысты. Бұл жобада оның рөлі – Қазақстанда жұмыртқаларды жинау және Болгарияда құстарға бақылау құрылғыларын бекіту.",
     menu:"Мәзір",tlh:"Хронология",
     tl1:"Пилоттық зерттеу: <i>Acrocephalus arundinaceus</i> балапандарын қолмен өсіру.",
-    tl2:"Қазақстанға экспедиция: <i>Acrocephalus arundinaceus</i> жұмыртқаларын жинауға қолайлы орындарды табу. Құстарға алғаш рет спутниктік таратқыштар бекітілді.",
+    tl2:"Қазақстанға экспедиция: <i>Acrocephalus arundinaceus</i> жұмыртқаларын жинауға қолайлы орындарды табу. Құстарға спутниктік таратқыштар және деректерді тікелей эфирде жіберетін басқа да бақылау құрылғылары бекітілді; бұл біздің мақсатымызға ең жақсы технологияны табуға арналған пилоттық жұмыс болды.",
     tl3:"Алакөл көлінен Калимокқа жұмыртқаларды тасымалдаудың алғашқы тәжірибесі. Балапандар станцияда шығады және болгар қамыс құстарымен бірге қолмен өсіріледі. Ұша бастағанда олар ашық ауадағы вольерлерде тұрады және босатылардан біраз бұрын спутниктік таратқыштар бекітіледі.",
     c7:"Фото: Violeta Caballero-Lopez",
     n1:"Жоба",n2:"Екі модель",n3:"Эксперимент",n4:"Команда",n5:"Байланыс",brand:"Тұқым қуалайтын миграциялық бағдарлама",cred:"Acrocephalus arundinaceus. Фото: Harald Ris",stmt:"Миграциялық маршруттардың тұқым қуалауын шешуші сынақ.",n6:"Демеушілер",sph:"Демеушілер",spp:"Бұл жобаны Еуропалық зерттеу кеңесі (ERC) және Швеция ғылыми кеңесі (Vetenskapsrådet, VR) қаржыландырады. ERC грантының иесі — профессор Staffan Bensch.",
@@ -513,7 +516,7 @@ footer h2{color:var(--white);font-size:1.6rem}
     bio2:"Violeta защити докторската си степен по генетика на птичата миграция в Лундския университет през 2025 г. Работата ѝ беше съсредоточена върху певци от род <i>Phylloscopus</i>, като съчетаваше геномни, молекулни и фенотипни данни, за да разбере как мигрират дребните птици. Преди това прекара няколко сезона в проекта за големия тръстиков певец при езерото Квисмарен, където опозна поведението на вида от първа ръка. В този проект ролята ѝ е да събира яйцата в Казахстан и да монтира проследяващи устройства на птиците в България.",
     menu:"Меню",tlh:"Хронология",
     tl1:"Пилотно проучване: ръчно отглеждане на големи тръстикови певци.",
-    tl2:"Експедиция до Казахстан за намиране на подходящи места за събиране на яйца на голям тръстиков певец. За първи път птици бяха снабдени със сателитни предаватели.",
+    tl2:"Експедиция до Казахстан за намиране на подходящи места за събиране на яйца на голям тръстиков певец. На птиците бяха монтирани сателитни предаватели и други проследяващи устройства, които предават данни на живо, в пилотен опит да се намери най-добрата технология за нашата цел.",
     tl3:"Първо преместване на яйца от езерото Алаколь до Калимок. Малките ще се излюпят в станцията и ще бъдат отгледани ръчно заедно с български големи тръстикови певци. Щом могат да летят, ще живеят във волиери на открито и ще получат сателитни предаватели малко преди пускането.",
     c7:"Снимка: Violeta Caballero-Lopez",
     n1:"Проектът",n2:"Два модела",n3:"Експериментът",n4:"Екипът",n5:"Контакти",brand:"Наследена миграционна програма",cred:"Голям тръстиков певец. Снимка: Harald Ris",stmt:"Решаващ тест за наследяването на миграционните маршрути.",n6:"Спонсори",sph:"Спонсори",spp:"Този проект се финансира от Европейския съвет по научни изследвания (ERC) и Шведския съвет за научни изследвания (Vetenskapsrådet, VR). Грантът на ERC се държи от професор Staffan Bensch.",
@@ -641,8 +644,17 @@ footer h2{color:var(--white);font-size:1.6rem}
   menubtn.addEventListener("click",function(){
     var open=topbar.classList.toggle("open"); menubtn.setAttribute("aria-expanded",open?"true":"false");
   });
-  window.addEventListener("scroll",function(){ topbar.classList.toggle("compact",window.scrollY>40); },{passive:true});
-  route();
+  function tbState(){
+    document.documentElement.style.setProperty("--tb",topbar.offsetHeight+"px");
+    topbar.classList.toggle("compact",window.scrollY>40);
+    var hero=document.getElementById("hero"), onHome=document.getElementById("page-project").classList.contains("is-on");
+    topbar.classList.toggle("over",!!(hero&&onHome&&hero.getBoundingClientRect().bottom>topbar.offsetHeight));
+  }
+  window.addEventListener("scroll",tbState,{passive:true});
+  window.addEventListener("resize",tbState);
+  window.addEventListener("hashchange",function(){setTimeout(tbState,30)});
+  window.addEventListener("load",tbState);
+  route(); tbState();
 
   // ---------- Slideshow (home page only; the text box stays, only the photo changes) ----------
   (function(){
@@ -660,7 +672,7 @@ footer h2{color:var(--white);font-size:1.6rem}
       dots.forEach(function(d,k){ if(k===cur) d.setAttribute("aria-current","true"); else d.removeAttribute("aria-current"); d.style.display=ok(k)?"":"none"; });
     }
     function step(d){ var n=cur; for(var t=0;t<slides.length;t++){ n=(n+d+slides.length)%slides.length; if(ok(n)) break; } go(n); }
-    function start(){ stop(); if(!paused) timer=setInterval(function(){ step(1); },6000); }
+    function start(){ stop(); if(!paused) timer=setInterval(function(){ step(1); },15000); }
     function stop(){ if(timer){ clearInterval(timer); timer=null; } }
     document.getElementById("next").addEventListener("click",function(){ step(1); start(); });
     document.getElementById("prev").addEventListener("click",function(){ step(-1); start(); });
