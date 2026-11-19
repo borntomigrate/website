@@ -159,6 +159,21 @@ figcaption{font-size:.95rem;color:var(--muted);margin-top:8px}
 .lg.missing::after{content:attr(data-file);color:var(--muted);font-size:.85rem}
 
 .sponsors{border-top:1px solid var(--line)}
+/* news */
+.news-list{margin-top:32px;max-width:760px}
+.news-item{padding:26px 0;border-top:1px solid var(--line)}
+.news-item:first-child{border-top:0;padding-top:0}
+.news-item time{display:block;font-size:.85rem;font-weight:600;letter-spacing:.04em;color:#8A5F0E;margin-bottom:6px}
+.news-item h3{font-size:1.4rem;font-weight:300;margin:0 0 8px}
+.news-item figure{max-width:520px;margin-top:14px}
+.news-item figure .ph{aspect-ratio:auto}
+.news-item figure img{height:auto;display:block}
+.news-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.news-photos figure{margin:0;max-width:none}
+.news-photos figure .ph{aspect-ratio:4/3}
+.news-item .news-photos figure img{height:100%;width:100%;object-fit:cover}
+@media(max-width:520px){.news-photos{gap:6px}}
+.news-list:has(.news-item)+.news-empty{display:none}
 /* timeline */
 .tl{list-style:none;margin:36px 0 0;padding:0 0 0 0;border-left:2px solid var(--line)}
 .tl li{position:relative;padding:0 0 44px 34px}
@@ -183,6 +198,11 @@ figcaption{font-size:.95rem;color:var(--muted);margin-top:8px}
 .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:28px}
 .refs{font-size:.95rem;margin-top:24px}
 .refs a{display:block;margin-top:8px;max-width:78ch}
+.split.routes{grid-template-columns:1.15fr 1fr;align-items:start}
+.split.routes figure .ph{aspect-ratio:auto;background:none}
+.split.routes figure img{height:auto;display:block}
+.split.routes figure.missing .ph{aspect-ratio:4/3;background:var(--line)}
+@media(max-width:820px){.split.routes{grid-template-columns:1fr}}
 .split.portrait{grid-template-columns:1.5fr 1fr;align-items:start}
 .split.portrait figure .ph{aspect-ratio:1/1}
 .split.portrait figure img{object-position:50% 30%}
@@ -195,6 +215,8 @@ figcaption{font-size:.95rem;color:var(--muted);margin-top:8px}
 .profile h3{font-size:1.6rem;font-weight:300;margin:0 0 2px}
 .profile .role{font-weight:600;color:var(--blue);margin-bottom:12px}
 .profile figure .ph{aspect-ratio:4/5}
+.profile figure.natural .ph{aspect-ratio:auto}
+.profile figure.natural img{height:auto}
 .profile figure.missing .ph::after{content:"";background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='38' r='15' fill='%2393A4B1'/%3E%3Cpath d='M20 92c2-21 15-31 30-31s28 10 30 31z' fill='%2393A4B1'/%3E%3C/svg%3E") center 60%/62% no-repeat}
 @media(max-width:700px){.profile{grid-template-columns:1fr}.profile figure{grid-row:auto;max-width:260px;margin-bottom:16px}.profile h3,.profile .role,.profile > p{grid-column:1}}
 footer{background:var(--navy);color:#C9D5E1;padding:56px 0;font-size:.95rem}
@@ -211,6 +233,7 @@ footer h2{color:var(--white);font-size:1.6rem}
       <a href="#project" data-page-link="project" data-i18n="n1">The project</a>
       <a href="#birds" data-page-link="birds" data-i18n="n7">The birds</a>
       <a href="#team" data-page-link="team" data-i18n="n4">The team</a>
+      <a href="#news" data-page-link="news" data-i18n="n8">News</a>
     </nav>
     <div class="tools">
       <button type="button" class="menu-btn" id="menubtn" aria-expanded="false" aria-controls="mainnav" data-i18n="menu">Menu</button>
@@ -382,11 +405,16 @@ footer h2{color:var(--white);font-size:1.6rem}
       </div>
 
       <h3 class="sub" data-i18n="b3h">Routes</h3>
-      <p data-i18n="b3p1">Tracking with geolocators has shown that great reed warblers from different parts of the range take different routes. In a study of five western Palearctic populations (Spain, Sweden, the Czech Republic, Bulgaria and Turkey), autumn routes were similar in direction and largely parallel, and most Spanish, Swedish and Czech birds wintered along the Gulf of Guinea. Turkish birds instead wintered in East Africa, and together with Bulgarian birds they returned in spring over the Arabian Peninsula, making a counter-clockwise loop (Koleček et al. 2016).</p>
-      <p data-i18n="b3p2">Birds from Kazakhstan, at the eastern edge of the range, also winter in East Africa alongside the Turkish birds, even though genetic data suggest the species colonised Kazakhstan from the west. Their migration direction must therefore have changed substantially as the range expanded. In spring they leave Africa as early as February and spend up to two months at a staging site in southern Iraq before completing the journey, a two-step strategy not described before (Bensch et al. 2025).</p>
-      <p class="refs"><span data-i18n="b3r">Read the studies:</span>
-        <a href="https://doi.org/10.1111/jav.00929" target="_blank" rel="noopener">Koleček, J. et al. Cross-continental migratory connectivity and spatiotemporal migratory patterns in the great reed warbler. Journal of Avian Biology 47, 756–767 (2016).</a>
-        <a href="https://doi.org/10.1002/jav.03441" target="_blank" rel="noopener">Bensch, S. et al. Evolution of population-specific migration routes in the great reed warbler Acrocephalus arundinaceus – evidence of a novel spring migration strategy. Journal of Avian Biology 2025, e03441 (2025).</a></p>
+      <div class="split routes">
+        <div>
+          <p data-i18n="b3p1">Tracking with geolocators has shown that great reed warblers from different parts of the range take different routes. In a study of five western Palearctic populations (Spain, Sweden, the Czech Republic, Bulgaria and Turkey), autumn routes were similar in direction and largely parallel, and most Spanish, Swedish and Czech birds wintered along the Gulf of Guinea. Turkish birds instead wintered in East Africa, and together with Bulgarian birds they returned in spring over the Arabian Peninsula, making a counter-clockwise loop (Koleček et al. 2016).</p>
+          <p data-i18n="b3p2">Birds from Kazakhstan, at the eastern edge of the range, also winter in East Africa alongside the Turkish birds, even though genetic data suggest the species colonised Kazakhstan from the west. Their migration direction must therefore have changed substantially as the range expanded. In spring they leave Africa as early as February and spend up to two months at a staging site in southern Iraq before completing the journey, a two-step strategy not described before (Bensch et al. 2025).</p>
+          <p class="refs"><span data-i18n="b3r">Read the studies:</span>
+            <a href="https://doi.org/10.1111/jav.00929" target="_blank" rel="noopener">Koleček, J. et al. Cross-continental migratory connectivity and spatiotemporal migratory patterns in the great reed warbler. Journal of Avian Biology 47, 756–767 (2016).</a>
+            <a href="https://doi.org/10.1002/jav.03441" target="_blank" rel="noopener">Bensch, S. et al. Evolution of population-specific migration routes in the great reed warbler Acrocephalus arundinaceus – evidence of a novel spring migration strategy. Journal of Avian Biology 2025, e03441 (2025).</a></p>
+        </div>
+        <figure><div class="ph" data-file="images/routes.png"><img src="images/routes.png" alt="Migration routes of great reed warbler populations" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+      </div>
     </div>
   </section>
 </div>
@@ -411,7 +439,7 @@ footer h2{color:var(--white);font-size:1.6rem}
           <p data-i18n="bio2">Violeta completed her PhD on the genetics of bird migration at Lund University in 2025. She focused on <i>Phylloscopus</i> warblers, combining genomic, molecular and phenotypic data to understand how small birds migrate. Before that, she spent several seasons on the great reed warbler project at Lake Kvismaren, where she came to know the species’ behaviour first-hand. In this project her role is to collect the eggs in Kazakhstan and to fit tracking devices on the birds in Bulgaria.</p>
         </article>
         <article class="profile">
-          <figure><div class="ph" data-file="images/Dimitar.jpg"><img src="images/Dimitar.jpg" alt="Dimitar Dimitrov" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+          <figure class="natural"><div class="ph" data-file="images/Dimitar.jpg"><img src="images/Dimitar.jpg" alt="Dimitar Dimitrov" onerror="this.closest('figure').classList.add('missing')"></div></figure>
           <h3>Dimitar Dimitrov</h3>
           <p class="role" data-i18n="r4">Field assistant</p>
           <p data-i18n="bio3">Mitko is an experienced ringer and field ornithologist specializing in the study of passerine and soaring bird migration, ecology, and blood parasites. He has been working on avian malaria and other blood parasites for more than 15 years. Currently, he is an Associate Professor at the Institute of Biodiversity and Ecosystem Research, Bulgarian Academy of Sciences, focusing on the taxonomy, systematics, specificity, co-evolution, and host-parasite interactions of haemosporidian parasites in birds. In this project, he will provide field assistance at the Kalimok field station by searching for great reed warbler nests, collecting eggs, feeding nestlings, and providing technical support and logistics in Bulgaria.</p>
@@ -422,10 +450,47 @@ footer h2{color:var(--white);font-size:1.6rem}
   </section>
 </div>
 
+<div class="page" id="page-news">
+  <section id="news">
+    <div class="wrap">
+      <h2 data-i18n="nwh">News</h2>
+      <p data-i18n="nwp">Meetings, fieldwork and other updates from the project.</p>
+
+      <div class="news-list">
+        <!--
+          HOW TO ADD A NEWS ITEM
+          1. Copy the whole block below (from <article> to </article>).
+          2. Paste it right here, ABOVE any older items, so the newest is first.
+          3. Change the date, title and text. Delete the <figure> part if there is no photo.
+          4. Remove the comment marks: delete the line with the opening mark before HOW TO ADD and the closing mark after </article>.
+
+          <article class="news-item">
+            <time datetime="2027-03-15">15 March 2027</time>
+            <h3>Title of the news item</h3>
+            <p>A short text about the meeting, the fieldwork or the news.</p>
+            <figure><div class="ph"><img src="images/your-photo.jpg" alt="Describe the photo"></div><figcaption>Photo: Name</figcaption></figure>
+          </article>
+        -->
+        <article class="news-item">
+          <time datetime="2026-11">November 2026</time>
+          <h3>November meeting in Sofia</h3>
+          <p>The team met in preparation for the oncoming field season starting in May 2027.</p>
+          <div class="news-photos">
+            <figure><div class="ph" data-file="images/tram.jpeg"><img src="images/tram.jpeg" alt="Team members in Sofia" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+            <figure><div class="ph" data-file="images/meet.jpeg"><img src="images/meet.jpeg" alt="The team meeting in Sofia" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+            <figure><div class="ph" data-file="images/bar.jpeg"><img src="images/bar.jpeg" alt="Team members in Sofia" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+          </div>
+        </article>
+      </div>
+      <p class="news-empty" data-i18n="nwe">No news yet. Meetings and other updates will be posted here.</p>
+    </div>
+  </section>
+</div>
+
   <section id="sponsors" class="sponsors">
     <div class="wrap">
       <h2 data-i18n="sph">Sponsors</h2>
-      <p data-i18n="spp">This project is funded by the European Research Council (ERC) and the Swedish Research Council (Vetenskapsrådet, VR). The ERC grant is held by Professor Staffan Bensch.</p>
+      <p data-i18n="spp">This project is funded by the European Research Council (ERC) and the Swedish Research Council (Vetenskapsrådet, VR).</p>
       <!-- TODO: add official logos as images/logo-ERC.png and images/logo-vr.jpg, and follow the ERC/EU acknowledgement rules -->
       <div class="logos">
         <div class="lg" data-file="images/logo-ERC.png"><img src="images/logo-ERC.png" alt="European Research Council" onerror="this.parentNode.classList.add('missing')"></div>
@@ -438,8 +503,7 @@ footer h2{color:var(--white);font-size:1.6rem}
 <footer id="contact">
   <div class="wrap">
     <h2 data-i18n="ch">Contact</h2>
-    <p class="contact"><span data-i18n="pi">Principal investigator: Professor Staffan Bensch, Department of Biology, Lund University</span><br>
-    <a href="mailto:name@university.edu">name@university.edu</a></p>
+    <p class="contact"><a href="mailto:name@university.edu">name@university.edu</a></p>
     <p data-i18n="op">Open positions will be listed here.</p>
     <p style="margin-top:32px" data-i18n="fund">Funded by the European Research Council (ERC). [Grant agreement number]. Views and opinions expressed are those of the authors only.</p>
     <!-- TODO: add the official ERC / EU logo and acknowledgement text required by the grant agreement -->
@@ -451,7 +515,7 @@ footer h2{color:var(--white);font-size:1.6rem}
   // ---------- Translations (English text lives in the HTML above) ----------
   var T = {
   kk:{
-    n7:"Құстар",bh:"Құстар",b1h:"Түрмен танысыңыз",
+    n8:"Жаңалықтар",nwh:"Жаңалықтар",nwp:"Жобаның кездесулері, далалық жұмыстары және басқа да жаңалықтары.",nwe:"Әзірге жаңалық жоқ. Кездесулер мен басқа да жаңалықтар осында жарияланады.",n7:"Құстар",bh:"Құстар",b1h:"Түрмен танысыңыз",
     b1p:"<i>Acrocephalus arundinaceus</i> – орташа көлемді (30 г) қоныс аударатын әнші құс. Ол Еуропада және Орталық Азияда ұя салады, ал Сахарадан оңтүстіктегі Африкада және Оңтүстік Африкада қыстайды. Табысты көбею үшін қамысты мекендерге қатты тәуелді.",
     c0:"Ересек құс. Фото: Harald Ris",
     b2h:"Қамыстағы өмір",
@@ -468,7 +532,7 @@ footer h2{color:var(--white);font-size:1.6rem}
     tl2:"Қазақстанға экспедиция: <i>Acrocephalus arundinaceus</i> жұмыртқаларын жинауға қолайлы орындарды табу. Құстарға спутниктік таратқыштар және деректерді тікелей эфирде жіберетін басқа да бақылау құрылғылары бекітілді; бұл біздің мақсатымызға ең жақсы технологияны табуға арналған пилоттық жұмыс болды.",
     tl3:"Алакөл көлінен Калимокқа жұмыртқаларды тасымалдаудың алғашқы тәжірибесі. Балапандар станцияда шығады және болгар қамыс құстарымен бірге қолмен өсіріледі. Ұша бастағанда олар ашық ауадағы вольерлерде тұрады және босатылардан біраз бұрын спутниктік таратқыштар бекітіледі.",
     c7:"Фото: Violeta Caballero-Lopez",
-    n1:"Жоба",n2:"Екі модель",n3:"Эксперимент",n4:"Команда",n5:"Байланыс",brand:"Тұқым қуалайтын миграциялық бағдарлама",cred:"Acrocephalus arundinaceus. Фото: Harald Ris",stmt:"Миграциялық маршруттардың тұқым қуалауын шешуші сынақ.",n6:"Демеушілер",sph:"Демеушілер",spp:"Бұл жобаны Еуропалық зерттеу кеңесі (ERC) және Швеция ғылыми кеңесі (Vetenskapsrådet, VR) қаржыландырады. ERC грантының иесі — профессор Staffan Bensch.",
+    n1:"Жоба",n2:"Екі модель",n3:"Эксперимент",n4:"Команда",n5:"Байланыс",brand:"Тұқым қуалайтын миграциялық бағдарлама",cred:"Acrocephalus arundinaceus. Фото: Harald Ris",stmt:"Миграциялық маршруттардың тұқым қуалауын шешуші сынақ.",n6:"Демеушілер",sph:"Демеушілер",spp:"Бұл жобаны Еуропалық зерттеу кеңесі (ERC) және Швеция ғылыми кеңесі (Vetenskapsrådet, VR) қаржыландырады.",
     h1:"Жас құс қайда ұшатынын қалай біледі?",
     hp:"Алғашқы күзгі миграциясы кезінде жас құс мыңдаған шақырым, жиі теңіздер мен шөлдерден өтіп, өзі ешқашан болмаған жерге ұшады. Бұл жолдың нұсқаулары оның ДНК-сында жазылған. Біз құс ата-анасынан қандай ақпарат мұра ететінін білу үшін жұмыртқаларды елдер арасында тасымалдаймыз.",
     btn:"Екі модельді көру",
@@ -510,7 +574,7 @@ footer h2{color:var(--white);font-size:1.6rem}
     fund:"Еуропалық зерттеу кеңесі (ERC) қаржыландырады. [Грант келісімінің нөмірі]. Айтылған пікірлер тек авторларға тиесілі."
   },
   bg:{
-    n7:"Птиците",bh:"Птиците",b1h:"Запознайте се с вида",
+    n8:"Новини",nwh:"Новини",nwp:"Срещи, теренна работа и други новини от проекта.",nwe:"Все още няма новини. Срещите и другите новини ще бъдат публикувани тук.",n7:"Птиците",bh:"Птиците",b1h:"Запознайте се с вида",
     b1p:"Големият тръстиков певец (<i>Acrocephalus arundinaceus</i>) е среден по размер (30 г) прелетен певчи вид. Гнезди в Европа и Централна Азия, а зимува в Африка на юг от Сахара и в Южна Африка. Успешното му размножаване зависи силно от тръстикови местообитания.",
     c0:"Възрастен голям тръстиков певец. Снимка: Harald Ris",
     b2h:"Животът в тръстиките",
@@ -527,7 +591,7 @@ footer h2{color:var(--white);font-size:1.6rem}
     tl2:"Експедиция до Казахстан за намиране на подходящи места за събиране на яйца на голям тръстиков певец. На птиците бяха монтирани сателитни предаватели и други проследяващи устройства, които предават данни на живо, в пилотен опит да се намери най-добрата технология за нашата цел.",
     tl3:"Първо преместване на яйца от езерото Алаколь до Калимок. Малките ще се излюпят в станцията и ще бъдат отгледани ръчно заедно с български големи тръстикови певци. Щом могат да летят, ще живеят във волиери на открито и ще получат сателитни предаватели малко преди пускането.",
     c7:"Снимка: Violeta Caballero-Lopez",
-    n1:"Проектът",n2:"Два модела",n3:"Експериментът",n4:"Екипът",n5:"Контакти",brand:"Наследена миграционна програма",cred:"Голям тръстиков певец. Снимка: Harald Ris",stmt:"Решаващ тест за наследяването на миграционните маршрути.",n6:"Спонсори",sph:"Спонсори",spp:"Този проект се финансира от Европейския съвет по научни изследвания (ERC) и Шведския съвет за научни изследвания (Vetenskapsrådet, VR). Грантът на ERC се държи от професор Staffan Bensch.",
+    n1:"Проектът",n2:"Два модела",n3:"Експериментът",n4:"Екипът",n5:"Контакти",brand:"Наследена миграционна програма",cred:"Голям тръстиков певец. Снимка: Harald Ris",stmt:"Решаващ тест за наследяването на миграционните маршрути.",n6:"Спонсори",sph:"Спонсори",spp:"Този проект се финансира от Европейския съвет по научни изследвания (ERC) и Шведския съвет за научни изследвания (Vetenskapsrådet, VR).",
     h1:"Откъде знае младата птица накъде да лети?",
     hp:"По време на първата си есенна миграция младата птица прелита хиляди километри, често над морета и пустини, до място, на което никога не е била. Указанията за това са записани в нейната ДНК. Ще преместваме яйца между държави, за да разберем каква информация птицата наследява от родителите си.",
     btn:"Вижте двата модела",
@@ -623,7 +687,7 @@ footer h2{color:var(--white);font-size:1.6rem}
   setLang(T[saved] ? saved : "en");
 
   // ---------- Tabs: show one page at a time, address bar keeps the place ----------
-  var PAGES=["project","birds","team"], ANCHOR={models:"project",question:"project",timeline:"project",why:"project"};
+  var PAGES=["project","birds","team","news"], ANCHOR={models:"project",question:"project",timeline:"project",why:"project"};
   var topbar=document.getElementById("topbar"), menubtn=document.getElementById("menubtn");
   var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   function showPage(name){
