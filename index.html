@@ -33,7 +33,7 @@ section{padding:80px 0}
 .soft{background:var(--soft)}
 
 /* fixed header */
-.topbar{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--white);border-top:4px solid var(--ochre);transition:box-shadow .3s,background-color .3s}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--white);transition:box-shadow .3s,background-color .3s}
 .topbar.over{background:rgba(255,255,255,.7);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:none}
 :root{--tb:84px}
 .js .page:not(#page-project){padding-top:var(--tb)}
@@ -72,7 +72,7 @@ section{padding:80px 0}
 .slide.broken{display:none}
 .slide figcaption{position:absolute;right:16px;bottom:16px;z-index:2;margin:0;padding:5px 12px;color:#fff;font-size:.78rem;background:rgba(11,34,57,.65);border-radius:3px;max-width:60%}
 .hero-inner{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:0 24px;pointer-events:none}
-.hero-box{pointer-events:auto;max-width:440px;padding:32px 34px 36px;color:var(--white);background:rgba(11,34,57,.76);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-left:4px solid var(--ochre)}
+.hero-box{pointer-events:auto;max-width:440px;padding:32px 34px 36px;color:var(--white);background:rgba(64,68,72,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .hero h1{color:var(--white);font-size:clamp(1.8rem,3vw,2.6rem)}
 .hero-box p{font-size:.98rem;line-height:1.7;margin:20px 0 26px;color:#E8EEF4;max-width:none}
 .btn{display:inline-block;background:var(--ochre);color:#fff;padding:13px 26px;text-decoration:none;font-weight:600;font-size:.92rem;border-radius:2px}
@@ -90,7 +90,7 @@ section{padding:80px 0}
   .slide img{width:100%;-webkit-mask-image:none;mask-image:none}
   .slides::after{height:90px}
   .hero-inner{padding:0;max-width:none}
-  .hero-box{max-width:none;background:var(--navy);-webkit-backdrop-filter:none;backdrop-filter:none;border-left:0;border-top:4px solid var(--ochre);padding:28px 24px 32px}
+  .hero-box{max-width:none;background:#44484c;-webkit-backdrop-filter:none;backdrop-filter:none;padding:28px 24px 32px}
   .hero-ctrl{bottom:8px}
   .slide figcaption{top:calc(var(--tb) + 8px);bottom:auto;right:10px;max-width:75%}
 }
@@ -220,6 +220,39 @@ figcaption{font-size:.95rem;color:var(--muted);margin-top:8px}
 .profile figure.natural .ph{aspect-ratio:auto}
 .profile figure.natural img{height:auto}
 .profile figure.missing .ph::after{content:"";background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='38' r='15' fill='%2393A4B1'/%3E%3Cpath d='M20 92c2-21 15-31 30-31s28 10 30 31z' fill='%2393A4B1'/%3E%3C/svg%3E") center 60%/62% no-repeat}
+/* team collage */
+.collage{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:48px;margin-top:48px;align-items:start}
+.collage .col{display:flex;flex-direction:column;gap:64px}
+.collage .col-l{padding-top:70px}
+.collage .col-r{padding-top:20px}
+.collage .col-c{position:sticky;top:calc(var(--tb) + 24px)}
+.collage .profile{display:block}
+.collage .profile h3{font-size:1.35rem}
+.collage .profile > p{font-size:.93rem;line-height:1.65;max-width:none;margin:0 0 10px}
+.collage .profile .role{font-size:.9rem;margin-bottom:10px}
+.collage .p-c h3{font-size:2rem}
+.collage .p-c > p{font-size:1rem}
+.collage figure{margin:0 0 18px}
+.collage figure .ph{aspect-ratio:auto;border:8px solid #fff;box-shadow:0 8px 22px rgba(11,34,57,.2);background:#fff}
+.collage figure img{height:auto;display:block}
+.collage figure.missing .ph{aspect-ratio:4/5}
+.collage figcaption{font-size:.72rem;color:var(--muted)}
+.collage .p-a figure{width:68%;transform:rotate(-2.2deg);margin-left:-14px}
+.collage .p-b figure{width:86%;transform:rotate(1.6deg);margin-left:26px}
+.collage .p-c figure{width:88%;max-width:430px;transform:rotate(-.8deg);margin:0 auto 24px}
+.collage .p-d figure{width:92%;transform:rotate(2deg);margin-left:auto;margin-right:-8px}
+.collage .p-e figure{width:62%;transform:rotate(-1.8deg);margin-left:18px}
+@media(max-width:900px){
+  .collage{display:flex;flex-direction:column;gap:56px}
+  .collage .col{display:contents}
+  .collage .col-c{position:static}
+  .collage .p-c{order:-1}
+  .collage .p-a{order:1}.collage .p-d{order:2}.collage .p-b{order:3}.collage .p-e{order:4}
+  .collage figure{max-width:300px}
+  .collage .p-a figure,.collage .p-e figure{width:70%;margin-left:6px;margin-right:0}
+  .collage .p-b figure,.collage .p-d figure{width:90%;margin-left:auto;margin-right:6px}
+  .collage .p-c figure{width:92%;margin:0 auto 24px}
+}
 @media(max-width:700px){.profile{grid-template-columns:1fr}.profile figure{grid-row:auto;max-width:260px;margin-bottom:16px}.profile h3,.profile .role,.profile > p{grid-column:1}}
 footer{background:var(--navy);color:#C9D5E1;padding:56px 0;font-size:.95rem}
 footer a{color:var(--white)}
@@ -426,26 +459,44 @@ footer h2{color:var(--white);font-size:1.6rem}
     <div class="wrap">
       <h2 data-i18n="th">The team</h2>
       <p data-i18n="tp">The people behind this project.</p>
-      <!-- TODO: add images/staffan.jpg when a photo is available -->
-      <div class="profiles">
-        <article class="profile">
-          <figure><div class="ph" data-file="images/staffan.jpg"><img src="images/staffan.jpg" alt="Staffan Bensch" onerror="this.closest('figure').classList.add('missing')"></div></figure>
-          <h3>Staffan Bensch</h3>
-          <p class="role" data-i18n="r1">Principal investigator, Professor</p>
-          <p data-i18n="bio1">Staffan has studied great reed warblers since his PhD (Lund University, 1993), which drew on the long-term study at Lake Kvismaren that has been running since 1983. Today he leads an ERC-funded programme to uncover the genetic basis of songbird migration. Traits such as the urge to leave, the direction birds take and the length of their journeys are governed by unknown genetic mechanisms. To unravel them, he chose both <i>Phylloscopus</i> warblers and the great reed warbler as study species. In this project his role is coordination and fieldwork, especially at Kalimok station in Bulgaria.</p>
-        </article>
-        <article class="profile">
-          <figure><div class="ph" data-file="images/violeta%20Large.jpeg"><img src="images/violeta%20Large.jpeg" alt="Violeta Caballero-Lopez" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c5">Photo: Javier Abalos Alvarez</figcaption></figure>
-          <h3>Violeta Caballero-Lopez</h3>
-          <p class="role" data-i18n="r2">Postdoctoral researcher</p>
-          <p data-i18n="bio2">Violeta completed her PhD on the genetics of bird migration at Lund University in 2025. She focused on <i>Phylloscopus</i> warblers, combining genomic, molecular and phenotypic data to understand how small birds migrate. Before that, she spent several seasons on the great reed warbler project at Lake Kvismaren, where she came to know the species’ behaviour first-hand. In this project her role is to collect the eggs in Kazakhstan and to fit tracking devices on the birds in Bulgaria.</p>
-        </article>
-        <article class="profile">
-          <figure class="natural"><div class="ph" data-file="images/Dimitar.jpg"><img src="images/Dimitar.jpg" alt="Dimitar Dimitrov" onerror="this.closest('figure').classList.add('missing')"></div></figure>
-          <h3>Dimitar Dimitrov</h3>
-          <p class="role" data-i18n="r4">Field assistant</p>
-          <p data-i18n="bio3">Mitko is an experienced ringer and field ornithologist specializing in the study of passerine and soaring bird migration, ecology, and blood parasites. He has been working on avian malaria and other blood parasites for more than 15 years. Currently, he is an Associate Professor at the Institute of Biodiversity and Ecosystem Research, Bulgarian Academy of Sciences, focusing on the taxonomy, systematics, specificity, co-evolution, and host-parasite interactions of haemosporidian parasites in birds. In this project, he will provide field assistance at the Kalimok field station by searching for great reed warbler nests, collecting eggs, feeding nestlings, and providing technical support and logistics in Bulgaria.</p>
-        </article>
+      <div class="collage">
+        <div class="col col-l">
+          <article class="profile p-a">
+            <figure><div class="ph" data-file="images/violeta%20Large.jpeg"><img src="images/violeta%20Large.jpeg" alt="Violeta Caballero-Lopez" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c5">Photo: Javier Abalos Alvarez</figcaption></figure>
+            <h3>Violeta Caballero-Lopez</h3>
+            <p class="role" data-i18n="r2">Postdoctoral researcher</p>
+            <p data-i18n="bio2">Violeta completed her PhD on the genetics of bird migration at Lund University in 2025. She focused on <i>Phylloscopus</i> warblers, combining genomic, molecular and phenotypic data to understand how small birds migrate. Before that, she spent several seasons on the great reed warbler project at Lake Kvismaren, where she came to know the species’ behaviour first-hand. In this project her role is to collect the eggs in Kazakhstan and to fit tracking devices on the birds in Bulgaria.</p>
+          </article>
+          <article class="profile p-b">
+            <figure><div class="ph" data-file="images/liliana.JPG"><img src="images/liliana.JPG" alt="Liliana Vassileva" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+            <h3>Liliana Vassileva</h3>
+            <p class="role" data-i18n="r4">Field assistant</p>
+            <p data-i18n="bio5">Liliana Vassileva holds a master’s degree in biology and is on her way to defend her PhD thesis in behavioural ecology with the Institute of Biodiversity and Ecosystem Research at the Bulgarian Academy of Sciences. Her scientific interests and research focus on determining dietary diversity and behaviour through comprehensive approaches such as environmental DNA (eDNA), identifying the natural available food resources species composition, and examining foraging behaviours and strategies in the studied species. In her early career, she gained experience in floristic research and plant biodiversity in the mountainous regions of Bulgaria.</p>
+            <p data-i18n="bio5b">With an expertise in birds’ behaviour, application of DNA metabarcoding methods for behavioural ecology, and determination of the dietary preferences of animal species she contributes to the project with fieldwork and bird feeding activities.</p>
+          </article>
+        </div>
+        <div class="col col-c">
+          <article class="profile p-c">
+            <figure><div class="ph" data-file="images/bensch.JPG"><img src="images/bensch.JPG" alt="Staffan Bensch" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+            <h3>Staffan Bensch</h3>
+            <p class="role" data-i18n="r1">Principal investigator, Professor</p>
+            <p data-i18n="bio1">Staffan Bensch is a Professor of Animal Ecology at Lund University since 2004. He is an evolutionary biologist working in molecular ecology, leading long-term research projects on migratory birds and avian malaria parasites. He leads an ERC-funded programme to uncover the genetic basis of songbird migration. Traits such as the urge to leave, the direction birds take and the length of their journeys are governed by unknown genetic mechanisms. This project is part of that programme and his role is the overall coordination and field expertise.</p>
+          </article>
+        </div>
+        <div class="col col-r">
+          <article class="profile p-d">
+            <figure><div class="ph" data-file="images/katja.jpg"><img src="images/katja.jpg" alt="Yekaterina Akentyeva" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+            <h3>Yekaterina Akentyeva</h3>
+            <p class="role" data-i18n="r4">Field assistant</p>
+            <p data-i18n="bio4">Yekaterina is an ornithologist at the Institute of Zoology of the Republic of Kazakhstan. Her research focuses on bird ecology, breeding biology and migration, with previous work concentrating on birds of prey. She is interested in understanding where birds travel, how they use different habitats throughout the year, and how migration connects their breeding and wintering grounds. Her role in this project is to assist in the field in Kazakhstan in order to successfully collect the eggs for translocation to Bulgaria.</p>
+          </article>
+          <article class="profile p-e">
+            <figure><div class="ph" data-file="images/Dimitar.jpg"><img src="images/Dimitar.jpg" alt="Dimitar Dimitrov" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+            <h3>Dimitar Dimitrov</h3>
+            <p class="role" data-i18n="r4">Field assistant</p>
+            <p data-i18n="bio3">Mitko is an experienced ringer and field ornithologist specializing in the study of passerine and soaring bird migration, ecology, and blood parasites. He has been working on avian malaria and other blood parasites for more than 15 years. Currently, he is an Associate Professor at the Institute of Biodiversity and Ecosystem Research, Bulgarian Academy of Sciences, focusing on the taxonomy, systematics, specificity, co-evolution, and host-parasite interactions of haemosporidian parasites in birds. In this project, he will provide field assistance at the Kalimok field station by searching for great reed warbler nests, collecting eggs, feeding nestlings, and providing technical support and logistics in Bulgaria.</p>
+          </article>
+        </div>
       </div>
       <p style="margin-top:32px" data-i18n="collab">Collaboration at Kalimok: Dr. Pavel Zehtindjiev, Bulgarian Academy of Sciences</p>
     </div>
@@ -517,7 +568,7 @@ footer h2{color:var(--white);font-size:1.6rem}
   // ---------- Translations (English text lives in the HTML above) ----------
   var T = {
   kk:{
-    n8:"Жаңалықтар",nwh:"Жаңалықтар",nwp:"Жобаның кездесулері, далалық жұмыстары және басқа да жаңалықтары.",nwe:"Әзірге жаңалық жоқ. Кездесулер мен басқа да жаңалықтар осында жарияланады.",rc:"Деректер: Koleček <i>et al.</i>, 2016 және Bensch <i>et al.</i>, 2025.",n7:"Құстар",bh:"Құстар",b1h:"Түрмен танысыңыз",
+    n8:"Жаңалықтар",nwh:"Жаңалықтар",nwp:"Жобаның кездесулері, далалық жұмыстары және басқа да жаңалықтары.",nwe:"Әзірге жаңалық жоқ. Кездесулер мен басқа да жаңалықтар осында жарияланады.",rc:"Деректер: Koleček <i>et al.</i>, 2016 және Bensch <i>et al.</i>, 2025.",bio4:"Yekaterina – Қазақстан Республикасының Зоология институтының орнитологы. Оның зерттеулері құстардың экологиясына, көбею биологиясына және көші-қонына бағытталған, бұрынғы жұмысы жыртқыш құстарға шоғырланған. Ол құстардың қайда ұшатынын, жыл бойы әртүрлі мекендерді қалай пайдаланатынын және көші-қон олардың көбею мен қыстау аймақтарын қалай байланыстыратынын түсінуге мүдделі. Бұл жобадағы оның рөлі – Қазақстанда далада көмектесіп, жұмыртқаларды Болгарияға тасымалдау үшін сәтті жинау.",bio5:"Liliana Vassileva – биология магистрі, Болгария ғылым академиясының Биоәртүрлілік және экожүйелерді зерттеу институтында мінез-құлық экологиясы бойынша PhD диссертациясын қорғауға дайындалуда. Оның ғылыми қызығушылықтары қоректік алуан түрлілік пен мінез-құлықты қоршаған орта ДНК-сы (eDNA) сияқты кешенді тәсілдер арқылы анықтауға, табиғи қолжетімді қорек ресурстарының түрлік құрамын анықтауға және зерттелетін түрлердің қорек іздеу мінез-құлқы мен стратегияларын зерттеуге бағытталған. Мансабының басында ол Болгарияның таулы аймақтарында флористикалық зерттеулер мен өсімдіктер биоәртүрлілігі саласында тәжірибе жинады.",bio5b:"Құстардың мінез-құлқы, мінез-құлық экологиясында ДНК метабаркодтау әдістерін қолдану және жануар түрлерінің қорек қалауларын анықтау бойынша тәжірибесімен ол жобаға далалық жұмыстармен және құстарды қоректендірумен үлес қосады.",n7:"Құстар",bh:"Құстар",b1h:"Түрмен танысыңыз",
     b1p:"<i>Acrocephalus arundinaceus</i> – орташа көлемді (30 г) қоныс аударатын әнші құс. Ол Еуропада және Орталық Азияда ұя салады, ал Сахарадан оңтүстіктегі Африкада және Оңтүстік Африкада қыстайды. Табысты көбею үшін қамысты мекендерге қатты тәуелді.",
     c0:"Ересек құс. Фото: Harald Ris",
     b2h:"Қамыстағы өмір",
@@ -527,7 +578,7 @@ footer h2{color:var(--white);font-size:1.6rem}
     b3p2:"Қазақстан құстары, яғни түр таралу аймағының шығыс шетіндегі популяция, генетикалық деректер түрдің Қазақстанға батыстан келгенін көрсетсе де, Түркия құстарымен бірге Шығыс Африкада қыстайды. Демек, таралу аймағы кеңейген кезде олардың көші-қон бағыты айтарлықтай өзгерген. Көктемде олар ақпан айында Африкадан шыға бастайды және ұя салатын жерге жеткенше Оңтүстік Ирактағы аралық аялдама орнында екі айға дейін болады; бұл бұрын сипатталмаған екі сатылы стратегия (Bensch және т.б., 2025).",
     b3r:"Зерттеулерді оқыңыз:",
     c5:"Фото: Javier Abalos Alvarez",crh:"Фото: Harald Ris",c8:"Біз жұмыртқа жинайтын жерлерді будандасқан популяциялардан сынама алмау үшін шалғай қамыс құстары (<i>Acrocephalus stentoreus</i>) жоқ жерлерден таңдадық. Фото: Harald Ris",c6:"Спутниктік таратқышы бар құс. Фото: Violeta Caballero-Lopez",
-    bio1:"Staffan Лунд университетіндегі PhD-ден (1993) бері <i>Acrocephalus arundinaceus</i> түрін зерттейді; оның жұмысы Квисмарен көліндегі 1983 жылдан бері жалғасып келе жатқан ұзақ мерзімді зерттеуге негізделген. Қазір ол әнші құстардың көші-қонының генетикалық негізін ашуға арналған ERC қаржыландыратын бағдарламаны басқарады. Кетуге деген құлшыныс, құстар таңдайтын бағыт және ұшу қашықтығы сияқты белгілер әлі белгісіз генетикалық механизмдермен реттеледі. Оларды ашу үшін ол зерттеу түрлері ретінде <i>Phylloscopus</i> туысындағы құстарды да, <i>Acrocephalus arundinaceus</i> түрін де таңдады. Бұл жобада оның рөлі – үйлестіру және далалық жұмыс, әсіресе Болгариядағы Калимок станциясында.",
+    bio1:"Staffan Bensch – 2004 жылдан бері Лунд университетінің жануарлар экологиясы профессоры. Ол молекулалық экология саласында жұмыс істейтін эволюциялық биолог, қоныс аударатын құстар мен құс безгегі паразиттері бойынша ұзақ мерзімді зерттеу жобаларын басқарады. Ол әнші құстардың көші-қонының генетикалық негізін ашуға арналған ERC қаржыландыратын бағдарламаны басқарады. Кетуге деген құлшыныс, құстар таңдайтын бағыт және ұшу қашықтығы сияқты белгілер әлі белгісіз генетикалық механизмдермен реттеледі. Бұл жоба сол бағдарламаның бөлігі, ал оның рөлі – жалпы үйлестіру және далалық тәжірибе.",
     bio2:"Violeta 2025 жылы Лунд университетінде құстардың көші-қонының генетикасы бойынша PhD қорғады. Ол геномдық, молекулалық және фенотиптік деректерді біріктіре отырып, <i>Phylloscopus</i> туысындағы әнші құстарға назар аударып, ұсақ құстардың қалай көшетінін зерттеді. Бұған дейін ол Квисмарен көліндегі жоба аясында бірнеше маусым жұмыс істеп, түрдің мінез-құлқымен тікелей танысты. Бұл жобада оның рөлі – Қазақстанда жұмыртқаларды жинау және Болгарияда құстарға бақылау құрылғыларын бекіту.",
     menu:"Мәзір",tlh:"Хронология",
     tl1:"Пилоттық зерттеу: <i>Acrocephalus arundinaceus</i> балапандарын қолмен өсіру.",
@@ -576,7 +627,7 @@ footer h2{color:var(--white);font-size:1.6rem}
     fund:"Еуропалық зерттеу кеңесі (ERC) қаржыландырады. [Грант келісімінің нөмірі]. Айтылған пікірлер тек авторларға тиесілі."
   },
   bg:{
-    n8:"Новини",nwh:"Новини",nwp:"Срещи, теренна работа и други новини от проекта.",nwe:"Все още няма новини. Срещите и другите новини ще бъдат публикувани тук.",rc:"Данни от Koleček <i>et al.</i>, 2016 и Bensch <i>et al.</i>, 2025.",n7:"Птиците",bh:"Птиците",b1h:"Запознайте се с вида",
+    n8:"Новини",nwh:"Новини",nwp:"Срещи, теренна работа и други новини от проекта.",nwe:"Все още няма новини. Срещите и другите новини ще бъдат публикувани тук.",rc:"Данни от Koleček <i>et al.</i>, 2016 и Bensch <i>et al.</i>, 2025.",bio4:"Yekaterina е орнитолог в Института по зоология на Република Казахстан. Изследванията ѝ са насочени към екологията, биологията на размножаването и миграцията на птиците, като предишната ѝ работа е съсредоточена върху граблива птици. Интересува се да разбере къде пътуват птиците, как използват различни местообитания през годината и как миграцията свързва техните места за гнездене и зимуване. Ролята ѝ в този проект е да помага на терен в Казахстан, за да бъдат успешно събрани яйцата за преместване в България.",bio5:"Liliana Vassileva е магистър по биология и се готви да защити докторската си дисертация по поведенческа екология в Института по биоразнообразие и екосистемни изследвания на Българската академия на науките. Научните ѝ интереси са насочени към определяне на хранителното разнообразие и поведение чрез комплексни подходи като екологична ДНК (eDNA), установяване на видовия състав на естествено наличните хранителни ресурси и изучаване на хранителното поведение и стратегии при изследваните видове. В началото на кариерата си трупа опит във флористични изследвания и растително биоразнообразие в планинските райони на България.",bio5b:"С опита си в поведението на птиците, прилагането на ДНК метабаркодинг в поведенческата екология и определянето на хранителните предпочитания на животните тя допринася към проекта с теренна работа и дейности по хранене на птиците.",n7:"Птиците",bh:"Птиците",b1h:"Запознайте се с вида",
     b1p:"Големият тръстиков певец (<i>Acrocephalus arundinaceus</i>) е среден по размер (30 г) прелетен певчи вид. Гнезди в Европа и Централна Азия, а зимува в Африка на юг от Сахара и в Южна Африка. Успешното му размножаване зависи силно от тръстикови местообитания.",
     c0:"Възрастен голям тръстиков певец. Снимка: Harald Ris",
     b2h:"Животът в тръстиките",
@@ -586,7 +637,7 @@ footer h2{color:var(--white);font-size:1.6rem}
     b3p2:"Птиците от Казахстан, в източния край на ареала, също зимуват в Източна Африка заедно с турските, макар че генетичните данни сочат, че видът е колонизирал Казахстан от запад. Следователно посоката на миграция се е променила съществено при разширяването на ареала. През пролетта напускат Африка още през февруари и прекарват до два месеца в междинно място в Южен Ирак, преди да завършат пътя си – двустъпкова стратегия, неописвана досега (Bensch и др., 2025).",
     b3r:"Прочетете проучванията:",
     c5:"Снимка: Javier Abalos Alvarez",crh:"Снимка: Harald Ris",c8:"Избрахме места, където няма тръстикови певци от вида <i>Acrocephalus stentoreus</i>, за да не вземаме проби от хибридни популации. Снимка: Harald Ris",c6:"Птица със сателитен предавател. Снимка: Violeta Caballero-Lopez",
-    bio1:"Staffan изучава големия тръстиков певец още от докторската си степен (Лундски университет, 1993), основана на дългосрочното проучване при езерото Квисмарен, което тече от 1983 г. Днес той ръководи финансирана от ERC програма за разкриване на генетичната основа на миграцията при певчите птици. Белези като желанието за отпътуване, посоката и дължината на пътуването се определят от все още неизвестни генетични механизми. За да ги разгадае, той избра за изследвани видове както певците от род <i>Phylloscopus</i>, така и големия тръстиков певец. В този проект ролята му е координация и теренна работа, особено в станция Калимок в България.",
+    bio1:"Staffan Bensch е професор по екология на животните в Лундския университет от 2004 г. Той е еволюционен биолог, работещ в областта на молекулярната екология, и ръководи дългосрочни изследователски проекти за прелетни птици и паразити, причиняващи птичи малярии. Ръководи финансирана от ERC програма за разкриване на генетичната основа на миграцията при певчите птици. Белези като желанието за отпътуване, посоката и дължината на пътуването се определят от все още неизвестни генетични механизми. Този проект е част от тази програма, а неговата роля е цялостната координация и теренният опит.",
     bio2:"Violeta защити докторската си степен по генетика на птичата миграция в Лундския университет през 2025 г. Работата ѝ беше съсредоточена върху певци от род <i>Phylloscopus</i>, като съчетаваше геномни, молекулни и фенотипни данни, за да разбере как мигрират дребните птици. Преди това прекара няколко сезона в проекта за големия тръстиков певец при езерото Квисмарен, където опозна поведението на вида от първа ръка. В този проект ролята ѝ е да събира яйцата в Казахстан и да монтира проследяващи устройства на птиците в България.",
     menu:"Меню",tlh:"Хронология",
     tl1:"Пилотно проучване: ръчно отглеждане на големи тръстикови певци.",
