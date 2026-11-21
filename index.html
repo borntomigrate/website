@@ -143,7 +143,7 @@ section{padding:80px 0}
 .gallery,.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:32px}
 .gallery .wide{grid-column:1/-1}
 figure{margin:0}
-figure .ph{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:var(--line)}
+figure .ph{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--line)}
 figure.wide .ph{aspect-ratio:21/9}
 .team figure .ph{aspect-ratio:1/1}
 figure img{width:100%;height:100%;object-fit:cover;display:block}
@@ -159,8 +159,18 @@ figcaption{font-size:.95rem;color:var(--muted);margin-top:8px}
 .lg.missing::after{content:attr(data-file);color:var(--muted);font-size:.85rem}
 
 .sponsors{border-top:1px solid var(--line)}
+.site{margin-top:44px;max-width:760px}
+.site h3{font-size:1.6rem;font-weight:300;margin:0 0 10px}
+.site p{margin:0}
+/* zoom */
+.news-item figure img,.tl figure img,.split.routes figure img{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(10,14,18,.93);display:grid;place-items:center;padding:24px;cursor:zoom-out}
+.lb[hidden]{display:none}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.lb button{position:absolute;top:14px;right:18px;background:none;border:0;color:#fff;font-size:2rem;line-height:1;cursor:pointer}
 /* news */
-.news-list{margin-top:32px;max-width:760px}
+.news-list{margin-top:32px}
+.news-item > p{max-width:760px}
 .news-item{padding:26px 0;border-top:1px solid var(--line)}
 .news-item:first-child{border-top:0;padding-top:0}
 .news-item time{display:block;font-size:.85rem;font-weight:600;letter-spacing:.04em;color:#8A5F0E;margin-bottom:6px}
@@ -168,11 +178,13 @@ figcaption{font-size:.95rem;color:var(--muted);margin-top:8px}
 .news-item figure{max-width:520px;margin-top:14px}
 .news-item figure .ph{aspect-ratio:auto}
 .news-item figure img{height:auto;display:block}
-.news-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.news-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
 .news-photos figure{margin:0;max-width:none}
-.news-photos figure .ph{aspect-ratio:4/3}
+.news-photos figure .ph{aspect-ratio:3/2}
+.news-photos{margin-left:-0px}
+@media(max-width:700px){.news-photos{grid-template-columns:1fr}}
 .news-item .news-photos figure img{height:100%;width:100%;object-fit:cover}
-@media(max-width:520px){.news-photos{gap:6px}}
+
 .news-list:has(.news-item)+.news-empty{display:none}
 /* timeline */
 .tl{list-style:none;margin:36px 0 0;padding:0 0 0 0;border-left:2px solid var(--line)}
@@ -225,7 +237,6 @@ figcaption{font-size:.95rem;color:var(--muted);margin-top:8px}
 .collage .col{display:flex;flex-direction:column;gap:64px}
 .collage .col-l{padding-top:70px}
 .collage .col-r{padding-top:20px}
-.collage .col-c{position:sticky;top:calc(var(--tb) + 24px)}
 .collage .profile{display:block}
 .collage .profile h3{font-size:1.35rem}
 .collage .profile > p{font-size:.93rem;line-height:1.65;max-width:none;margin:0 0 10px}
@@ -233,25 +244,25 @@ figcaption{font-size:.95rem;color:var(--muted);margin-top:8px}
 .collage .p-c h3{font-size:2rem}
 .collage .p-c > p{font-size:1rem}
 .collage figure{margin:0 0 18px}
-.collage figure .ph{aspect-ratio:auto;border:8px solid #fff;box-shadow:0 8px 22px rgba(11,34,57,.2);background:#fff}
+.collage figure .ph{aspect-ratio:auto;background:var(--line)}
 .collage figure img{height:auto;display:block}
 .collage figure.missing .ph{aspect-ratio:4/5}
 .collage figcaption{font-size:.72rem;color:var(--muted)}
-.collage .p-a figure{width:68%;transform:rotate(-2.2deg);margin-left:-14px}
-.collage .p-b figure{width:86%;transform:rotate(1.6deg);margin-left:26px}
-.collage .p-c figure{width:88%;max-width:430px;transform:rotate(-.8deg);margin:0 auto 24px}
-.collage .p-d figure{width:92%;transform:rotate(2deg);margin-left:auto;margin-right:-8px}
-.collage .p-e figure{width:62%;transform:rotate(-1.8deg);margin-left:18px}
+.collage .p-a figure{width:88%}
+.collage .p-b figure{width:100%}
+.collage .p-c figure{width:100%;margin:0 0 24px}
+.collage .p-d figure{width:100%}
+.collage .p-e figure{width:84%;margin-left:auto}
+@media(min-width:1200px){.collage{margin-left:-70px;margin-right:-70px}}
 @media(max-width:900px){
   .collage{display:flex;flex-direction:column;gap:56px}
   .collage .col{display:contents}
-  .collage .col-c{position:static}
   .collage .p-c{order:-1}
   .collage .p-a{order:1}.collage .p-d{order:2}.collage .p-b{order:3}.collage .p-e{order:4}
-  .collage figure{max-width:300px}
-  .collage .p-a figure,.collage .p-e figure{width:70%;margin-left:6px;margin-right:0}
-  .collage .p-b figure,.collage .p-d figure{width:90%;margin-left:auto;margin-right:6px}
-  .collage .p-c figure{width:92%;margin:0 auto 24px}
+  .collage figure{max-width:520px}
+  .collage .p-a figure,.collage .p-e figure{width:78%;margin-left:0}
+  .collage .p-b figure,.collage .p-d figure{width:100%}
+  .collage .p-c figure{width:100%;margin:0 0 24px}
 }
 @media(max-width:700px){.profile{grid-template-columns:1fr}.profile figure{grid-row:auto;max-width:260px;margin-bottom:16px}.profile h3,.profile .role,.profile > p{grid-column:1}}
 footer{background:var(--navy);color:#C9D5E1;padding:56px 0;font-size:.95rem}
@@ -268,6 +279,7 @@ footer h2{color:var(--white);font-size:1.6rem}
       <a href="#project" data-page-link="project" data-i18n="n1">The project</a>
       <a href="#birds" data-page-link="birds" data-i18n="n7">The birds</a>
       <a href="#team" data-page-link="team" data-i18n="n4">The team</a>
+      <a href="#sites" data-page-link="sites" data-i18n="nfs">The field sites</a>
       <a href="#news" data-page-link="news" data-i18n="n8">News</a>
     </nav>
     <div class="tools">
@@ -503,6 +515,22 @@ footer h2{color:var(--white);font-size:1.6rem}
   </section>
 </div>
 
+<div class="page" id="page-sites">
+  <section id="sites">
+    <div class="wrap">
+      <h2 data-i18n="sth">The field sites</h2>
+      <div class="site">
+        <h3 data-i18n="skh">Kalimok – Bulgaria</h3>
+        <p data-i18n="skp">The Biological Experimental Station Kalimok is a research facility in northeastern Bulgaria operated by the <a href="https://www.iber.bas.bg/en/node/108" target="_blank" rel="noopener">Institute of Biodiversity and Ecosystem Research (IBER)</a> at the Bulgarian Academy of Sciences. It is located inside the Kalimok–Brashlen Protected Area, a Natura 2000 wetland complex covering over 5,000 hectares of marshes, reed beds, alluvial meadows, and floodplain forests. The site includes a dedicated center for the breeding and reintroduction of rare bird species, alongside equipment for bird ringing and behavioral studies.</p>
+      </div>
+      <div class="site">
+        <h3 data-i18n="sah">Alakol Lake – Kazakhstan</h3>
+        <p data-i18n="sap">The Alakol State Nature Reserve (also part of the Alakol Biosphere Reserve) is a protected natural area in eastern Kazakhstan across the Zhetysu and Abai regions, centered around the salty Alakol–Sasykkol lake basin. The state nature reserve was established in 1998, and the broader Alakol Biosphere Reserve was designated in 2013. The lake system is also a Ramsar wetland (since 2009). We identified suitable grounds for great reed warbler egg collection on the western shore of the lake, during the expedition in May 2026.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
 <div class="page" id="page-news">
   <section id="news">
     <div class="wrap">
@@ -563,12 +591,13 @@ footer h2{color:var(--white);font-size:1.6rem}
   </div>
 </footer>
 
+<div class="lb" id="lb" hidden><button type="button" aria-label="Close">×</button><img alt=""></div>
 <script>
 (function(){
   // ---------- Translations (English text lives in the HTML above) ----------
   var T = {
   kk:{
-    n8:"Жаңалықтар",nwh:"Жаңалықтар",nwp:"Жобаның кездесулері, далалық жұмыстары және басқа да жаңалықтары.",nwe:"Әзірге жаңалық жоқ. Кездесулер мен басқа да жаңалықтар осында жарияланады.",rc:"Деректер: Koleček <i>et al.</i>, 2016 және Bensch <i>et al.</i>, 2025.",bio4:"Yekaterina – Қазақстан Республикасының Зоология институтының орнитологы. Оның зерттеулері құстардың экологиясына, көбею биологиясына және көші-қонына бағытталған, бұрынғы жұмысы жыртқыш құстарға шоғырланған. Ол құстардың қайда ұшатынын, жыл бойы әртүрлі мекендерді қалай пайдаланатынын және көші-қон олардың көбею мен қыстау аймақтарын қалай байланыстыратынын түсінуге мүдделі. Бұл жобадағы оның рөлі – Қазақстанда далада көмектесіп, жұмыртқаларды Болгарияға тасымалдау үшін сәтті жинау.",bio5:"Liliana Vassileva – биология магистрі, Болгария ғылым академиясының Биоәртүрлілік және экожүйелерді зерттеу институтында мінез-құлық экологиясы бойынша PhD диссертациясын қорғауға дайындалуда. Оның ғылыми қызығушылықтары қоректік алуан түрлілік пен мінез-құлықты қоршаған орта ДНК-сы (eDNA) сияқты кешенді тәсілдер арқылы анықтауға, табиғи қолжетімді қорек ресурстарының түрлік құрамын анықтауға және зерттелетін түрлердің қорек іздеу мінез-құлқы мен стратегияларын зерттеуге бағытталған. Мансабының басында ол Болгарияның таулы аймақтарында флористикалық зерттеулер мен өсімдіктер биоәртүрлілігі саласында тәжірибе жинады.",bio5b:"Құстардың мінез-құлқы, мінез-құлық экологиясында ДНК метабаркодтау әдістерін қолдану және жануар түрлерінің қорек қалауларын анықтау бойынша тәжірибесімен ол жобаға далалық жұмыстармен және құстарды қоректендірумен үлес қосады.",n7:"Құстар",bh:"Құстар",b1h:"Түрмен танысыңыз",
+    n8:"Жаңалықтар",nwh:"Жаңалықтар",nwp:"Жобаның кездесулері, далалық жұмыстары және басқа да жаңалықтары.",nwe:"Әзірге жаңалық жоқ. Кездесулер мен басқа да жаңалықтар осында жарияланады.",rc:"Деректер: Koleček <i>et al.</i>, 2016 және Bensch <i>et al.</i>, 2025.",bio4:"Yekaterina – Қазақстан Республикасының Зоология институтының орнитологы. Оның зерттеулері құстардың экологиясына, көбею биологиясына және көші-қонына бағытталған, бұрынғы жұмысы жыртқыш құстарға шоғырланған. Ол құстардың қайда ұшатынын, жыл бойы әртүрлі мекендерді қалай пайдаланатынын және көші-қон олардың көбею мен қыстау аймақтарын қалай байланыстыратынын түсінуге мүдделі. Бұл жобадағы оның рөлі – Қазақстанда далада көмектесіп, жұмыртқаларды Болгарияға тасымалдау үшін сәтті жинау.",bio5:"Liliana Vassileva – биология магистрі, Болгария ғылым академиясының Биоәртүрлілік және экожүйелерді зерттеу институтында мінез-құлық экологиясы бойынша PhD диссертациясын қорғауға дайындалуда. Оның ғылыми қызығушылықтары қоректік алуан түрлілік пен мінез-құлықты қоршаған орта ДНК-сы (eDNA) сияқты кешенді тәсілдер арқылы анықтауға, табиғи қолжетімді қорек ресурстарының түрлік құрамын анықтауға және зерттелетін түрлердің қорек іздеу мінез-құлқы мен стратегияларын зерттеуге бағытталған. Мансабының басында ол Болгарияның таулы аймақтарында флористикалық зерттеулер мен өсімдіктер биоәртүрлілігі саласында тәжірибе жинады.",bio5b:"Құстардың мінез-құлқы, мінез-құлық экологиясында ДНК метабаркодтау әдістерін қолдану және жануар түрлерінің қорек қалауларын анықтау бойынша тәжірибесімен ол жобаға далалық жұмыстармен және құстарды қоректендірумен үлес қосады.",nfs:"Далалық зерттеу алаңдары",sth:"Далалық зерттеу алаңдары",skh:"Калимок – Болгария",skp:"Калимок биологиялық эксперименттік станциясы – Болгарияның солтүстік-шығысында орналасқан, Болгария ғылым академиясының <a href='https://www.iber.bas.bg/en/node/108' target='_blank' rel='noopener'>Биоәртүрлілік және экожүйелерді зерттеу институты (IBER)</a> басқаратын ғылыми-зерттеу орталығы. Ол Калимок–Брашлен қорғалатын аумағында, 5000 гектардан астам батпақтарды, қамысты алқаптарды, жайылма шабындықтарды және жайылма ормандарды қамтитын Natura 2000 сулы-батпақты кешенінде орналасқан. Станцияда сирек кездесетін құс түрлерін өсіру және қайта қоныстандыру орталығы, сондай-ақ құстарға сақина тағу және мінез-құлықты зерттеу жабдықтары бар.",sah:"Алакөл – Қазақстан",sap:"Алакөл мемлекеттік табиғи қорығы (Алакөл биосфералық резерватының да бөлігі) – Қазақстанның шығысында, Жетісу және Абай облыстарының аумағында орналасқан, тұзды Алакөл–Сасықкөл көлдер қазаншұңқырының төңірегіндегі қорғалатын табиғи аумақ. Мемлекеттік табиғи қорық 1998 жылы құрылды, ал кеңірек Алакөл биосфералық резерваты 2013 жылы белгіленді. Көл жүйесі 2009 жылдан бері Рамсар сулы-батпақты алқабы болып табылады. 2026 жылғы мамырдағы экспедиция кезінде біз көлдің батыс жағалауынан <i>Acrocephalus arundinaceus</i> жұмыртқаларын жинауға қолайлы орындарды анықтадық.",n7:"Құстар",bh:"Құстар",b1h:"Түрмен танысыңыз",
     b1p:"<i>Acrocephalus arundinaceus</i> – орташа көлемді (30 г) қоныс аударатын әнші құс. Ол Еуропада және Орталық Азияда ұя салады, ал Сахарадан оңтүстіктегі Африкада және Оңтүстік Африкада қыстайды. Табысты көбею үшін қамысты мекендерге қатты тәуелді.",
     c0:"Ересек құс. Фото: Harald Ris",
     b2h:"Қамыстағы өмір",
@@ -627,7 +656,7 @@ footer h2{color:var(--white);font-size:1.6rem}
     fund:"Еуропалық зерттеу кеңесі (ERC) қаржыландырады. [Грант келісімінің нөмірі]. Айтылған пікірлер тек авторларға тиесілі."
   },
   bg:{
-    n8:"Новини",nwh:"Новини",nwp:"Срещи, теренна работа и други новини от проекта.",nwe:"Все още няма новини. Срещите и другите новини ще бъдат публикувани тук.",rc:"Данни от Koleček <i>et al.</i>, 2016 и Bensch <i>et al.</i>, 2025.",bio4:"Yekaterina е орнитолог в Института по зоология на Република Казахстан. Изследванията ѝ са насочени към екологията, биологията на размножаването и миграцията на птиците, като предишната ѝ работа е съсредоточена върху граблива птици. Интересува се да разбере къде пътуват птиците, как използват различни местообитания през годината и как миграцията свързва техните места за гнездене и зимуване. Ролята ѝ в този проект е да помага на терен в Казахстан, за да бъдат успешно събрани яйцата за преместване в България.",bio5:"Liliana Vassileva е магистър по биология и се готви да защити докторската си дисертация по поведенческа екология в Института по биоразнообразие и екосистемни изследвания на Българската академия на науките. Научните ѝ интереси са насочени към определяне на хранителното разнообразие и поведение чрез комплексни подходи като екологична ДНК (eDNA), установяване на видовия състав на естествено наличните хранителни ресурси и изучаване на хранителното поведение и стратегии при изследваните видове. В началото на кариерата си трупа опит във флористични изследвания и растително биоразнообразие в планинските райони на България.",bio5b:"С опита си в поведението на птиците, прилагането на ДНК метабаркодинг в поведенческата екология и определянето на хранителните предпочитания на животните тя допринася към проекта с теренна работа и дейности по хранене на птиците.",n7:"Птиците",bh:"Птиците",b1h:"Запознайте се с вида",
+    n8:"Новини",nwh:"Новини",nwp:"Срещи, теренна работа и други новини от проекта.",nwe:"Все още няма новини. Срещите и другите новини ще бъдат публикувани тук.",rc:"Данни от Koleček <i>et al.</i>, 2016 и Bensch <i>et al.</i>, 2025.",bio4:"Yekaterina е орнитолог в Института по зоология на Република Казахстан. Изследванията ѝ са насочени към екологията, биологията на размножаването и миграцията на птиците, като предишната ѝ работа е съсредоточена върху граблива птици. Интересува се да разбере къде пътуват птиците, как използват различни местообитания през годината и как миграцията свързва техните места за гнездене и зимуване. Ролята ѝ в този проект е да помага на терен в Казахстан, за да бъдат успешно събрани яйцата за преместване в България.",bio5:"Liliana Vassileva е магистър по биология и се готви да защити докторската си дисертация по поведенческа екология в Института по биоразнообразие и екосистемни изследвания на Българската академия на науките. Научните ѝ интереси са насочени към определяне на хранителното разнообразие и поведение чрез комплексни подходи като екологична ДНК (eDNA), установяване на видовия състав на естествено наличните хранителни ресурси и изучаване на хранителното поведение и стратегии при изследваните видове. В началото на кариерата си трупа опит във флористични изследвания и растително биоразнообразие в планинските райони на България.",bio5b:"С опита си в поведението на птиците, прилагането на ДНК метабаркодинг в поведенческата екология и определянето на хранителните предпочитания на животните тя допринася към проекта с теренна работа и дейности по хранене на птиците.",nfs:"Теренни обекти",sth:"Теренни обекти",skh:"Калимок – България",skp:"Биологичната експериментална станция Калимок е изследователска база в Североизточна България, управлявана от <a href='https://www.iber.bas.bg/en/node/108' target='_blank' rel='noopener'>Института по биоразнообразие и екосистемни изследвания (ИБЕИ)</a> при Българската академия на науките. Намира се в защитената местност Калимок–Брашлен, влажна зона от мрежата Натура 2000 с площ над 5000 хектара, включваща блата, тръстикови масиви, алувиални ливади и заливни гори. На територията има център за размножаване и реинтродукция на редки видове птици, както и оборудване за пръстеняване и поведенчески изследвания.",sah:"Алаколь – Казахстан",sap:"Държавният природен резерват „Алаколь“ (част и от Биосферния резерват „Алаколь“) е защитена природна територия в Източен Казахстан, разположена в областите Жетису и Абай, около солния езерен басейн Алаколь–Сасъккол. Държавният резерват е основан през 1998 г., а по-широкият Биосферен резерват „Алаколь“ е обявен през 2013 г. Езерната система е и влажна зона по Рамсарската конвенция (от 2009 г.). По време на експедицията през май 2026 г. установихме подходящи места за събиране на яйца на голям тръстиков певец по западния бряг на езерото.",n7:"Птиците",bh:"Птиците",b1h:"Запознайте се с вида",
     b1p:"Големият тръстиков певец (<i>Acrocephalus arundinaceus</i>) е среден по размер (30 г) прелетен певчи вид. Гнезди в Европа и Централна Азия, а зимува в Африка на юг от Сахара и в Южна Африка. Успешното му размножаване зависи силно от тръстикови местообитания.",
     c0:"Възрастен голям тръстиков певец. Снимка: Harald Ris",
     b2h:"Животът в тръстиките",
@@ -740,7 +769,7 @@ footer h2{color:var(--white);font-size:1.6rem}
   setLang(T[saved] ? saved : "en");
 
   // ---------- Tabs: show one page at a time, address bar keeps the place ----------
-  var PAGES=["project","birds","team","news"], ANCHOR={models:"project",question:"project",timeline:"project",why:"project"};
+  var PAGES=["project","birds","team","sites","news"], ANCHOR={models:"project",question:"project",timeline:"project",why:"project"};
   var topbar=document.getElementById("topbar"), menubtn=document.getElementById("menubtn");
   var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   function showPage(name){
@@ -809,6 +838,18 @@ footer h2{color:var(--white);font-size:1.6rem}
     slides.forEach(function(sl){ sl.querySelector("img").addEventListener("error",function(){ if(sl===slides[cur]) step(1); go(cur); }); });
     setPaused(reduce); go(0);
   })();
+})();
+
+// ---------- Zoom on click
+(function(){
+  var lb=document.getElementById("lb"); if(!lb) return; var big=lb.querySelector("img");
+  function close(){ lb.hidden=true; big.removeAttribute("src"); }
+  document.addEventListener("click",function(e){
+    var im=e.target.closest(".news-item figure img, .tl figure img, .split.routes figure img");
+    if(im){ big.src=im.currentSrc||im.src; big.alt=im.alt||""; lb.hidden=false; return; }
+    if(!lb.hidden && e.target.closest("#lb")) close();
+  });
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape" && !lb.hidden) close(); });
 })();
 </script>
 </body>
