@@ -43,11 +43,14 @@ section{padding:80px 0}
 .bar nav a{color:var(--navy);text-decoration:none;font-size:.9rem;font-weight:500;padding:6px 0;border-bottom:3px solid transparent}
 .bar nav a:hover,.bar nav a[aria-current="page"]{border-bottom-color:var(--ochre)}
 .tools{display:flex;align-items:center;gap:10px;margin-left:auto}
-.lang{display:flex;gap:6px}
-.lang button,.menu-btn{font:500 .78rem var(--sans);color:var(--navy);background:transparent;border:1px solid var(--line);border-radius:4px;padding:6px 9px;cursor:pointer}
-.lang button[aria-pressed="true"]{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.lang{display:flex;gap:7px;align-items:center}
+.lang button{width:28px;height:28px;padding:0;border:0;border-radius:50%;overflow:hidden;cursor:pointer;background:none;opacity:.55;box-shadow:0 0 0 1px rgba(0,0,0,.18);transition:opacity .15s,box-shadow .15s}
+.lang button svg{display:block;width:100%;height:100%}
+.lang button:hover{opacity:.9}
+.lang button[aria-pressed="true"]{opacity:1;box-shadow:0 0 0 2px var(--white),0 0 0 4px var(--navy)}
+.lang button:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+.menu-btn{font:500 .78rem var(--sans);color:var(--navy);background:transparent;border:1px solid var(--line);border-radius:4px;padding:6px 9px;cursor:pointer}
 .menu-btn{display:none;border-color:var(--navy);font-weight:600}
-.ls{display:none}
 @media(max-width:1100px){
   .menu-btn{display:inline-block}
   .tools{width:100%;justify-content:space-between}
@@ -55,7 +58,7 @@ section{padding:80px 0}
   .topbar.open .bar nav{display:flex}
   .bar nav a{padding:14px 0;border-bottom:1px solid var(--line);font-size:1rem}
 }
-@media(max-width:560px){.bar{padding-left:16px;padding-right:16px;gap:8px}.lf{display:none}.ls{display:inline}.lang{gap:4px}.lang button{padding:6px 7px;font-size:.72rem}.tools{gap:6px}.menu-btn{padding:6px 8px}.bar nav{padding-left:16px;padding-right:16px}}
+@media(max-width:560px){.bar{padding-left:16px;padding-right:16px;gap:8px}.lang{gap:6px}.lang button{width:24px;height:24px}.tools{gap:6px}.menu-btn{padding:6px 8px}.bar nav{padding-left:16px;padding-right:16px}}
 
 /* pages (tabs) */
 .js .page{display:none}
@@ -159,6 +162,7 @@ figcaption{font-size:.95rem;color:var(--muted);margin-top:8px}
 .lg.missing::after{content:attr(data-file);color:var(--muted);font-size:.85rem}
 
 .sponsors{border-top:1px solid var(--line)}
+.updated{margin-top:28px;font-size:.75rem;opacity:.7}
 .site{margin-top:44px;max-width:760px}
 .site h3{font-size:1.6rem;font-weight:300;margin:0 0 10px}
 .site p{margin:0}
@@ -232,7 +236,23 @@ figcaption{font-size:.95rem;color:var(--muted);margin-top:8px}
 .profile figure.natural .ph{aspect-ratio:auto}
 .profile figure.natural img{height:auto}
 .profile figure.missing .ph::after{content:"";background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='38' r='15' fill='%2393A4B1'/%3E%3Cpath d='M20 92c2-21 15-31 30-31s28 10 30 31z' fill='%2393A4B1'/%3E%3C/svg%3E") center 60%/62% no-repeat}
-/* team collage */
+/* team list */
+.team-list{display:grid;gap:44px;margin-top:40px}
+.person{display:grid;grid-template-columns:240px 1fr;gap:36px;align-items:start}
+.person figure{margin:0}
+.person figure .ph{aspect-ratio:4/5}
+.person figure img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block}
+.person figure.missing img{display:none}
+.person figure.missing .ph{background:var(--line)}
+.person figure.missing .ph::after{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='38' r='15' fill='%2393A4B1'/%3E%3Cpath d='M20 92c2-21 15-31 30-31s28 10 30 31z' fill='%2393A4B1'/%3E%3C/svg%3E") center/70% no-repeat}
+.person figcaption{font-size:.72rem;color:var(--muted);margin-top:6px}
+.person h4{font-size:1.5rem;font-weight:300;margin:0 0 2px}
+.person .role{font-weight:600;color:var(--blue);margin:0 0 12px}
+.person .pbody > p{max-width:64ch;margin:0 0 10px}
+.tgroup{margin-top:56px;padding-top:44px;border-top:1px solid var(--line)}
+.tgroup h3{font-size:1.5rem;font-weight:300;margin:0}
+@media(max-width:700px){.person{grid-template-columns:1fr;gap:16px}.person figure{width:240px;max-width:100%}}
+/* team collage (unused) */
 .collage{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:48px;margin-top:48px;align-items:start}
 .collage .col{display:flex;flex-direction:column;gap:64px}
 .collage .col-l{padding-top:70px}
@@ -285,9 +305,11 @@ footer h2{color:var(--white);font-size:1.6rem}
     <div class="tools">
       <button type="button" class="menu-btn" id="menubtn" aria-expanded="false" aria-controls="mainnav" data-i18n="menu">Menu</button>
       <div class="lang" role="group" aria-label="Language">
-        <button type="button" data-lang="en" aria-pressed="true" aria-label="English"><span class="lf">English</span><span class="ls">EN</span></button>
-        <button type="button" data-lang="kk" aria-pressed="false" lang="kk" aria-label="Қазақша"><span class="lf">Қазақша</span><span class="ls">ҚАЗ</span></button>
-        <button type="button" data-lang="bg" aria-pressed="false" lang="bg" aria-label="Български"><span class="lf">Български</span><span class="ls">БГ</span></button>
+        <button type="button" data-lang="en" aria-pressed="true" aria-label="English" title="English"><svg viewBox='0 0 60 30' preserveAspectRatio='xMidYMid slice' aria-hidden='true'><rect width='60' height='30' fill='#012169'/><path d='M0 0L60 30M60 0L0 30' stroke='#fff' stroke-width='6'/><path d='M0 0L60 30M60 0L0 30' stroke='#C8102E' stroke-width='2'/><path d='M30 0V30M0 15H60' stroke='#fff' stroke-width='10'/><path d='M30 0V30M0 15H60' stroke='#C8102E' stroke-width='6'/></svg></button>
+        <button type="button" data-lang="kk" aria-pressed="false" lang="kk" aria-label="Қазақша" title="Қазақша"><svg viewBox='0 0 60 30' preserveAspectRatio='xMidYMid slice' aria-hidden='true'><rect width='60' height='30' fill='#00AFCA'/><circle cx='30' cy='12' r='5' fill='#FEC50C'/><g stroke='#FEC50C' stroke-width='1.2'><path d='M30 3V5M30 19V21M21 12H23M37 12H39M23.6 5.6L25 7M35 17L36.4 18.4M36.4 5.6L35 7M25 17L23.6 18.4'/></g><path d='M20 24Q30 19 40 24Q30 22 20 24Z' fill='#FEC50C'/></svg></button>
+        <button type="button" data-lang="bg" aria-pressed="false" lang="bg" aria-label="Български" title="Български"><svg viewBox='0 0 60 30' preserveAspectRatio='xMidYMid slice' aria-hidden='true'><rect width='60' height='10' fill='#fff'/><rect y='10' width='60' height='10' fill='#00966E'/><rect y='20' width='60' height='10' fill='#D62612'/></svg></button>
+        <button type="button" data-lang="tr" aria-pressed="false" lang="tr" aria-label="Türkçe" title="Türkçe"><svg viewBox='0 0 60 30' preserveAspectRatio='xMidYMid slice' aria-hidden='true'><rect width='60' height='30' fill='#E30A17'/><circle cx='26' cy='15' r='7.5' fill='#fff'/><circle cx='28.5' cy='15' r='6' fill='#E30A17'/><polygon fill='#fff' points='38,15 34.2,16.2 34.2,20 31.9,16.9 28.2,18 30.5,15 28.2,12 31.9,13.1 34.2,10 34.2,13.8'/></svg></button>
+        <button type="button" data-lang="ru" aria-pressed="false" lang="ru" aria-label="Русский" title="Русский"><svg viewBox='0 0 60 30' preserveAspectRatio='xMidYMid slice' aria-hidden='true'><rect width='60' height='10' fill='#fff'/><rect y='10' width='60' height='10' fill='#0039A6'/><rect y='20' width='60' height='10' fill='#D52B1E'/></svg></button>
       </div>
     </div>
   </div>
@@ -471,43 +493,72 @@ footer h2{color:var(--white);font-size:1.6rem}
     <div class="wrap">
       <h2 data-i18n="th">The team</h2>
       <p data-i18n="tp">The people behind this project.</p>
-      <div class="collage">
-        <div class="col col-l">
-          <article class="profile p-a">
-            <figure><div class="ph" data-file="images/violeta%20Large.jpeg"><img src="images/violeta%20Large.jpeg" alt="Violeta Caballero-Lopez" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c5">Photo: Javier Abalos Alvarez</figcaption></figure>
-            <h3>Violeta Caballero-Lopez</h3>
-            <p class="role" data-i18n="r2">Postdoctoral researcher</p>
-            <p data-i18n="bio2">Violeta completed her PhD on the genetics of bird migration at Lund University in 2025. She focused on <i>Phylloscopus</i> warblers, combining genomic, molecular and phenotypic data to understand how small birds migrate. Before that, she spent several seasons on the great reed warbler project at Lake Kvismaren, where she came to know the species’ behaviour first-hand. In this project her role is to collect the eggs in Kazakhstan and to fit tracking devices on the birds in Bulgaria.</p>
-          </article>
-          <article class="profile p-b">
-            <figure><div class="ph" data-file="images/liliana.JPG"><img src="images/liliana.JPG" alt="Liliana Vassileva" onerror="this.closest('figure').classList.add('missing')"></div></figure>
-            <h3>Liliana Vassileva</h3>
-            <p class="role" data-i18n="r4">Field assistant</p>
-            <p data-i18n="bio5">Liliana Vassileva holds a master’s degree in biology and is on her way to defend her PhD thesis in behavioural ecology with the Institute of Biodiversity and Ecosystem Research at the Bulgarian Academy of Sciences. Her scientific interests and research focus on determining dietary diversity and behaviour through comprehensive approaches such as environmental DNA (eDNA), identifying the natural available food resources species composition, and examining foraging behaviours and strategies in the studied species. In her early career, she gained experience in floristic research and plant biodiversity in the mountainous regions of Bulgaria.</p>
-            <p data-i18n="bio5b">With an expertise in birds’ behaviour, application of DNA metabarcoding methods for behavioural ecology, and determination of the dietary preferences of animal species she contributes to the project with fieldwork and bird feeding activities.</p>
-          </article>
-        </div>
-        <div class="col col-c">
-          <article class="profile p-c">
-            <figure><div class="ph" data-file="images/bensch.JPG"><img src="images/bensch.JPG" alt="Staffan Bensch" onerror="this.closest('figure').classList.add('missing')"></div></figure>
-            <h3>Staffan Bensch</h3>
+      <div class="team-list">
+        <article class="person">
+          <figure><div class="ph" data-file="images/bensch.JPG"><img src="images/bensch.JPG" alt="Staffan Bensch" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+          <div class="pbody">
+            <h4>Staffan Bensch</h4>
             <p class="role" data-i18n="r1">Principal investigator, Professor</p>
-            <p data-i18n="bio1">Staffan Bensch is a Professor of Animal Ecology at Lund University since 2004. He is an evolutionary biologist working in molecular ecology, leading long-term research projects on migratory birds and avian malaria parasites. He leads an ERC-funded programme to uncover the genetic basis of songbird migration. Traits such as the urge to leave, the direction birds take and the length of their journeys are governed by unknown genetic mechanisms. This project is part of that programme and his role is the overall coordination and field expertise.</p>
-          </article>
-        </div>
-        <div class="col col-r">
-          <article class="profile p-d">
-            <figure><div class="ph" data-file="images/katja.jpg"><img src="images/katja.jpg" alt="Yekaterina Akentyeva" onerror="this.closest('figure').classList.add('missing')"></div></figure>
-            <h3>Yekaterina Akentyeva</h3>
-            <p class="role" data-i18n="r4">Field assistant</p>
+            <p data-i18n="bio1">Staffan Bensch is a Professor of Animal Ecology at Lund University since 2004. He is an evolutionary biologist working in molecular ecology, carrying long-term research projects on migratory birds and avian malaria parasites. He leads an ERC-funded programme to uncover the genetic basis of songbird migration. “Born to migrate” is part of that programme and his role is the overall coordination and field expertise all throughout the project.</p>
+          </div>
+        </article>
+      </div>
+      <div class="tgroup">
+        <h3 data-i18n="tkz">Kazakhstan</h3>
+        <div class="team-list">
+        <article class="person">
+          <figure><div class="ph" data-file="images/violeta%20Large.jpeg"><img src="images/violeta%20Large.jpeg" alt="Violeta Caballero-Lopez" onerror="this.closest('figure').classList.add('missing')"></div><figcaption data-i18n="c5">Photo: Javier Abalos Alvarez</figcaption></figure>
+          <div class="pbody">
+            <h4>Violeta Caballero-Lopez</h4>
+            <p class="role" data-i18n="r2">Postdoctoral researcher</p>
+            <p data-i18n="bio2">Violeta completed her PhD on the genetics of bird migration at Lund University in 2025. She focused on <i>Phylloscopus</i> warblers, combining genomic, molecular and phenotypic data to understand how small birds migrate. Before that, she spent several seasons on the great reed warbler project at Lake Kvismaren, where she came to know the species’ behaviour first-hand. She is experienced in field ornithology, molecular methods and genomic analyses. In this project her role is finding suitable sites in Kazakhstan, collecting the eggs, and fitting tracking devices on the birds in Bulgaria.</p>
+          </div>
+        </article>
+        <article class="person">
+          <figure><div class="ph" data-file="images/harald.jpg"><img src="images/harald.jpg" alt="Harald Ris" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+          <div class="pbody">
+            <h4>Harald Ris</h4>
+            <p class="role" data-i18n="r4">Field collaborator</p>
+            <p data-i18n="bio6">Harald is an environmental consultant and avid field ornithologist. He has worked in numerous projects including remote expeditions to Siberia, Azerbaijan or Lebanon. He is experienced in ringing, trapping and tagging wild birds and species ID in the field. His role in this project is finding suitable sites in Kazakhstan to perform the egg translocation experiment.</p>
+          </div>
+        </article>
+        <article class="person">
+          <figure><div class="ph" data-file="images/katja.jpg"><img src="images/katja.jpg" alt="Yekaterina Akentyeva" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+          <div class="pbody">
+            <h4>Yekaterina Akentyeva</h4>
+            <p class="role" data-i18n="r4">Field collaborator</p>
             <p data-i18n="bio4">Yekaterina is an ornithologist at the Institute of Zoology of the Republic of Kazakhstan. Her research focuses on bird ecology, breeding biology and migration, with previous work concentrating on birds of prey. She is interested in understanding where birds travel, how they use different habitats throughout the year, and how migration connects their breeding and wintering grounds. Her role in this project is to assist in the field in Kazakhstan in order to successfully collect the eggs for translocation to Bulgaria.</p>
-          </article>
-          <article class="profile p-e">
-            <figure><div class="ph" data-file="images/Dimitar.jpg"><img src="images/Dimitar.jpg" alt="Dimitar Dimitrov" onerror="this.closest('figure').classList.add('missing')"></div></figure>
-            <h3>Dimitar Dimitrov</h3>
-            <p class="role" data-i18n="r4">Field assistant</p>
+          </div>
+        </article>
+        <article class="person">
+          <figure><div class="ph" data-file="images/bekzhan.jpg"><img src="images/bekzhan.jpg" alt="Bekzhan Berdikulov" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+          <div class="pbody">
+            <h4>Bekzhan Berdikulov</h4>
+            <p class="role" data-i18n="r4">Field collaborator</p>
+            <p data-i18n="bio7">Bekzhan is an ornithologist and researcher at the Institute of Zoology, Kazakhstan. His PhD focused on the ecology, distribution, and migration of pigeons and doves (Columbiformes) in southern and southeastern Kazakhstan. His current research focuses on bird migration, movement ecology, and conservation, using field surveys, bird ringing, and GPS telemetry. He is particularly interested in integrating tracking and genetic approaches to better understand migratory connectivity in Central Asian birds. His role in the project is to assist with field permits and logistics in Kazakhstan.</p>
+          </div>
+        </article>
+        </div>
+      </div>
+      <div class="tgroup">
+        <h3 data-i18n="tbg">Bulgaria</h3>
+        <div class="team-list">
+        <article class="person">
+          <figure><div class="ph" data-file="images/Dimitar.jpg"><img src="images/Dimitar.jpg" alt="Dimitar Dimitrov" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+          <div class="pbody">
+            <h4>Dimitar Dimitrov</h4>
+            <p class="role" data-i18n="r4">Field collaborator</p>
             <p data-i18n="bio3">Mitko is an experienced ringer and field ornithologist specializing in the study of passerine and soaring bird migration, ecology, and blood parasites. He has been working on avian malaria and other blood parasites for more than 15 years. Currently, he is an Associate Professor at the Institute of Biodiversity and Ecosystem Research, Bulgarian Academy of Sciences, focusing on the taxonomy, systematics, specificity, co-evolution, and host-parasite interactions of haemosporidian parasites in birds. In this project, he will provide field assistance at the Kalimok field station by searching for great reed warbler nests, collecting eggs, feeding nestlings, and providing technical support and logistics in Bulgaria.</p>
-          </article>
+          </div>
+        </article>
+        <article class="person">
+          <figure><div class="ph" data-file="images/liliana.JPG"><img src="images/liliana.JPG" alt="Liliana Vassileva" onerror="this.closest('figure').classList.add('missing')"></div></figure>
+          <div class="pbody">
+            <h4>Liliana Vassileva</h4>
+            <p class="role" data-i18n="r4">Field collaborator</p>
+            <p data-i18n="bio5">Liliana Vassileva holds a master’s degree in biology and is on her way to defend her PhD thesis in behavioural ecology with the Institute of Biodiversity and Ecosystem Research at the Bulgarian Academy of Sciences. Her scientific interests and research focus on determining dietary diversity and behaviour through comprehensive approaches such as environmental DNA (eDNA), identifying the natural available food resources species composition, and examining foraging behaviours and strategies in the studied species. She contributes to the project with fieldwork and bird feeding activities.</p>
+          </div>
+        </article>
         </div>
       </div>
       <p style="margin-top:32px" data-i18n="collab">Collaboration at Kalimok: Dr. Pavel Zehtindjiev, Bulgarian Academy of Sciences</p>
@@ -570,7 +621,7 @@ footer h2{color:var(--white);font-size:1.6rem}
 
   <section id="sponsors" class="sponsors">
     <div class="wrap">
-      <h2 data-i18n="sph">Sponsors</h2>
+      <h2 data-i18n="sph">Funding</h2>
       <p data-i18n="spp">This project is funded by the European Research Council (ERC) and the Swedish Research Council (Vetenskapsrådet, VR).</p>
       <!-- TODO: add official logos as images/logo-ERC.png and images/logo-vr.jpg, and follow the ERC/EU acknowledgement rules -->
       <div class="logos">
@@ -584,11 +635,11 @@ footer h2{color:var(--white);font-size:1.6rem}
 <footer id="contact">
   <div class="wrap">
     <h2 data-i18n="ch">Contact</h2>
-    <p class="contact"><a href="mailto:name@university.edu">name@university.edu</a></p>
-    <p data-i18n="op">Open positions will be listed here.</p>
-    <p style="margin-top:32px" data-i18n="fund">Funded by the European Research Council (ERC). [Grant agreement number]. Views and opinions expressed are those of the authors only.</p>
-    <!-- TODO: add the official ERC / EU logo and acknowledgement text required by the grant agreement -->
-  </div>
+    <p class="contact"><a href="mailto:staffan.bensch@biol.lu.se">staffan.bensch@biol.lu.se</a></p>
+    <p data-i18n="op">There are no open positions at the moment.</p>
+    <p style="margin-top:32px" data-i18n="fund">Views and opinions expressed here are those of the authors only.</p>
+    <p class="updated" data-i18n="lu">Last updated: November 2026</p>
+      </div>
 </footer>
 
 <div class="lb" id="lb" hidden><button type="button" aria-label="Close">×</button><img alt=""></div>
@@ -597,7 +648,7 @@ footer h2{color:var(--white);font-size:1.6rem}
   // ---------- Translations (English text lives in the HTML above) ----------
   var T = {
   kk:{
-    n8:"Жаңалықтар",nwh:"Жаңалықтар",nwp:"Жобаның кездесулері, далалық жұмыстары және басқа да жаңалықтары.",nwe:"Әзірге жаңалық жоқ. Кездесулер мен басқа да жаңалықтар осында жарияланады.",rc:"Деректер: Koleček <i>et al.</i>, 2016 және Bensch <i>et al.</i>, 2025.",bio4:"Yekaterina – Қазақстан Республикасының Зоология институтының орнитологы. Оның зерттеулері құстардың экологиясына, көбею биологиясына және көші-қонына бағытталған, бұрынғы жұмысы жыртқыш құстарға шоғырланған. Ол құстардың қайда ұшатынын, жыл бойы әртүрлі мекендерді қалай пайдаланатынын және көші-қон олардың көбею мен қыстау аймақтарын қалай байланыстыратынын түсінуге мүдделі. Бұл жобадағы оның рөлі – Қазақстанда далада көмектесіп, жұмыртқаларды Болгарияға тасымалдау үшін сәтті жинау.",bio5:"Liliana Vassileva – биология магистрі, Болгария ғылым академиясының Биоәртүрлілік және экожүйелерді зерттеу институтында мінез-құлық экологиясы бойынша PhD диссертациясын қорғауға дайындалуда. Оның ғылыми қызығушылықтары қоректік алуан түрлілік пен мінез-құлықты қоршаған орта ДНК-сы (eDNA) сияқты кешенді тәсілдер арқылы анықтауға, табиғи қолжетімді қорек ресурстарының түрлік құрамын анықтауға және зерттелетін түрлердің қорек іздеу мінез-құлқы мен стратегияларын зерттеуге бағытталған. Мансабының басында ол Болгарияның таулы аймақтарында флористикалық зерттеулер мен өсімдіктер биоәртүрлілігі саласында тәжірибе жинады.",bio5b:"Құстардың мінез-құлқы, мінез-құлық экологиясында ДНК метабаркодтау әдістерін қолдану және жануар түрлерінің қорек қалауларын анықтау бойынша тәжірибесімен ол жобаға далалық жұмыстармен және құстарды қоректендірумен үлес қосады.",nfs:"Далалық зерттеу алаңдары",sth:"Далалық зерттеу алаңдары",skh:"Калимок – Болгария",skp:"Калимок биологиялық эксперименттік станциясы – Болгарияның солтүстік-шығысында орналасқан, Болгария ғылым академиясының <a href='https://www.iber.bas.bg/en/node/108' target='_blank' rel='noopener'>Биоәртүрлілік және экожүйелерді зерттеу институты (IBER)</a> басқаратын ғылыми-зерттеу орталығы. Ол Калимок–Брашлен қорғалатын аумағында, 5000 гектардан астам батпақтарды, қамысты алқаптарды, жайылма шабындықтарды және жайылма ормандарды қамтитын Natura 2000 сулы-батпақты кешенінде орналасқан. Станцияда сирек кездесетін құс түрлерін өсіру және қайта қоныстандыру орталығы, сондай-ақ құстарға сақина тағу және мінез-құлықты зерттеу жабдықтары бар.",sah:"Алакөл – Қазақстан",sap:"Алакөл мемлекеттік табиғи қорығы (Алакөл биосфералық резерватының да бөлігі) – Қазақстанның шығысында, Жетісу және Абай облыстарының аумағында орналасқан, тұзды Алакөл–Сасықкөл көлдер қазаншұңқырының төңірегіндегі қорғалатын табиғи аумақ. Мемлекеттік табиғи қорық 1998 жылы құрылды, ал кеңірек Алакөл биосфералық резерваты 2013 жылы белгіленді. Көл жүйесі 2009 жылдан бері Рамсар сулы-батпақты алқабы болып табылады. 2026 жылғы мамырдағы экспедиция кезінде біз көлдің батыс жағалауынан <i>Acrocephalus arundinaceus</i> жұмыртқаларын жинауға қолайлы орындарды анықтадық.",n7:"Құстар",bh:"Құстар",b1h:"Түрмен танысыңыз",
+    n8:"Жаңалықтар",nwh:"Жаңалықтар",nwp:"Жобаның кездесулері, далалық жұмыстары және басқа да жаңалықтары.",nwe:"Әзірге жаңалық жоқ. Кездесулер мен басқа да жаңалықтар осында жарияланады.",rc:"Деректер: Koleček <i>et al.</i>, 2016 және Bensch <i>et al.</i>, 2025.",bio4:"Yekaterina – Қазақстан Республикасының Зоология институтының орнитологы. Оның зерттеулері құстардың экологиясына, көбею биологиясына және көші-қонына бағытталған, бұрынғы жұмысы жыртқыш құстарға шоғырланған. Ол құстардың қайда ұшатынын, жыл бойы әртүрлі мекендерді қалай пайдаланатынын және көші-қон олардың көбею мен қыстау аймақтарын қалай байланыстыратынын түсінуге мүдделі. Бұл жобадағы оның рөлі – Қазақстанда далада көмектесіп, жұмыртқаларды Болгарияға тасымалдау үшін сәтті жинау.",bio5:"Liliana Vassileva – биология магистрі, Болгария ғылым академиясының Биоәртүрлілік және экожүйелерді зерттеу институтында мінез-құлық экологиясы бойынша PhD диссертациясын қорғауға дайындалуда. Оның ғылыми қызығушылықтары қоректік алуан түрлілік пен мінез-құлықты қоршаған орта ДНК-сы (eDNA) сияқты кешенді тәсілдер арқылы анықтауға, табиғи қолжетімді қорек ресурстарының түрлік құрамын анықтауға және зерттелетін түрлердің қорек іздеу мінез-құлқы мен стратегияларын зерттеуге бағытталған. Ол жобаға далалық жұмыстармен және құстарды қоректендірумен үлес қосады.",bio5b:"Құстардың мінез-құлқы, мінез-құлық экологиясында ДНК метабаркодтау әдістерін қолдану және жануар түрлерінің қорек қалауларын анықтау бойынша тәжірибесімен ол жобаға далалық жұмыстармен және құстарды қоректендірумен үлес қосады.",nfs:"Далалық зерттеу алаңдары",sth:"Далалық зерттеу алаңдары",skh:"Калимок – Болгария",skp:"Калимок биологиялық эксперименттік станциясы – Болгарияның солтүстік-шығысында орналасқан, Болгария ғылым академиясының <a href='https://www.iber.bas.bg/en/node/108' target='_blank' rel='noopener'>Биоәртүрлілік және экожүйелерді зерттеу институты (IBER)</a> басқаратын ғылыми-зерттеу орталығы. Ол Калимок–Брашлен қорғалатын аумағында, 5000 гектардан астам батпақтарды, қамысты алқаптарды, жайылма шабындықтарды және жайылма ормандарды қамтитын Natura 2000 сулы-батпақты кешенінде орналасқан. Станцияда сирек кездесетін құс түрлерін өсіру және қайта қоныстандыру орталығы, сондай-ақ құстарға сақина тағу және мінез-құлықты зерттеу жабдықтары бар.",sah:"Алакөл – Қазақстан",sap:"Алакөл мемлекеттік табиғи қорығы (Алакөл биосфералық резерватының да бөлігі) – Қазақстанның шығысында, Жетісу және Абай облыстарының аумағында орналасқан, тұзды Алакөл–Сасықкөл көлдер қазаншұңқырының төңірегіндегі қорғалатын табиғи аумақ. Мемлекеттік табиғи қорық 1998 жылы құрылды, ал кеңірек Алакөл биосфералық резерваты 2013 жылы белгіленді. Көл жүйесі 2009 жылдан бері Рамсар сулы-батпақты алқабы болып табылады. 2026 жылғы мамырдағы экспедиция кезінде біз көлдің батыс жағалауынан <i>Acrocephalus arundinaceus</i> жұмыртқаларын жинауға қолайлы орындарды анықтадық.",tkz:"Қазақстан",tbg:"Болгария",lu:"Соңғы жаңарту: 2026 жылғы қараша",bio6:"Harald – қоршаған ортаны қорғау жөніндегі кеңесші және құмар далалық орнитолог. Ол көптеген жобаларда, соның ішінде Сібірге, Әзірбайжанға немесе Ливанға алыс экспедицияларда жұмыс істеген. Ол жабайы құстарға сақина тағуда, оларды ұстауда және белгілеуде, сондай-ақ далада түрлерді анықтауда тәжірибелі. Бұл жобадағы оның рөлі – жұмыртқаларды тасымалдау тәжірибесін өткізу үшін Қазақстанда қолайлы орындарды табу.",bio7:"Bekzhan – Қазақстан Зоология институтының орнитологы және зерттеушісі. Оның PhD жұмысы Қазақстанның оңтүстігі мен оңтүстік-шығысындағы көгершіндер мен кептерлердің (Columbiformes) экологиясына, таралуына және көші-қонына бағытталған. Қазіргі зерттеулері құстардың көші-қонына, қозғалыс экологиясына және сақтауға бағытталған; ол далалық зерттеулерді, құстарға сақина тағуды және GPS-телеметрияны қолданады. Ол Орталық Азия құстарының көші-қон байланыстылығын жақсы түсіну үшін бақылау және генетикалық тәсілдерді біріктіруге ерекше қызығады. Жобадағы оның рөлі – Қазақстанда далалық рұқсаттар мен логистикаға көмектесу.",n7:"Құстар",bh:"Құстар",b1h:"Түрмен танысыңыз",
     b1p:"<i>Acrocephalus arundinaceus</i> – орташа көлемді (30 г) қоныс аударатын әнші құс. Ол Еуропада және Орталық Азияда ұя салады, ал Сахарадан оңтүстіктегі Африкада және Оңтүстік Африкада қыстайды. Табысты көбею үшін қамысты мекендерге қатты тәуелді.",
     c0:"Ересек құс. Фото: Harald Ris",
     b2h:"Қамыстағы өмір",
@@ -607,14 +658,14 @@ footer h2{color:var(--white);font-size:1.6rem}
     b3p2:"Қазақстан құстары, яғни түр таралу аймағының шығыс шетіндегі популяция, генетикалық деректер түрдің Қазақстанға батыстан келгенін көрсетсе де, Түркия құстарымен бірге Шығыс Африкада қыстайды. Демек, таралу аймағы кеңейген кезде олардың көші-қон бағыты айтарлықтай өзгерген. Көктемде олар ақпан айында Африкадан шыға бастайды және ұя салатын жерге жеткенше Оңтүстік Ирактағы аралық аялдама орнында екі айға дейін болады; бұл бұрын сипатталмаған екі сатылы стратегия (Bensch және т.б., 2025).",
     b3r:"Зерттеулерді оқыңыз:",
     c5:"Фото: Javier Abalos Alvarez",crh:"Фото: Harald Ris",c8:"Біз жұмыртқа жинайтын жерлерді будандасқан популяциялардан сынама алмау үшін шалғай қамыс құстары (<i>Acrocephalus stentoreus</i>) жоқ жерлерден таңдадық. Фото: Harald Ris",c6:"Спутниктік таратқышы бар құс. Фото: Violeta Caballero-Lopez",
-    bio1:"Staffan Bensch – 2004 жылдан бері Лунд университетінің жануарлар экологиясы профессоры. Ол молекулалық экология саласында жұмыс істейтін эволюциялық биолог, қоныс аударатын құстар мен құс безгегі паразиттері бойынша ұзақ мерзімді зерттеу жобаларын басқарады. Ол әнші құстардың көші-қонының генетикалық негізін ашуға арналған ERC қаржыландыратын бағдарламаны басқарады. Кетуге деген құлшыныс, құстар таңдайтын бағыт және ұшу қашықтығы сияқты белгілер әлі белгісіз генетикалық механизмдермен реттеледі. Бұл жоба сол бағдарламаның бөлігі, ал оның рөлі – жалпы үйлестіру және далалық тәжірибе.",
-    bio2:"Violeta 2025 жылы Лунд университетінде құстардың көші-қонының генетикасы бойынша PhD қорғады. Ол геномдық, молекулалық және фенотиптік деректерді біріктіре отырып, <i>Phylloscopus</i> туысындағы әнші құстарға назар аударып, ұсақ құстардың қалай көшетінін зерттеді. Бұған дейін ол Квисмарен көліндегі жоба аясында бірнеше маусым жұмыс істеп, түрдің мінез-құлқымен тікелей танысты. Бұл жобада оның рөлі – Қазақстанда жұмыртқаларды жинау және Болгарияда құстарға бақылау құрылғыларын бекіту.",
+    bio1:"Staffan Bensch – 2004 жылдан бері Лунд университетінің жануарлар экологиясы профессоры. Ол молекулалық экология саласында жұмыс істейтін эволюциялық биолог, қоныс аударатын құстар мен құс безгегі паразиттері бойынша ұзақ мерзімді зерттеу жобаларын жүргізеді. Ол әнші құстардың көші-қонының генетикалық негізін ашуға арналған ERC қаржыландыратын бағдарламаны басқарады. «Born to migrate» – сол бағдарламаның бөлігі, ал оның рөлі – жобаның бүкіл кезеңінде жалпы үйлестіру және далалық тәжірибе.",
+    bio2:"Violeta 2025 жылы Лунд университетінде құстардың көші-қонының генетикасы бойынша PhD қорғады. Ол геномдық, молекулалық және фенотиптік деректерді біріктіре отырып, <i>Phylloscopus</i> туысындағы әнші құстарға назар аударып, ұсақ құстардың қалай көшетінін зерттеді. Бұған дейін ол Квисмарен көліндегі жоба аясында бірнеше маусым жұмыс істеп, түрдің мінез-құлқымен тікелей танысты. Ол далалық орнитологияда, молекулалық әдістерде және геномдық талдауда тәжірибелі. Бұл жобада оның рөлі – Қазақстанда қолайлы орындарды табу, жұмыртқаларды жинау және Болгарияда құстарға бақылау құрылғыларын бекіту.",
     menu:"Мәзір",tlh:"Хронология",
     tl1:"Пилоттық зерттеу: <i>Acrocephalus arundinaceus</i> балапандарын қолмен өсіру.",
     tl2:"Қазақстанға экспедиция: <i>Acrocephalus arundinaceus</i> жұмыртқаларын жинауға қолайлы орындарды табу. Құстарға спутниктік таратқыштар және деректерді тікелей эфирде жіберетін басқа да бақылау құрылғылары бекітілді; бұл біздің мақсатымызға ең жақсы технологияны табуға арналған пилоттық жұмыс болды.",
     tl3:"Алакөл көлінен Калимокқа жұмыртқаларды тасымалдаудың алғашқы тәжірибесі. Балапандар станцияда шығады және болгар қамыс құстарымен бірге қолмен өсіріледі. Ұша бастағанда олар ашық ауадағы вольерлерде тұрады және босатылардан біраз бұрын спутниктік таратқыштар бекітіледі.",
     c7:"Фото: Violeta Caballero-Lopez",
-    n1:"Жоба",n2:"Екі модель",n3:"Эксперимент",n4:"Команда",n5:"Байланыс",brand:"Тұқым қуалайтын миграциялық бағдарлама",cred:"Фото: Harald Ris",stmt:"Миграциялық маршруттардың тұқым қуалауын шешуші сынақ.",n6:"Демеушілер",sph:"Демеушілер",spp:"Бұл жобаны Еуропалық зерттеу кеңесі (ERC) және Швеция ғылыми кеңесі (Vetenskapsrådet, VR) қаржыландырады.",
+    n1:"Жоба",n2:"Екі модель",n3:"Эксперимент",n4:"Команда",n5:"Байланыс",brand:"Тұқым қуалайтын миграциялық бағдарлама",cred:"Фото: Harald Ris",stmt:"Миграциялық маршруттардың тұқым қуалауын шешуші сынақ.",n6:"Демеушілер",sph:"Қаржыландыру",spp:"Бұл жобаны Еуропалық зерттеу кеңесі (ERC) және Швеция ғылыми кеңесі (Vetenskapsrådet, VR) қаржыландырады.",
     h1:"Жас құс қайда ұшатынын қалай біледі?",
     hp:"Алғашқы күзгі миграциясы кезінде жас құс мыңдаған шақырым, жиі теңіздер мен шөлдерден өтіп, өзі ешқашан болмаған жерге ұшады. Бұл жолдың нұсқаулары оның ДНК-сында жазылған. Біз құс ата-анасынан қандай ақпарат мұра ететінін білу үшін жұмыртқаларды елдер арасында тасымалдаймыз.",
     btn:"Екі модельді көру",
@@ -650,13 +701,13 @@ footer h2{color:var(--white);font-size:1.6rem}
     fp:"Болгарияның солтүстік-шығысындағы Калимок далалық станциясының төңірегінде қамыс құстарының тығыз популяциясы ұя салады; станция Болгария ғылым академиясының докторы Павел Зехтинджиевпен ұзақ мерзімді ынтымақтастықта жұмыс істейді. 2024 және 2025 жылдары жүргізілген пилоттық зерттеу балапандарды дербес болғанға дейін, шамамен 32 күн, өсіруге болатынын, сондай-ақ құстар күзгі миграция кезінде салмағы 1,7 г спутниктік таратқыштарды сәтті алып жүре алатынын көрсетті. 2025 жылы Қазақстанға жасалған барлау экспедициясы жұмыртқа жинауға қолайлы орындарды анықтады.",
     c1:"Калимок далалық станциясы, Болгария",c2:"Ұядағы жұмыртқалар. Фото: Javier Abalos Alvarez",c3:"Ұядағы балапандар. Фото: Javier Abalos Alvarez",c4:"Қолдағы балапандар. Фото: Javier Abalos Alvarez",
     th:"Команда",tp:"Осы жобаның артындағы адамдар.",
-    r4:"Далалық көмекші",bio3:"Mitko – тәжірибелі сақиналаушы және далалық орнитолог, ол торғайтәрізді және қалықтап ұшатын құстардың көші-қонын, экологиясын және қан паразиттерін зерттейді. Ол 15 жылдан астам уақыт құс безгегі мен басқа да қан паразиттерімен жұмыс істеп келеді. Қазір ол Болгария ғылым академиясының Биоәртүрлілік және экожүйелерді зерттеу институтында доцент, құстардың гемоспоридиялық паразиттерінің таксономиясы, систематикасы, ерекшелігі, бірлескен эволюциясы және хозяин мен паразиттің өзара әрекеттесуімен айналысады. Бұл жобада ол Калимок далалық станциясында далалық көмекші болып, <i>Acrocephalus arundinaceus</i> ұяларын іздейді, жұмыртқаларды жинайды, балапандарды қоректендіреді және Болгарияда техникалық қолдау мен логистиканы қамтамасыз етеді.",r1:"Жоба жетекшісі, профессор",r2:"Постдок зерттеуші",r3:"PhD студент",
+    r4:"Далалық серіктес",bio3:"Mitko – тәжірибелі сақиналаушы және далалық орнитолог, ол торғайтәрізді және қалықтап ұшатын құстардың көші-қонын, экологиясын және қан паразиттерін зерттейді. Ол 15 жылдан астам уақыт құс безгегі мен басқа да қан паразиттерімен жұмыс істеп келеді. Қазір ол Болгария ғылым академиясының Биоәртүрлілік және экожүйелерді зерттеу институтында доцент, құстардың гемоспоридиялық паразиттерінің таксономиясы, систематикасы, ерекшелігі, бірлескен эволюциясы және хозяин мен паразиттің өзара әрекеттесуімен айналысады. Бұл жобада ол Калимок далалық станциясында далалық көмекші болып, <i>Acrocephalus arundinaceus</i> ұяларын іздейді, жұмыртқаларды жинайды, балапандарды қоректендіреді және Болгарияда техникалық қолдау мен логистиканы қамтамасыз етеді.",r1:"Жоба жетекшісі, профессор",r2:"Постдок зерттеуші",r3:"PhD студент",
     collab:"Калимоктағы серіктестік: доктор Павел Зехтинджиев, Болгария ғылым академиясы",
-    ch:"Байланыс",pi:"Жоба жетекшісі: профессор Staffan Bensch, Биология кафедрасы, Лунд университеті",op:"Бос орындар осында жарияланады.",
-    fund:"Еуропалық зерттеу кеңесі (ERC) қаржыландырады. [Грант келісімінің нөмірі]. Айтылған пікірлер тек авторларға тиесілі."
+    ch:"Байланыс",pi:"Жоба жетекшісі: профессор Staffan Bensch, Биология кафедрасы, Лунд университеті",op:"Қазіргі уақытта бос орындар жоқ.",
+    fund:"Мұнда айтылған пікірлер тек авторларға тиесілі."
   },
   bg:{
-    n8:"Новини",nwh:"Новини",nwp:"Срещи, теренна работа и други новини от проекта.",nwe:"Все още няма новини. Срещите и другите новини ще бъдат публикувани тук.",rc:"Данни от Koleček <i>et al.</i>, 2016 и Bensch <i>et al.</i>, 2025.",bio4:"Yekaterina е орнитолог в Института по зоология на Република Казахстан. Изследванията ѝ са насочени към екологията, биологията на размножаването и миграцията на птиците, като предишната ѝ работа е съсредоточена върху граблива птици. Интересува се да разбере къде пътуват птиците, как използват различни местообитания през годината и как миграцията свързва техните места за гнездене и зимуване. Ролята ѝ в този проект е да помага на терен в Казахстан, за да бъдат успешно събрани яйцата за преместване в България.",bio5:"Liliana Vassileva е магистър по биология и се готви да защити докторската си дисертация по поведенческа екология в Института по биоразнообразие и екосистемни изследвания на Българската академия на науките. Научните ѝ интереси са насочени към определяне на хранителното разнообразие и поведение чрез комплексни подходи като екологична ДНК (eDNA), установяване на видовия състав на естествено наличните хранителни ресурси и изучаване на хранителното поведение и стратегии при изследваните видове. В началото на кариерата си трупа опит във флористични изследвания и растително биоразнообразие в планинските райони на България.",bio5b:"С опита си в поведението на птиците, прилагането на ДНК метабаркодинг в поведенческата екология и определянето на хранителните предпочитания на животните тя допринася към проекта с теренна работа и дейности по хранене на птиците.",nfs:"Теренни обекти",sth:"Теренни обекти",skh:"Калимок – България",skp:"Биологичната експериментална станция Калимок е изследователска база в Североизточна България, управлявана от <a href='https://www.iber.bas.bg/en/node/108' target='_blank' rel='noopener'>Института по биоразнообразие и екосистемни изследвания (ИБЕИ)</a> при Българската академия на науките. Намира се в защитената местност Калимок–Брашлен, влажна зона от мрежата Натура 2000 с площ над 5000 хектара, включваща блата, тръстикови масиви, алувиални ливади и заливни гори. На територията има център за размножаване и реинтродукция на редки видове птици, както и оборудване за пръстеняване и поведенчески изследвания.",sah:"Алаколь – Казахстан",sap:"Държавният природен резерват „Алаколь“ (част и от Биосферния резерват „Алаколь“) е защитена природна територия в Източен Казахстан, разположена в областите Жетису и Абай, около солния езерен басейн Алаколь–Сасъккол. Държавният резерват е основан през 1998 г., а по-широкият Биосферен резерват „Алаколь“ е обявен през 2013 г. Езерната система е и влажна зона по Рамсарската конвенция (от 2009 г.). По време на експедицията през май 2026 г. установихме подходящи места за събиране на яйца на голям тръстиков певец по западния бряг на езерото.",n7:"Птиците",bh:"Птиците",b1h:"Запознайте се с вида",
+    n8:"Новини",nwh:"Новини",nwp:"Срещи, теренна работа и други новини от проекта.",nwe:"Все още няма новини. Срещите и другите новини ще бъдат публикувани тук.",rc:"Данни от Koleček <i>et al.</i>, 2016 и Bensch <i>et al.</i>, 2025.",bio4:"Yekaterina е орнитолог в Института по зоология на Република Казахстан. Изследванията ѝ са насочени към екологията, биологията на размножаването и миграцията на птиците, като предишната ѝ работа е съсредоточена върху граблива птици. Интересува се да разбере къде пътуват птиците, как използват различни местообитания през годината и как миграцията свързва техните места за гнездене и зимуване. Ролята ѝ в този проект е да помага на терен в Казахстан, за да бъдат успешно събрани яйцата за преместване в България.",bio5:"Liliana Vassileva е магистър по биология и се готви да защити докторската си дисертация по поведенческа екология в Института по биоразнообразие и екосистемни изследвания на Българската академия на науките. Научните ѝ интереси са насочени към определяне на хранителното разнообразие и поведение чрез комплексни подходи като екологична ДНК (eDNA), установяване на видовия състав на естествено наличните хранителни ресурси и изучаване на хранителното поведение и стратегии при изследваните видове. Тя допринася към проекта с теренна работа и дейности по хранене на птиците.",bio5b:"С опита си в поведението на птиците, прилагането на ДНК метабаркодинг в поведенческата екология и определянето на хранителните предпочитания на животните тя допринася към проекта с теренна работа и дейности по хранене на птиците.",nfs:"Теренни обекти",sth:"Теренни обекти",skh:"Калимок – България",skp:"Биологичната експериментална станция Калимок е изследователска база в Североизточна България, управлявана от <a href='https://www.iber.bas.bg/en/node/108' target='_blank' rel='noopener'>Института по биоразнообразие и екосистемни изследвания (ИБЕИ)</a> при Българската академия на науките. Намира се в защитената местност Калимок–Брашлен, влажна зона от мрежата Натура 2000 с площ над 5000 хектара, включваща блата, тръстикови масиви, алувиални ливади и заливни гори. На територията има център за размножаване и реинтродукция на редки видове птици, както и оборудване за пръстеняване и поведенчески изследвания.",sah:"Алаколь – Казахстан",sap:"Държавният природен резерват „Алаколь“ (част и от Биосферния резерват „Алаколь“) е защитена природна територия в Източен Казахстан, разположена в областите Жетису и Абай, около солния езерен басейн Алаколь–Сасъккол. Държавният резерват е основан през 1998 г., а по-широкият Биосферен резерват „Алаколь“ е обявен през 2013 г. Езерната система е и влажна зона по Рамсарската конвенция (от 2009 г.). По време на експедицията през май 2026 г. установихме подходящи места за събиране на яйца на голям тръстиков певец по западния бряг на езерото.",tkz:"Казахстан",tbg:"България",lu:"Последна актуализация: ноември 2026",bio6:"Harald е консултант по околна среда и запален полеви орнитолог. Работил е в множество проекти, включително отдалечени експедиции в Сибир, Азербайджан или Ливан. Има опит в пръстеняването, улавянето и маркирането на диви птици и в определянето на видовете на терен. Ролята му в този проект е да намира подходящи места в Казахстан за провеждане на експеримента с преместване на яйца.",bio7:"Bekzhan е орнитолог и изследовател в Института по зоология на Казахстан. Докторската му работа е посветена на екологията, разпространението и миграцията на гълъбите и дивите гълъби (Columbiformes) в южен и югоизточен Казахстан. Настоящите му изследвания са насочени към миграцията на птиците, екологията на движението и опазването, като използва теренни проучвания, пръстеняване и GPS телеметрия. Особено се интересува от съчетаването на проследяване и генетични подходи за по-добро разбиране на миграционната свързаност при птиците от Централна Азия. Ролята му в проекта е да съдейства с теренни разрешителни и логистика в Казахстан.",n7:"Птиците",bh:"Птиците",b1h:"Запознайте се с вида",
     b1p:"Големият тръстиков певец (<i>Acrocephalus arundinaceus</i>) е среден по размер (30 г) прелетен певчи вид. Гнезди в Европа и Централна Азия, а зимува в Африка на юг от Сахара и в Южна Африка. Успешното му размножаване зависи силно от тръстикови местообитания.",
     c0:"Възрастен голям тръстиков певец. Снимка: Harald Ris",
     b2h:"Животът в тръстиките",
@@ -666,14 +717,14 @@ footer h2{color:var(--white);font-size:1.6rem}
     b3p2:"Птиците от Казахстан, в източния край на ареала, също зимуват в Източна Африка заедно с турските, макар че генетичните данни сочат, че видът е колонизирал Казахстан от запад. Следователно посоката на миграция се е променила съществено при разширяването на ареала. През пролетта напускат Африка още през февруари и прекарват до два месеца в междинно място в Южен Ирак, преди да завършат пътя си – двустъпкова стратегия, неописвана досега (Bensch и др., 2025).",
     b3r:"Прочетете проучванията:",
     c5:"Снимка: Javier Abalos Alvarez",crh:"Снимка: Harald Ris",c8:"Избрахме места, където няма тръстикови певци от вида <i>Acrocephalus stentoreus</i>, за да не вземаме проби от хибридни популации. Снимка: Harald Ris",c6:"Птица със сателитен предавател. Снимка: Violeta Caballero-Lopez",
-    bio1:"Staffan Bensch е професор по екология на животните в Лундския университет от 2004 г. Той е еволюционен биолог, работещ в областта на молекулярната екология, и ръководи дългосрочни изследователски проекти за прелетни птици и паразити, причиняващи птичи малярии. Ръководи финансирана от ERC програма за разкриване на генетичната основа на миграцията при певчите птици. Белези като желанието за отпътуване, посоката и дължината на пътуването се определят от все още неизвестни генетични механизми. Този проект е част от тази програма, а неговата роля е цялостната координация и теренният опит.",
-    bio2:"Violeta защити докторската си степен по генетика на птичата миграция в Лундския университет през 2025 г. Работата ѝ беше съсредоточена върху певци от род <i>Phylloscopus</i>, като съчетаваше геномни, молекулни и фенотипни данни, за да разбере как мигрират дребните птици. Преди това прекара няколко сезона в проекта за големия тръстиков певец при езерото Квисмарен, където опозна поведението на вида от първа ръка. В този проект ролята ѝ е да събира яйцата в Казахстан и да монтира проследяващи устройства на птиците в България.",
+    bio1:"Staffan Bensch е професор по екология на животните в Лундския университет от 2004 г. Той е еволюционен биолог, работещ в областта на молекулярната екология, и води дългосрочни изследователски проекти за прелетни птици и паразити, причиняващи птичи малярии. Ръководи финансирана от ERC програма за разкриване на генетичната основа на миграцията при певчите птици. „Born to migrate“ е част от тази програма, а неговата роля е цялостната координация и теренният опит през целия проект.",
+    bio2:"Violeta защити докторската си степен по генетика на птичата миграция в Лундския университет през 2025 г. Работата ѝ беше съсредоточена върху певци от род <i>Phylloscopus</i>, като съчетаваше геномни, молекулни и фенотипни данни, за да разбере как мигрират дребните птици. Преди това прекара няколко сезона в проекта за големия тръстиков певец при езерото Квисмарен, където опозна поведението на вида от първа ръка. Има опит в полевата орнитология, молекулярните методи и геномния анализ. В този проект ролята ѝ е да намира подходящи места в Казахстан, да събира яйцата и да монтира проследяващи устройства на птиците в България.",
     menu:"Меню",tlh:"Хронология",
     tl1:"Пилотно проучване: ръчно отглеждане на големи тръстикови певци.",
     tl2:"Експедиция до Казахстан за намиране на подходящи места за събиране на яйца на голям тръстиков певец. На птиците бяха монтирани сателитни предаватели и други проследяващи устройства, които предават данни на живо, в пилотен опит да се намери най-добрата технология за нашата цел.",
     tl3:"Първо преместване на яйца от езерото Алаколь до Калимок. Малките ще се излюпят в станцията и ще бъдат отгледани ръчно заедно с български големи тръстикови певци. Щом могат да летят, ще живеят във волиери на открито и ще получат сателитни предаватели малко преди пускането.",
     c7:"Снимка: Violeta Caballero-Lopez",
-    n1:"Проектът",n2:"Два модела",n3:"Експериментът",n4:"Екипът",n5:"Контакти",brand:"Наследена миграционна програма",cred:"Снимка: Harald Ris",stmt:"Решаващ тест за наследяването на миграционните маршрути.",n6:"Спонсори",sph:"Спонсори",spp:"Този проект се финансира от Европейския съвет по научни изследвания (ERC) и Шведския съвет за научни изследвания (Vetenskapsrådet, VR).",
+    n1:"Проектът",n2:"Два модела",n3:"Експериментът",n4:"Екипът",n5:"Контакти",brand:"Наследена миграционна програма",cred:"Снимка: Harald Ris",stmt:"Решаващ тест за наследяването на миграционните маршрути.",n6:"Спонсори",sph:"Финансиране",spp:"Този проект се финансира от Европейския съвет по научни изследвания (ERC) и Шведския съвет за научни изследвания (Vetenskapsrådet, VR).",
     h1:"Откъде знае младата птица накъде да лети?",
     hp:"По време на първата си есенна миграция младата птица прелита хиляди километри, често над морета и пустини, до място, на което никога не е била. Указанията за това са записани в нейната ДНК. Ще преместваме яйца между държави, за да разберем каква информация птицата наследява от родителите си.",
     btn:"Вижте двата модела",
@@ -709,11 +760,184 @@ footer h2{color:var(--white);font-size:1.6rem}
     fp:"Полева станция Калимок в Североизточна България е заобиколена от гъста гнездова популация на големия тръстиков певец и работи в дългогодишно сътрудничество с д-р Павел Зехтинджиев от Българската академия на науките. През 2024 и 2025 г. пилотно проучване показа, че малките могат да бъдат отгледани до самостоятелност – около 32 дни, и че птиците успешно носят сателитни предаватели от 1,7 г по време на есенната миграция. Проучвателна експедиция до Казахстан през 2025 г. откри места, подходящи за събиране на яйца.",
     c1:"Полева станция Калимок, България",c2:"Яйца в гнездото. Снимка: Javier Abalos Alvarez",c3:"Малки в гнездото. Снимка: Javier Abalos Alvarez",c4:"Малки в ръка. Снимка: Javier Abalos Alvarez",
     th:"Екипът",tp:"Хората зад този проект.",
-    r4:"Помощник на терен",bio3:"Митко е опитен пръстенувач и полеви орнитолог, специализиран в изучаването на миграцията, екологията и кръвните паразити при врабчоподобни и планерни птици. Над 15 години работи по птичи малярии и други кръвни паразити. В момента е доцент в Института по биоразнообразие и екосистемни изследвания на Българската академия на науките, където се занимава с таксономията, систематиката, специфичността, коеволюцията и взаимоотношенията гостоприемник–паразит при хемоспоридиите по птиците. В този проект той ще помага на терен в полева станция Калимок – ще търси гнезда на големия тръстиков певец, ще събира яйца, ще храни малките и ще осигурява техническа подкрепа и логистика в България.",r1:"Ръководител на проекта, професор",r2:"Постдокторант",r3:"Докторант",
+    r4:"Полеви сътрудник",bio3:"Митко е опитен пръстенувач и полеви орнитолог, специализиран в изучаването на миграцията, екологията и кръвните паразити при врабчоподобни и планерни птици. Над 15 години работи по птичи малярии и други кръвни паразити. В момента е доцент в Института по биоразнообразие и екосистемни изследвания на Българската академия на науките, където се занимава с таксономията, систематиката, специфичността, коеволюцията и взаимоотношенията гостоприемник–паразит при хемоспоридиите по птиците. В този проект той ще помага на терен в полева станция Калимок – ще търси гнезда на големия тръстиков певец, ще събира яйца, ще храни малките и ще осигурява техническа подкрепа и логистика в България.",r1:"Ръководител на проекта, професор",r2:"Постдокторант",r3:"Докторант",
     collab:"Сътрудничество в Калимок: д-р Павел Зехтинджиев, Българска академия на науките",
-    ch:"Контакти",pi:"Ръководител на проекта: професор Staffan Bensch, Катедра по биология, Университет в Лунд",op:"Свободните позиции ще бъдат публикувани тук.",
-    fund:"Финансирано от Европейския съвет по научни изследвания (ERC). [Номер на споразумението за безвъзмездна помощ]. Изразените възгледи са единствено на авторите."
-  }};
+    ch:"Контакти",pi:"Ръководител на проекта: професор Staffan Bensch, Катедра по биология, Университет в Лунд",op:"В момента няма свободни позиции.",
+    fund:"Изразените тук възгледи са единствено на авторите."
+  },
+  tr:{
+    n1:"Proje",
+    n7:"Kuşlar",
+    n4:"Ekip",
+    nfs:"Saha Alanları",
+    n8:"Haberler",
+    menu:"Menü",
+    cred:"Fotoğraf: Harald Ris",
+    c5:"Fotoğraf: Javier Abalos Alvarez",
+    crh:"Fotoğraf: Harald Ris",
+    c7:"Fotoğraf: Violeta Caballero-Lopez",
+    h1:"Genç bir kuş nereye gideceğini nasıl bilir?",
+    hp:"İlk sonbahar göçü sırasında genç bir kuş, hiç gitmediği bir yere, çoğu zaman denizleri ve çölleri aşarak binlerce kilometre uçar. Bunu yapmasını sağlayan talimatlar DNA’sındadır. Kuşun ebeveynlerinden hangi bilgiyi miras aldığını anlamak için yumurtaları ülkeler arasında taşıyacağız.",
+    btn:"İki modeli gör",
+    stmt:"Göç yollarının kalıtımının nihai sınaması.",
+    qh:"Kuşun doğuştan sahip olduğu bir talimat",
+    q1:"Birçok ötücü kuş yalnız başına ve geceleri göç eder; bu yüzden genç bir kuşa yolu kimse gösteremez. Güzergâhın kısmen kalıtsal olması gerekir, ancak tam olarak neyin aktarıldığı hâlâ çözülmüş değildir.",
+    q2:"Bu, “şu yöne şu kadar süre uç” gibi basit bir talimat mıdır? Yoksa kalıtsal bir harita gerektiren bir varış noktası mıdır? Önceki deneyler genç kuşları taşımış ve belirsiz sonuçlar vermiştir. Projemiz bunun yerine yumurtaları taşıyor; böylece kuşlar ebeveynlerinin ürediği yerden uzakta büyüyor.",
+    mh:"Kalıtsal programın iki modeli",
+    m1h:"Saat ve pusula",
+    m1p:"Genetik talimatlar bir yön ve bir uçuş süresi belirler. Yeni bir yere taşınan kuş yönünü korur ve başka bir yere varır.",
+    m2h:"Hedef alanına yönelme",
+    m2p:"Genetik talimatlar bir varış noktasını gösterir. Yeni bir yere taşınan kuş rotasını düzeltir ve yine de kendi popülasyonunun kışlama alanına ulaşır.",
+    mtry:"Yumurtaların nereden geldiğini ve hangi modelin doğru olduğunu seçin; Bulgaristan’da yumurtadan çıkan bir kuşun nereye uçacağının tahminini görün.",
+    lblO:"Yumurtaların bırakıldığı yer",
+    kz:"Kazakistan",
+    sp:"İspanya",
+    lblM:"Kuş şunu izlerse",
+    lBg:"Bulgaristan (Kalimok)",
+    mnote:"Şematik harita, ölçekli değildir. Düz çizgiler: popülasyon güzergâhları. Noktalı çizgi: taşınan kuş için tahmin.",
+    evo:"Neden önemli: Kuşlar bir pusula yönünü izliyorsa, her üreme popülasyonunun yön için kendi genetik talimatlarına ihtiyacı vardır. Bir hedefe yöneliyorlarsa, ortak bir kışlama alanını paylaşan geniş bir üreme yayılımındaki popülasyonlara tek bir genetik talimat seti yeter.",
+    tlh:"Zaman çizelgesi",
+    tl1:"Pilot çalışma: büyük kamışçınların elle yetiştirilmesi.",
+    tl2:"Büyük kamışçın yumurtası toplamaya uygun yerleri bulmak için Kazakistan’a keşif gezisi. Kuşlara uydu vericileri ve verileri canlı ileten diğer takip cihazları takıldı; bu, amacımıza en uygun teknolojiyi bulmaya yönelik bir pilot uygulamaydı.",
+    c8:"Melez popülasyonlardan örnek almamak için <i>Acrocephalus stentoreus</i> türünün bulunmadığı alanları seçtik. Fotoğraf: Harald Ris",
+    tl3:"Alakol Gölü’nden Kalimok’a ilk yumurta nakli. Yumurtalar istasyonda çıkacak ve yavrular Bulgar büyük kamışçınlarla birlikte elle büyütülecek. Uçabilir hale geldiklerinde açık hava kafeslerinde yaşayacak ve salıverilmeden kısa süre önce uydu vericisi takılacak.",
+    t2:"2028, gerekirse",
+    s2:"<strong>İspanya yumurtaları, yalnızca gerekirse.</strong> Kazak kuşları güneye göç ederse, kuşların kalıtsal bir programı mı yoksa yerel Bulgar kuşlarını mı izlediğini doğrulamak için deneyi İspanya’dan getirilen yumurtalarla tekrarlayacağız.",
+    wh:"Neden büyük kamışçın",
+    wp:"Çalışma, işaret taşıyabilen ve çok farklı güzergâhlara sahip popülasyonları olan, tek başına yaşayan uzun mesafe göçmeni bir tür gerektiriyor. Bu tür üç şartı da karşılıyor.",
+    f1b:"30 g",
+    f1:"Yalnızca 1,7 g ağırlığındaki uydu vericilerini taşıyacak kadar büyük.",
+    f2b:"3 güzergâh",
+    f2:"Bulgar, Kazak ve İspanyol popülasyonları belirgin biçimde farklı yollarla göç ediyor.",
+    f3b:"Ortak bir kışlama alanı",
+    f3:"Kazak ve Bulgar kuşları, üreme alanları çok uzak olmasına rağmen orta-doğu Afrika’nın aynı bölgesinde kışlıyor.",
+    bh:"Kuşlar",
+    b1h:"Türle tanışın",
+    b1p:"Büyük kamışçın (<i>Acrocephalus arundinaceus</i>), Avrupa ve Orta Asya’da üreyen, Sahra Altı ve Güney Afrika’da kışlayan orta boyutlu (30 g) göçmen bir ötücü kuştur. Başarılı üreme için kamışlık habitatlarına büyük ölçüde bağımlıdır.",
+    b2h:"Kamışlıkta yaşam",
+    b2p:"Erkekler poligindir; yani tek bir erkek birden fazla dişiyle çiftleşip bir toprak parçasını elinde tutabilir. Yusufçuk, kız böceği ve örümcek gibi küçük omurgasızlarla beslenirler. Bir kuluçkada 5 ila 7 yumurta bulunur ve yavrulara her iki ebeveyn de bakar. Yavrular yumurtadan çıktıktan yaklaşık 15 gün sonra yuvadan ayrılır ve 32. gün civarında tamamen bağımsız olur.",
+    b3h:"Güzergâhlar",
+    b3p1:"Jeolokatörlerle yapılan izleme, yayılış alanının farklı bölgelerindeki büyük kamışçınların farklı güzergâhlar izlediğini gösterdi. Beş batı Palearktik popülasyonun (İspanya, İsveç, Çekya, Bulgaristan ve Türkiye) incelendiği bir çalışmada sonbahar güzergâhları yön bakımından benzerdi ve büyük ölçüde paraleldi; İspanyol, İsveçli ve Çek kuşların çoğu Gine Körfezi boyunca kışladı. Türkiye’deki kuşlar ise Doğu Afrika’da kışladı ve Bulgar kuşlarla birlikte ilkbaharda Arap Yarımadası üzerinden dönerek saat yönünün tersine bir döngü yaptı (Koleček et al. 2016).",
+    b3p2:"Yayılış alanının doğu ucundaki Kazakistan’dan gelen kuşlar da, genetik veriler türün Kazakistan’a batıdan yayıldığını düşündürmesine rağmen, Türkiye’deki kuşlarla birlikte Doğu Afrika’da kışlıyor. Dolayısıyla yayılış alanı genişledikçe göç yönlerinin belirgin biçimde değişmiş olması gerekir. İlkbaharda Afrika’dan şubat ayında ayrılıyor ve yolculuğu tamamlamadan önce güney Irak’taki bir mola alanında iki aya kadar kalıyorlar; bu, daha önce tanımlanmamış iki aşamalı bir stratejidir (Bensch et al. 2025).",
+    b3r:"Çalışmaları okuyun:",
+    rc:"Veriler: Koleček <i>et al.</i>, 2016 ve Bensch <i>et al.</i>, 2025.",
+    th:"Ekip",
+    tp:"Bu projenin arkasındaki insanlar.",
+    r1:"Baş araştırmacı, Profesör",
+    bio1:"Staffan Bensch, 2004’ten beri Lund Üniversitesi’nde Hayvan Ekolojisi Profesörüdür. Moleküler ekoloji alanında çalışan bir evrimsel biyologdur ve göçmen kuşlar ile kuş sıtması parazitleri üzerine uzun vadeli araştırma projeleri yürütmektedir. Ötücü kuş göçünün genetik temelini ortaya çıkarmayı amaçlayan, ERC tarafından finanse edilen bir programa liderlik etmektedir. “Born to migrate” bu programın bir parçasıdır ve onun rolü, proje boyunca genel koordinasyon ve saha uzmanlığıdır.",
+    tkz:"Kazakistan",
+    r2:"Doktora sonrası araştırmacı",
+    bio2:"Violeta, kuş göçünün genetiği üzerine doktorasını 2025’te Lund Üniversitesi’nde tamamladı. <i>Phylloscopus</i> ötleğenlerine odaklandı ve küçük kuşların nasıl göç ettiğini anlamak için genomik, moleküler ve fenotipik verileri birleştirdi. Daha önce Kvismaren Gölü’ndeki büyük kamışçın projesinde birkaç sezon geçirdi ve türün davranışlarını yakından tanıdı. Saha ornitolojisi, moleküler yöntemler ve genomik analizlerde deneyimlidir. Bu projedeki rolü, Kazakistan’da uygun alanları bulmak, yumurtaları toplamak ve Bulgaristan’da kuşlara takip cihazları takmaktır.",
+    r4:"Saha işbirlikçisi",
+    bio6:"Harald, çevre danışmanı ve tutkulu bir saha ornitologudur. Sibirya, Azerbaycan veya Lübnan’a uzak keşif gezileri dahil birçok projede çalışmıştır. Yabani kuşları halkalama, yakalama ve işaretleme ile sahada tür tanımlama konusunda deneyimlidir. Bu projedeki rolü, yumurta nakli deneyini yapmak için Kazakistan’da uygun alanları bulmaktır.",
+    bio4:"Yekaterina, Kazakistan Cumhuriyeti Zooloji Enstitüsü’nde ornitologdur. Araştırmaları kuş ekolojisi, üreme biyolojisi ve göç üzerine odaklanmaktadır; daha önceki çalışmaları yırtıcı kuşlara yoğunlaşmıştı. Kuşların nereye gittiğini, yıl boyunca farklı habitatları nasıl kullandığını ve göçün üreme ile kışlama alanlarını nasıl birbirine bağladığını anlamakla ilgilenmektedir. Bu projedeki rolü, yumurtaların Bulgaristan’a nakli için başarıyla toplanabilmesi amacıyla Kazakistan’da sahada yardımcı olmaktır.",
+    bio7:"Bekzhan, Kazakistan Zooloji Enstitüsü’nde ornitolog ve araştırmacıdır. Doktorası, Kazakistan’ın güneyi ve güneydoğusundaki güvercingillerin (Columbiformes) ekolojisi, dağılımı ve göçü üzerineydi. Mevcut araştırmaları, saha taramaları, kuş halkalama ve GPS telemetrisi kullanarak kuş göçü, hareket ekolojisi ve koruma üzerine odaklanmaktadır. Orta Asya kuşlarında göçsel bağlantılılığı daha iyi anlamak için izleme ve genetik yaklaşımları birleştirmekle özellikle ilgilenmektedir. Projedeki rolü, Kazakistan’da saha izinleri ve lojistik konusunda yardımcı olmaktır.",
+    tbg:"Bulgaristan",
+    bio3:"Mitko, ötücü kuşların ve süzülen kuşların göçü, ekolojisi ve kan parazitleri üzerine uzmanlaşmış deneyimli bir halkalayıcı ve saha ornitologudur. 15 yıldan uzun süredir kuş sıtması ve diğer kan parazitleri üzerinde çalışmaktadır. Şu anda Bulgaristan Bilimler Akademisi Biyoçeşitlilik ve Ekosistem Araştırmaları Enstitüsü’nde Doçenttir; kuşlardaki hemosporidyan parazitlerin taksonomisi, sistematiği, özgüllüğü, birlikte evrimi ve konak-parazit etkileşimleri üzerine odaklanmaktadır. Bu projede, Kalimok saha istasyonunda büyük kamışçın yuvalarını arayarak, yumurta toplayarak, yavruları besleyerek ve Bulgaristan’da teknik destek ve lojistik sağlayarak saha desteği verecektir.",
+    bio5:"Liliana Vassileva biyoloji alanında yüksek lisans derecesine sahiptir ve Bulgaristan Bilimler Akademisi Biyoçeşitlilik ve Ekosistem Araştırmaları Enstitüsü’nde davranış ekolojisi alanındaki doktora tezini savunmak üzeredir. Bilimsel ilgi alanları ve araştırmaları, çevresel DNA (eDNA) gibi kapsamlı yaklaşımlarla beslenme çeşitliliğini ve davranışı belirlemeye, doğal olarak bulunan besin kaynaklarının tür bileşimini saptamaya ve incelenen türlerde yiyecek arama davranışlarını ve stratejilerini incelemeye odaklanmaktadır. Projeye saha çalışması ve kuşları besleme faaliyetleriyle katkıda bulunmaktadır.",
+    collab:"Kalimok’ta işbirliği: Dr. Pavel Zehtindjiev, Bulgaristan Bilimler Akademisi",
+    sth:"Saha Alanları",
+    skh:"Kalimok – Bulgaristan",
+    skp:"Kalimok Biyolojik Deney İstasyonu, Bulgaristan’ın kuzeydoğusunda yer alan ve Bulgaristan Bilimler Akademisi <a href='https://www.iber.bas.bg/en/node/108' target='_blank' rel='noopener'>Biyoçeşitlilik ve Ekosistem Araştırmaları Enstitüsü (IBER)</a> tarafından işletilen bir araştırma tesisidir. Kalimok–Brashlen Koruma Alanı içinde, bataklıkları, kamışlıkları, alüvyal çayırları ve taşkın ovası ormanlarını kapsayan, 5.000 hektarı aşan bir Natura 2000 sulak alan kompleksinde yer alır. Tesiste, nadir kuş türlerinin üretilmesi ve yeniden doğaya kazandırılması için özel bir merkez ile kuş halkalama ve davranış çalışmaları için ekipman bulunmaktadır.",
+    sah:"Alakol Gölü – Kazakistan",
+    sap:"Alakol Devlet Doğa Koruma Alanı (aynı zamanda Alakol Biyosfer Rezervi’nin bir parçası), Kazakistan’ın doğusunda Cetisu ve Abay bölgelerine yayılan, tuzlu Alakol–Sasıkkol göl havzası çevresinde yer alan korunan bir doğal alandır. Devlet doğa koruma alanı 1998’de kurulmuş, daha geniş kapsamlı Alakol Biyosfer Rezervi ise 2013’te ilan edilmiştir. Göl sistemi aynı zamanda 2009’dan beri bir Ramsar sulak alanıdır. Mayıs 2026’daki keşif gezisi sırasında gölün batı kıyısında büyük kamışçın yumurtası toplamaya uygun alanlar belirledik.",
+    nwh:"Haberler",
+    nwp:"Projeden toplantılar, saha çalışmaları ve diğer gelişmeler.",
+    nwe:"Henüz haber yok. Toplantılar ve diğer gelişmeler burada yayımlanacak.",
+    sph:"Finansman",
+    spp:"Bu proje, Avrupa Araştırma Konseyi (ERC) ve İsveç Araştırma Konseyi (Vetenskapsrådet, VR) tarafından finanse edilmektedir.",
+    ch:"İletişim",
+    op:"Şu anda açık pozisyon bulunmamaktadır.",
+    fund:"Burada ifade edilen görüş ve düşünceler yalnızca yazarlara aittir.",
+    lu:"Son güncelleme: Kasım 2026"
+  },
+  ru:{
+    n1:"Проект",
+    n7:"Птицы",
+    n4:"Команда",
+    nfs:"Места полевых работ",
+    n8:"Новости",
+    menu:"Меню",
+    cred:"Фото: Harald Ris",
+    c5:"Фото: Javier Abalos Alvarez",
+    crh:"Фото: Harald Ris",
+    c7:"Фото: Violeta Caballero-Lopez",
+    h1:"Как молодая птица узнаёт, куда лететь?",
+    hp:"Во время своей первой осенней миграции молодая птица пролетает тысячи километров, часто над морями и пустынями, к месту, где она никогда не была. Инструкции для этого заложены в её ДНК. Мы будем перемещать яйца между странами, чтобы выяснить, какую информацию птица наследует от родителей.",
+    btn:"Две модели",
+    stmt:"Решающая проверка наследования миграционных маршрутов.",
+    qh:"Инструкция, с которой рождается птица",
+    q1:"Многие певчие птицы мигрируют в одиночку и ночью, поэтому никто не может показать молодой птице дорогу. Маршрут должен частично наследоваться, но что именно передаётся, до сих пор неясно.",
+    q2:"Это простая инструкция, например «лети в этом направлении столько-то времени»? Или это пункт назначения, для которого нужна унаследованная карта? Прежние эксперименты с перемещением молодых птиц дали неоднозначные результаты. Наш проект вместо этого перемещает яйца, поэтому птицы вырастают далеко от места, где гнездились их родители.",
+    mh:"Две модели унаследованной программы",
+    m1h:"Часы и компас",
+    m1p:"Генетические инструкции задают направление и время полёта. Птица, перемещённая в новое место, сохраняет своё направление и оказывается в другом месте.",
+    m2h:"Навигация к цели",
+    m2p:"Генетические инструкции указывают на пункт назначения. Птица, перемещённая в новое место, корректирует курс и всё равно достигает зимовки своей популяции.",
+    mtry:"Выберите, откуда взяты яйца и какая модель верна, и посмотрите, куда, как предполагается, полетит птица, вылупившаяся в Болгарии.",
+    lblO:"Яйца отложены в",
+    kz:"Казахстан",
+    sp:"Испания",
+    lblM:"Если птица следует",
+    lBg:"Болгария (Калимок)",
+    mnote:"Схематическая карта, без соблюдения масштаба. Сплошные линии: маршруты популяций. Пунктир: прогноз для перемещённой птицы.",
+    evo:"Почему это важно: если птицы следуют компасному курсу, каждой гнездовой популяции нужны собственные генетические инструкции направления. Если они ориентируются на цель, один набор генетических инструкций может обслуживать популяции на обширном гнездовом ареале с общей зимовкой.",
+    tlh:"Хронология",
+    tl1:"Пилотное исследование: выращивание дроздовидных камышовок вручную.",
+    tl2:"Экспедиция в Казахстан для поиска подходящих мест сбора яиц дроздовидной камышовки. Птицам установили спутниковые передатчики и другие устройства слежения с передачей данных в реальном времени — в рамках пилотного проекта по выбору лучшей технологии для нашей цели.",
+    c8:"Мы выбрали места, где не гнездится вид <i>Acrocephalus stentoreus</i>, чтобы не брать пробы у гибридных популяций. Фото: Harald Ris",
+    tl3:"Первое перемещение яиц с озера Алаколь в Калимок. Птенцы вылупятся на станции и будут выращены вручную вместе с болгарскими дроздовидными камышовками. Когда они смогут летать, они будут жить в открытых вольерах и получат спутниковые передатчики незадолго до выпуска.",
+    t2:"2028, при необходимости",
+    s2:"<strong>Испанские яйца — только при необходимости.</strong> Если казахстанские птицы мигрируют на юг, мы повторим эксперимент с яйцами из Испании, чтобы подтвердить, следуют ли птицы унаследованной программе или местным болгарским птицам.",
+    wh:"Почему дроздовидная камышовка",
+    wp:"Для исследования нужен одиночный дальний мигрант, способный нести метку и имеющий популяции с очень разными маршрутами. Этот вид соответствует всем трём требованиям.",
+    f1b:"30 г",
+    f1:"Достаточно крупная, чтобы нести спутниковые передатчики массой всего 1,7 г.",
+    f2b:"3 маршрута",
+    f2:"Болгарская, казахстанская и испанская популяции мигрируют совершенно по-разному.",
+    f3b:"Общая зона зимовки",
+    f3:"Казахстанские и болгарские птицы зимуют в одной и той же части центральной восточной Африки, хотя места гнездования у них очень далеко друг от друга.",
+    bh:"Птицы",
+    b1h:"Знакомство с видом",
+    b1p:"Дроздовидная камышовка (<i>Acrocephalus arundinaceus</i>) — перелётная певчая птица среднего размера (30 г), гнездящаяся в Европе и Центральной Азии и зимующая в Африке к югу от Сахары. Для успешного размножения она сильно зависит от тростниковых зарослей.",
+    b2h:"Жизнь в тростниках",
+    b2p:"Самцы полигамны: один самец может спариваться и удерживать территорию с несколькими самками. Они питаются мелкими беспозвоночными, такими как стрекозы, коромысла и пауки. В кладке от 5 до 7 яиц, о птенцах заботятся оба родителя. Птенцы покидают гнездо примерно через 15 дней после вылупления и становятся полностью самостоятельными около 32-го дня.",
+    b3h:"Маршруты",
+    b3p1:"Отслеживание с помощью геолокаторов показало, что дроздовидные камышовки из разных частей ареала выбирают разные маршруты. В исследовании пяти западнопалеарктических популяций (Испания, Швеция, Чехия, Болгария и Турция) осенние маршруты были сходны по направлению и в основном параллельны, а большинство испанских, шведских и чешских птиц зимовало вдоль Гвинейского залива. Турецкие птицы же зимовали в Восточной Африке и вместе с болгарскими возвращались весной через Аравийский полуостров, совершая петлю против часовой стрелки (Koleček et al. 2016).",
+    b3p2:"Птицы из Казахстана, на восточной границе ареала, тоже зимуют в Восточной Африке рядом с турецкими, хотя генетические данные говорят, что вид заселил Казахстан с запада. Следовательно, направление их миграции должно было существенно измениться по мере расширения ареала. Весной они покидают Африку уже в феврале и до двух месяцев проводят на остановочном пункте на юге Ирака, прежде чем завершить путь — двухэтапная стратегия, ранее не описанная (Bensch et al. 2025).",
+    b3r:"Читать исследования:",
+    rc:"Данные: Koleček <i>et al.</i>, 2016 и Bensch <i>et al.</i>, 2025.",
+    th:"Команда",
+    tp:"Люди, стоящие за этим проектом.",
+    r1:"Главный исследователь, профессор",
+    bio1:"Staffan Bensch — профессор экологии животных Лундского университета с 2004 года. Он эволюционный биолог, работающий в области молекулярной экологии, и ведёт долгосрочные исследовательские проекты по перелётным птицам и паразитам птичьей малярии. Он руководит программой, финансируемой ERC, по выявлению генетической основы миграции певчих птиц. «Born to migrate» — часть этой программы, а его роль — общая координация и полевой опыт на протяжении всего проекта.",
+    tkz:"Казахстан",
+    r2:"Постдокторский исследователь",
+    bio2:"Violeta защитила докторскую диссертацию по генетике миграции птиц в Лундском университете в 2025 году. Она изучала пеночек <i>Phylloscopus</i>, сочетая геномные, молекулярные и фенотипические данные, чтобы понять, как мигрируют мелкие птицы. До этого она провела несколько сезонов в проекте по дроздовидной камышовке на озере Квисмарен, где близко познакомилась с поведением вида. Она имеет опыт в полевой орнитологии, молекулярных методах и геномном анализе. В этом проекте её роль — поиск подходящих мест в Казахстане, сбор яиц и установка устройств слежения на птиц в Болгарии.",
+    r4:"Полевой сотрудник",
+    bio6:"Harald — консультант по охране окружающей среды и увлечённый полевой орнитолог. Он работал во многих проектах, включая дальние экспедиции в Сибирь, Азербайджан и Ливан. Он имеет опыт кольцевания, отлова и мечения диких птиц и определения видов в полевых условиях. Его роль в этом проекте — поиск подходящих мест в Казахстане для проведения эксперимента по перемещению яиц.",
+    bio4:"Yekaterina — орнитолог Института зоологии Республики Казахстан. Её исследования посвящены экологии, биологии размножения и миграции птиц, а ранее она занималась в основном хищными птицами. Её интересует, куда путешествуют птицы, как они используют разные местообитания в течение года и как миграция связывает места их гнездования и зимовки. Её роль в проекте — помогать в полевых работах в Казахстане, чтобы успешно собрать яйца для перемещения в Болгарию.",
+    bio7:"Bekzhan — орнитолог и исследователь Института зоологии Казахстана. Его докторская диссертация была посвящена экологии, распространению и миграции голубеобразных (Columbiformes) на юге и юго-востоке Казахстана. Его нынешние исследования посвящены миграции птиц, экологии перемещений и охране, с использованием полевых учётов, кольцевания и GPS-телеметрии. Его особенно интересует сочетание методов слежения и генетики для лучшего понимания миграционной связанности птиц Центральной Азии. Его роль в проекте — содействие в получении полевых разрешений и логистике в Казахстане.",
+    tbg:"Болгария",
+    bio3:"Mitko — опытный кольцеватель и полевой орнитолог, специализирующийся на изучении миграции воробьиных и парящих птиц, их экологии и кровепаразитов. Более 15 лет он работает с птичьей малярией и другими паразитами крови. В настоящее время он доцент Института биоразнообразия и исследований экосистем Болгарской академии наук; занимается таксономией, систематикой, специфичностью, коэволюцией и взаимодействием «хозяин — паразит» у гемоспоридий птиц. В этом проекте он будет помогать в полевых работах на станции Калимок: искать гнёзда дроздовидной камышовки, собирать яйца, кормить птенцов и обеспечивать техническую поддержку и логистику в Болгарии.",
+    bio5:"Liliana Vassileva имеет степень магистра биологии и готовится защитить докторскую диссертацию по поведенческой экологии в Институте биоразнообразия и исследований экосистем Болгарской академии наук. Её научные интересы и исследования посвящены определению разнообразия рациона и поведения с помощью комплексных подходов, таких как экологическая ДНК (eDNA), определению видового состава доступных природных кормовых ресурсов и изучению кормового поведения и стратегий у изучаемых видов. Она участвует в проекте полевыми работами и кормлением птиц.",
+    collab:"Сотрудничество в Калимоке: доктор Pavel Zehtindjiev, Болгарская академия наук",
+    sth:"Места полевых работ",
+    skh:"Калимок – Болгария",
+    skp:"Биологическая экспериментальная станция «Калимок» — научная база на северо-востоке Болгарии, которой управляет <a href='https://www.iber.bas.bg/en/node/108' target='_blank' rel='noopener'>Институт биоразнообразия и исследований экосистем (IBER)</a> Болгарской академии наук. Она находится на территории охраняемой зоны «Калимок–Брашлен» — водно-болотного комплекса Natura 2000 площадью более 5000 гектаров, включающего болота, тростниковые заросли, пойменные луга и пойменные леса. На территории есть специальный центр по разведению и реинтродукции редких видов птиц, а также оборудование для кольцевания птиц и поведенческих исследований.",
+    sah:"Озеро Алаколь – Казахстан",
+    sap:"Алакольский государственный природный заповедник (также входящий в Алакольский биосферный резерват) — охраняемая природная территория на востоке Казахстана, охватывающая Жетысускую и Абайскую области, вокруг солёной озёрной системы Алаколь–Сасыкколь. Государственный заповедник основан в 1998 году, а более широкий Алакольский биосферный резерват получил статус в 2013 году. Озёрная система также является водно-болотным угодьем Рамсарской конвенции (с 2009 года). Во время экспедиции в мае 2026 года мы определили подходящие места для сбора яиц дроздовидной камышовки на западном берегу озера.",
+    nwh:"Новости",
+    nwp:"Встречи, полевые работы и другие новости проекта.",
+    nwe:"Новостей пока нет. Здесь будут публиковаться встречи и другие новости.",
+    sph:"Финансирование",
+    spp:"Проект финансируется Европейским исследовательским советом (ERC) и Шведским исследовательским советом (Vetenskapsrådet, VR).",
+    ch:"Контакты",
+    op:"В настоящее время открытых вакансий нет.",
+    fund:"Изложенные здесь взгляды и мнения принадлежат только авторам.",
+    lu:"Последнее обновление: ноябрь 2026"
+  }
+  };
 
   // Map readout sentences: [origin][model]
   var R = {
@@ -722,7 +946,9 @@ footer h2{color:var(--white);font-size:1.6rem}
     kk:{K:{CC:"Қазақстан жұмыртқасынан Болгарияда шыққан құс ата-анасының туа біткен бағытын сақтап, <strong>Батыс Африкаға</strong> жетеді.",GA:"Қазақстан жұмыртқасынан Болгарияда шыққан құс ата-анасының қыстау аймағына бет алып, <strong>Шығыс Африкаға</strong> жетеді."},
         S:{CC:"Испания жұмыртқасынан Болгарияда шыққан құс ата-анасының туа біткен бағытын сақтап, <strong>Шығыс Африкаға</strong> жетеді.",GA:"Испания жұмыртқасынан Болгарияда шыққан құс ата-анасының қыстау аймағына бет алып, <strong>Батыс Африкаға</strong> жетеді."}},
     bg:{K:{CC:"Птица, излюпена в България от яйце от Казахстан, запазва наследената посока на родителите си и стига до <strong>Западна Африка</strong>.",GA:"Птица, излюпена в България от яйце от Казахстан, се насочва към зимовището на родителите си и стига до <strong>Източна Африка</strong>."},
-        S:{CC:"Птица, излюпена в България от яйце от Испания, запазва наследената посока на родителите си и стига до <strong>Източна Африка</strong>.",GA:"Птица, излюпена в България от яйце от Испания, се насочва към зимовището на родителите си и стига до <strong>Западна Африка</strong>."}}
+        S:{CC:"Птица, излюпена в България от яйце от Испания, запазва наследената посока на родителите си и стига до <strong>Източна Африка</strong>.",GA:"Птица, излюпена в България от яйце от Испания, се насочва към зимовището на родителите си и стига до <strong>Западна Африка</strong>."}},
+    tr:{K:{CC:"Kazak yumurtasından Bulgaristan’da çıkan bir kuş, ebeveynlerinin kalıtsal yönünü korur ve <strong>batı Afrika</strong>’ya varır.",GA:"Kazak yumurtasından Bulgaristan’da çıkan bir kuş, ebeveynlerinin kışlama alanına yönelir ve <strong>doğu Afrika</strong>’ya varır."},S:{CC:"İspanyol yumurtasından Bulgaristan’da çıkan bir kuş, ebeveynlerinin kalıtsal yönünü korur ve <strong>doğu Afrika</strong>’ya varır.",GA:"İspanyol yumurtasından Bulgaristan’da çıkan bir kuş, ebeveynlerinin kışlama alanına yönelir ve <strong>batı Afrika</strong>’ya varır."}},
+    ru:{K:{CC:"Птица, вылупившаяся в Болгарии из казахстанского яйца, сохраняет унаследованное направление родителей и оказывается в <strong>Западной Африке</strong>.",GA:"Птица, вылупившаяся в Болгарии из казахстанского яйца, направляется к зимовке своих родителей и оказывается в <strong>Восточной Африке</strong>."},S:{CC:"Птица, вылупившаяся в Болгарии из испанского яйца, сохраняет унаследованное направление родителей и оказывается в <strong>Восточной Африке</strong>.",GA:"Птица, вылупившаяся в Болгарии из испанского яйца, направляется к зимовке своих родителей и оказывается в <strong>Западной Африке</strong>."}}
   };
 
   var EAST = "M374.5 159.8 C377.6 168.7,387.3 192.4,392.7 213.1 C398.2 233.8,404.8 257.5,407.3 284.1 C409.7 310.7,408.5 343.3,407.3 372.9 C406.1 402.5,403.6 433.6,400.0 461.7 C396.4 489.8,389.1 522.3,385.5 541.6 C381.8 560.8,379.4 571.2,378.2 577.1";
